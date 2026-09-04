@@ -3,6 +3,7 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ReactNode, useRef } from "react";
 import {
+  AppWindow,
   ArrowUpRight,
   Banknote,
   Building2,
@@ -10,8 +11,8 @@ import {
   HeartPulse,
   Layers,
   ListChecks,
-  Monitor,
-  Palette,
+  RefreshCw,
+  Rocket,
   Sparkles,
   Workflow,
   Zap,
@@ -63,10 +64,10 @@ const HAYP_FEATURES = [
 ];
 
 const VSTUDIO_FEATURES = [
-  { icon: Palette, label: "Design & visual systems" },
-  { icon: Monitor, label: "Interfaces & experiences" },
-  { icon: Zap, label: "Motion & micro-interactions" },
-  { icon: Sparkles, label: "Brand-grade polish" },
+  { icon: AppWindow, label: "Every app I build, in one place" },
+  { icon: RefreshCw, label: "Upcoming updates, tracked live" },
+  { icon: Rocket, label: "New releases land here first" },
+  { icon: Sparkles, label: "Works in progress, on display" },
 ];
 
 export default function Ventures() {
@@ -112,17 +113,17 @@ export default function Ventures() {
           <div className="preserve-3d grid grid-cols-1 gap-12 lg:grid-cols-[1.2fr_0.8fr]">
             <div className="preserve-3d">
               <div className="pop-3d-sm flex flex-wrap items-center gap-3">
-                <span className="rounded-full bg-navy px-4 py-1.5 font-body text-[9px] font-semibold tracking-[0.3em] text-white">
+                <span className="rounded-full bg-navy px-4 py-1.5 font-body text-[10px] font-semibold tracking-[0.3em] text-white">
                   FLAGSHIP · FOUNDER
                 </span>
-                <span className="font-body text-[10px] tracking-[0.3em] text-ink-soft">
+                <span className="font-body text-[11px] font-medium tracking-[0.28em] text-ink-soft">
                   BUSINESS SUITE
                 </span>
               </div>
 
-              <h3 className="pop-3d mt-7 font-display text-5xl font-semibold tracking-tight text-ink md:text-7xl">
+              <h3 className="pop-3d mt-7 font-display text-5xl font-bold tracking-tight text-ink md:text-7xl">
                 HAYP
-                <span className="italic font-light text-emerald-deep">Books</span>
+                <span className="italic font-normal text-emerald-deep">Books</span>
               </h3>
 
               <p className="mt-7 max-w-xl font-body text-base leading-relaxed text-ink-soft md:text-lg">
@@ -167,7 +168,7 @@ export default function Ventures() {
                     className="h-4.5 w-4.5 shrink-0 text-emerald-deep"
                     aria-hidden="true"
                   />
-                  <span className="font-body text-[13px] font-medium leading-snug text-ink">
+                  <span className="font-body text-sm font-semibold leading-snug text-ink">
                     {f.label}
                   </span>
                 </motion.div>
@@ -177,7 +178,7 @@ export default function Ventures() {
         </TiltCard>
       </motion.div>
 
-      {/* ============ V.STUDIO — glass navy ============ */}
+      {/* ============ V.STUDIO — software hub, glass navy ============ */}
       <motion.div
         initial={{ opacity: 0, y: 64 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -189,23 +190,24 @@ export default function Ventures() {
           <div className="preserve-3d grid grid-cols-1 gap-12 lg:grid-cols-[1.2fr_0.8fr]">
             <div className="preserve-3d">
               <div className="pop-3d-sm flex flex-wrap items-center gap-3">
-                <span className="rounded-full border border-emerald/40 px-4 py-1.5 font-body text-[9px] font-semibold tracking-[0.3em] text-emerald">
-                  FOUNDER · CREATIVE
+                <span className="rounded-full border border-emerald/40 px-4 py-1.5 font-body text-[10px] font-semibold tracking-[0.3em] text-emerald">
+                  FOUNDER · SOFTWARE
                 </span>
-                <span className="font-body text-[10px] tracking-[0.3em] text-white/50">
-                  CREATIVE STUDIO
+                <span className="font-body text-[11px] font-medium tracking-[0.28em] text-white/70">
+                  SOFTWARE HUB
                 </span>
               </div>
 
-              <h3 className="pop-3d mt-7 font-display text-5xl font-semibold tracking-tight text-white md:text-7xl">
-                V.<span className="italic font-light text-emerald">Studio</span>
+              <h3 className="pop-3d mt-7 font-display text-5xl font-bold tracking-tight text-white md:text-7xl">
+                V.<span className="italic font-normal text-emerald">Studio</span>
               </h3>
 
-              <p className="mt-7 max-w-xl font-body text-base leading-relaxed text-white/70 md:text-lg">
-                Where the other half of my brain lives. V.Studio is my
-                creative studio for design, visuals, and brand work — the
-                place where precision meets play. One house style: sharp,
-                deliberate, impossible to ignore.
+              <p className="mt-7 max-w-xl font-body text-base leading-relaxed text-white/85 md:text-lg">
+                The home of everything I build. V.Studio is my software
+                hub — every app and tool I&apos;ve shipped lives there in one
+                gallery, side by side with what&apos;s coming next: upcoming
+                updates, new releases, and the projects taking shape
+                right now.
               </p>
             </div>
 
@@ -223,15 +225,15 @@ export default function Ventures() {
                     className="h-4.5 w-4.5 shrink-0 text-emerald"
                     aria-hidden="true"
                   />
-                  <span className="font-body text-[13px] font-medium leading-snug text-white/80">
+                  <span className="font-body text-sm font-semibold leading-snug text-white/90">
                     {f.label}
                   </span>
                 </motion.div>
               ))}
               <div className="flex items-center gap-3 rounded-xl border border-emerald/25 bg-gradient-to-r from-emerald/10 to-transparent px-4 py-3.5 sm:col-span-2">
                 <Zap className="h-4 w-4 shrink-0 text-emerald" aria-hidden="true" />
-                <span className="font-body text-[13px] font-medium italic text-white/80">
-                  Precision meets play — every pixel earns its place
+                <span className="font-body text-sm font-semibold italic text-white/90">
+                  One hub — every build, every update, every next thing
                 </span>
               </div>
             </div>
@@ -245,7 +247,7 @@ export default function Ventures() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.9, delay: 0.2 }}
-        className="mt-14 flex items-center justify-center gap-4 text-center font-body text-[10px] tracking-[0.35em] text-white/40"
+        className="mt-14 flex items-center justify-center gap-4 text-center font-body text-[11px] font-medium tracking-[0.3em] text-white/60"
       >
         <Layers className="h-3.5 w-3.5 text-emerald/50" aria-hidden="true" />
         ONE FOUNDER · TWO WORLDS · ZERO SHORTCUTS

@@ -21,6 +21,7 @@ export default function CursorGlow() {
     const mouse = { x: -100, y: -100 };
     const ring = { x: -100, y: -100, scale: 1 };
     let targetScale = 1;
+    let rot = 0;
     let raf = 0;
 
     const onMove = (e: MouseEvent) => {
@@ -39,10 +40,11 @@ export default function CursorGlow() {
       ring.x += (mouse.x - ring.x) * 0.15;
       ring.y += (mouse.y - ring.y) * 0.15;
       ring.scale += (targetScale - ring.scale) * 0.18;
+      rot += 0.45; // slow reticle spin — gamer crosshair feel
       if (ringRef.current) {
         ringRef.current.style.transform = `translate(${ring.x - 16}px, ${
           ring.y - 16
-        }px) scale(${ring.scale})`;
+        }px) scale(${ring.scale}) rotate(${rot}deg)`;
         ringRef.current.style.borderColor =
           ring.scale > 1.25
             ? "rgba(11,166,120,0.9)"
@@ -68,12 +70,12 @@ export default function CursorGlow() {
       <div
         ref={dotRef}
         aria-hidden="true"
-        className="pointer-events-none fixed left-0 top-0 z-[80] h-[7px] w-[7px] rounded-full bg-emerald will-change-transform"
+        className="pointer-events-none fixed left-0 top-0 z-[80] h-[7px] w-[7px] rounded-full bg-emerald shadow-[0_0_10px_rgba(11,166,120,0.75)] will-change-transform"
       />
       <div
         ref={ringRef}
         aria-hidden="true"
-        className="pointer-events-none fixed left-0 top-0 z-[80] h-8 w-8 rounded-full border will-change-transform"
+        className="pointer-events-none fixed left-0 top-0 z-[80] h-8 w-8 rounded-full border-[1.5px] border-dashed will-change-transform"
       />
     </>
   );

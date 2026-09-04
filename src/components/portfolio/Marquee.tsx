@@ -39,7 +39,7 @@ export default function Marquee() {
           {row.map((w, i) => (
             <span
               key={`l-${i}`}
-              className="flex items-center gap-12 font-display text-lg font-medium italic tracking-wide text-white/90"
+              className="flex items-center gap-12 font-display text-xl font-semibold italic tracking-wide text-white"
             >
               {w}
               <span className="not-italic text-sm text-emerald">✦</span>

@@ -60,7 +60,7 @@
   --foreground: #0a2540; /* navy ink */
 
   --ink: #0a2540;
-  --ink-soft: #5b6c84; /* muted body text */
+  --ink-soft: #46586f; /* muted body text — darker for readability */
   --navy: #0a2540;
   --navy-deep: #061a33;
   --emerald: #0ba678;
@@ -75,7 +75,7 @@
   --secondary: #f2f6f4;
   --secondary-foreground: #0a2540;
   --muted: #f2f6f4;
-  --muted-foreground: #5b6c84;
+  --muted-foreground: #46586f;
   --accent: #0ba678;
   --accent-foreground: #ffffff;
   --destructive: #d64545;
@@ -315,10 +315,10 @@ html {
   background-size: 180px 180px;
 }
 
-/* ============ CIRCUIT BACKGROUND — gamer × luxury ============ */
+/* ============ ARCADE BACKGROUND — interactive gamer × luxury ============ */
 
-/* Hairline engineering grid — matches the canvas node lattice (84px cells) */
-.circuit-grid {
+/* Hairline engineering grid — matches the arcade field aesthetic */
+.arcade-grid {
   position: absolute;
   inset: 0;
   background-image:
@@ -328,12 +328,12 @@ html {
 }
 
 /* Ambient tint washes — pre-softened radial gradients, transform-only drift */
-.circuit-glow {
+.arcade-glow {
   position: absolute;
   border-radius: 9999px;
   will-change: transform;
 }
-.circuit-glow-a {
+.arcade-glow-a {
   width: 46vw;
   height: 46vw;
   left: -12vw;
@@ -344,9 +344,9 @@ html {
     rgba(11, 166, 120, 0.035) 45%,
     transparent 70%
   );
-  animation: circuit-glow-a 32s ease-in-out infinite alternate;
+  animation: arcade-glow-a 32s ease-in-out infinite alternate;
 }
-.circuit-glow-b {
+.arcade-glow-b {
   width: 42vw;
   height: 42vw;
   right: -14vw;
@@ -357,9 +357,9 @@ html {
     rgba(10, 37, 64, 0.03) 45%,
     transparent 70%
   );
-  animation: circuit-glow-b 38s ease-in-out infinite alternate;
+  animation: arcade-glow-b 38s ease-in-out infinite alternate;
 }
-@keyframes circuit-glow-a {
+@keyframes arcade-glow-a {
   from {
     transform: translate3d(0, 0, 0) scale(1);
   }
@@ -367,7 +367,7 @@ html {
     transform: translate3d(9vw, 7vh, 0) scale(1.15);
   }
 }
-@keyframes circuit-glow-b {
+@keyframes arcade-glow-b {
   from {
     transform: translate3d(0, 0, 0) scale(1.06);
   }
@@ -577,8 +577,8 @@ html {
   .animate-pulse-soft,
   .orbit-ring,
   .orbit-ring-rev,
-  .circuit-glow-a,
-  .circuit-glow-b {
+  .arcade-glow-a,
+  .arcade-glow-b {
     animation: none !important;
   }
   html {

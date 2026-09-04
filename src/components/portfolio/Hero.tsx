@@ -60,7 +60,7 @@ export default function Hero() {
         aria-hidden="true"
         className="absolute left-7 top-1/2 hidden -translate-y-1/2 items-center gap-4 xl:flex"
       >
-        <span className="font-body text-[9px] tracking-[0.5em] text-ink-soft/70 [writing-mode:vertical-rl]">
+        <span className="font-body text-[10px] font-medium tracking-[0.45em] text-ink-soft [writing-mode:vertical-rl]">
           PORTFOLIO — MMXXVI
         </span>
         <span className="h-16 w-px bg-ink/15" />
@@ -77,7 +77,7 @@ export default function Hero() {
         >
           <motion.div
             variants={item}
-            className="mb-7 inline-flex items-center gap-3 font-body text-[10px] tracking-[0.45em] text-ink-soft md:text-xs"
+            className="mb-7 inline-flex items-center gap-3 font-body text-[11px] font-medium tracking-[0.42em] text-ink-soft md:text-[13px]"
           >
             <span className="h-1.5 w-1.5 rounded-full bg-emerald" />
             FULLSTACK DEVELOPER · FOUNDER
@@ -85,10 +85,10 @@ export default function Hero() {
 
           <motion.h1
             variants={item}
-            className="font-display text-[12.5vw] font-semibold leading-[0.98] tracking-tight text-ink sm:text-6xl md:text-7xl xl:text-[5.4rem]"
+            className="font-display text-[12.5vw] font-bold leading-[0.98] tracking-tight text-ink sm:text-6xl md:text-7xl xl:text-[5.4rem]"
           >
             John Paul
-            <span className="block font-light italic text-emerald-deep">
+            <span className="block font-normal italic text-emerald-deep">
               Escuadra
             </span>
           </motion.h1>
@@ -99,7 +99,7 @@ export default function Hero() {
             aria-label="Founder, developer, creator"
           >
             <span className="h-px w-10 bg-emerald" />
-            <p className="font-body text-[11px] tracking-[0.35em] text-ink-soft md:text-xs">
+            <p className="font-body text-xs font-semibold tracking-[0.3em] text-ink-soft md:text-sm">
               FOUNDER × DEVELOPER × CREATOR
             </p>
           </motion.div>
@@ -119,9 +119,9 @@ export default function Hero() {
             >
               HaypBooks
             </a>{" "}
-            and <span className="font-semibold text-ink">V.Studio</span> — I
-            design and build software end-to-end: the systems underneath,
-            the interfaces on top.
+            and <span className="font-semibold text-ink">V.Studio</span> —
+            the home of all my software: every app I ship, every update,
+            and every new release as it lands.
           </motion.p>
 
           <motion.div
@@ -130,7 +130,7 @@ export default function Hero() {
           >
             <a
               href="#ventures"
-              className="btn-sheen group inline-flex items-center gap-3 rounded-full bg-navy px-8 py-4 font-body text-xs font-semibold tracking-[0.25em] text-white transition-all duration-500 hover:-translate-y-0.5 hover:bg-navy-deep hover:lux-shadow-emerald"
+              className="btn-sheen group inline-flex items-center gap-3 rounded-full bg-navy px-8 py-4 font-body text-[13px] font-semibold tracking-[0.22em] text-white transition-all duration-500 hover:-translate-y-0.5 hover:bg-navy-deep hover:lux-shadow-emerald"
             >
               VIEW THE WORK
               <ArrowDown
@@ -142,7 +142,7 @@ export default function Hero() {
               href="https://haypbooks.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2.5 rounded-full border border-ink/15 bg-white/60 px-8 py-4 font-body text-xs font-semibold tracking-[0.25em] text-ink backdrop-blur-sm transition-all duration-500 hover:-translate-y-0.5 hover:border-emerald/50 hover:text-emerald-deep hover:lux-shadow"
+              className="group inline-flex items-center gap-2.5 rounded-full border border-ink/15 bg-white/60 px-8 py-4 font-body text-[13px] font-semibold tracking-[0.22em] text-ink backdrop-blur-sm transition-all duration-500 hover:-translate-y-0.5 hover:border-emerald/50 hover:text-emerald-deep hover:lux-shadow"
             >
               HAYPBOOKS.COM
               <ArrowUpRight
@@ -163,10 +163,10 @@ export default function Hero() {
               { v: "03", l: "GAME ENGINES" },
             ].map((s) => (
               <div key={s.l} className="px-5 py-5 first:pl-0">
-                <div className="font-display text-3xl font-semibold text-emerald-deep md:text-4xl">
+                <div className="font-display text-3xl font-bold text-emerald-deep md:text-4xl">
                   {s.v}
                 </div>
-                <div className="mt-1.5 font-body text-[10px] tracking-[0.22em] text-ink-soft md:text-[11px]">
+                <div className="mt-1.5 font-body text-[11px] font-medium tracking-[0.18em] text-ink-soft md:text-xs">
                   {s.l}
                 </div>
               </div>
@@ -236,10 +236,10 @@ export default function Hero() {
               />
               {/* Nameplate */}
               <div className="absolute inset-x-0 bottom-0 z-10 flex items-center justify-between bg-gradient-to-t from-navy/70 to-transparent px-5 pb-4 pt-10">
-                <span className="font-body text-[9px] tracking-[0.4em] text-white">
+                <span className="font-body text-[10px] font-medium tracking-[0.4em] text-white">
                   JPE — 001
                 </span>
-                <span className="flex items-center gap-1.5 font-body text-[9px] tracking-[0.3em] text-white">
+                <span className="flex items-center gap-1.5 font-body text-[10px] font-medium tracking-[0.3em] text-white">
                   <span className="h-1 w-1 animate-pulse-soft rounded-full bg-emerald" />
                   AVAILABLE
                 </span>
@@ -252,7 +252,7 @@ export default function Hero() {
             initial={{ opacity: 0, x: -26 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 3.25, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="lux-shadow absolute -left-4 top-[20%] hidden rounded-full border border-ink/5 bg-white/95 px-4 py-2 font-body text-[10px] tracking-[0.2em] text-ink-soft backdrop-blur md:block lg:-left-12"
+            className="lux-shadow absolute -left-4 top-[20%] hidden rounded-full border border-ink/5 bg-white/95 px-4 py-2 font-body text-[11px] font-medium tracking-[0.18em] text-ink-soft backdrop-blur md:block lg:-left-12"
           >
             SOFTWARE <span className="font-semibold text-emerald-deep">DEVELOPER</span>
           </motion.div>
@@ -260,7 +260,7 @@ export default function Hero() {
             initial={{ opacity: 0, x: 26 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 3.45, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="lux-shadow absolute -right-3 top-[52%] hidden rounded-full border border-ink/5 bg-white/95 px-4 py-2 font-body text-[10px] tracking-[0.2em] text-ink-soft backdrop-blur md:block lg:-right-10"
+            className="lux-shadow absolute -right-3 top-[52%] hidden rounded-full border border-ink/5 bg-white/95 px-4 py-2 font-body text-[11px] font-medium tracking-[0.18em] text-ink-soft backdrop-blur md:block lg:-right-10"
           >
             FULLSTACK <span className="font-semibold text-emerald-deep">BUILDER</span>
           </motion.div>
@@ -268,7 +268,7 @@ export default function Hero() {
             initial={{ opacity: 0, x: -26 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 3.65, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="lux-shadow absolute -left-3 bottom-[16%] hidden rounded-full border border-ink/5 bg-white/95 px-4 py-2 font-body text-[10px] tracking-[0.2em] text-ink-soft backdrop-blur md:block lg:-left-10"
+            className="lux-shadow absolute -left-3 bottom-[16%] hidden rounded-full border border-ink/5 bg-white/95 px-4 py-2 font-body text-[11px] font-medium tracking-[0.18em] text-ink-soft backdrop-blur md:block lg:-left-10"
           >
             ALWAYS <span className="font-semibold text-emerald-deep">SHIPPING</span>
           </motion.div>
@@ -285,7 +285,7 @@ export default function Hero() {
         style={{ opacity: nameOpacity }}
         className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-3"
       >
-        <span className="font-body text-[9px] tracking-[0.5em] text-ink-soft/70">
+        <span className="font-body text-[10px] font-medium tracking-[0.5em] text-ink-soft">
           SCROLL
         </span>
         <span className="relative h-10 w-px overflow-hidden bg-ink/10">

@@ -36,8 +36,8 @@ export function SectionHeading({
           }`}
         />
         <span
-          className={`font-body text-[10px] tracking-[0.4em] md:text-xs ${
-            dark ? "text-white/60" : "text-ink-soft"
+          className={`font-body text-[11px] font-medium tracking-[0.35em] md:text-xs ${
+            dark ? "text-white/70" : "text-ink-soft"
           }`}
         >
           {subtitle.toUpperCase()}
@@ -50,7 +50,7 @@ export function SectionHeading({
           whileInView={{ y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-          className={`font-display text-4xl font-semibold tracking-tight md:text-5xl lg:text-6xl ${
+          className={`font-display text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl ${
             dark ? "text-white" : "text-ink"
           }`}
         >

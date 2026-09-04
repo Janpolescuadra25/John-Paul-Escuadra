@@ -72,7 +72,7 @@ export default function IntroCurtain() {
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.55, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="font-body text-[10px] tracking-[0.55em] text-ink-soft md:text-xs"
+              className="font-body text-[11px] font-semibold tracking-[0.5em] text-ink-soft md:text-[13px]"
             >
               PORTFOLIO
             </motion.p>
@@ -82,10 +82,10 @@ export default function IntroCurtain() {
                 initial={{ y: "112%" }}
                 animate={{ y: 0 }}
                 transition={{ delay: 0.35, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-                className="font-display text-[11vw] font-semibold leading-[0.98] tracking-tight text-ink sm:text-6xl md:text-7xl"
+                className="font-display text-[11vw] font-bold leading-[0.98] tracking-tight text-ink sm:text-6xl md:text-7xl"
               >
                 {NAME_1}{" "}
-                <span className="italic font-light text-emerald-deep">
+                <span className="italic font-normal text-emerald-deep">
                   {NAME_2}
                 </span>
               </motion.h1>
@@ -103,7 +103,7 @@ export default function IntroCurtain() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.35, duration: 0.6 }}
-              className="mt-5 font-body text-[9px] tracking-[0.4em] text-ink-soft/80 md:text-[10px]"
+              className="mt-5 font-body text-[11px] font-medium tracking-[0.35em] text-ink-soft md:text-xs"
             >
               SOFTWARE DEVELOPER · FOUNDER
             </motion.p>

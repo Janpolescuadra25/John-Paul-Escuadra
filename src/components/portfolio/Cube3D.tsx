@@ -9,13 +9,13 @@ import {
 } from "framer-motion";
 import { useRef, useState } from "react";
 import {
+  AppWindow,
   Code2,
   Cpu,
   Gamepad2,
   Landmark,
   Orbit,
   Rocket,
-  Sparkles,
   type LucideIcon,
 } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
@@ -30,8 +30,8 @@ const CAPTIONS = [
     desc: "A modern business & practice management suite — founded, designed, and shipped end-to-end by one builder. Live at haypbooks.com, running real businesses.",
   },
   {
-    title: "V.Studio · Creative",
-    desc: "My creative studio for design and visual work — the place where precision meets play, and every pixel earns its place.",
+    title: "V.Studio · Software Hub",
+    desc: "The home of all my software — every app I've shipped, plus upcoming updates and new releases as they happen. One place to watch it all land.",
   },
   {
     title: "Software Architect",
@@ -48,7 +48,7 @@ const FACES: {
 }[] = [
   { cls: "cube-front", icon: Code2, top: "FULLSTACK", bottom: "DEVELOPER", no: "01" },
   { cls: "cube-right", icon: Landmark, top: "HAYPBOOKS", bottom: "FOUNDER", no: "02" },
-  { cls: "cube-back", icon: Sparkles, top: "V.STUDIO", bottom: "CREATIVE", no: "03" },
+  { cls: "cube-back", icon: AppWindow, top: "V.STUDIO", bottom: "SOFTWARE HUB", no: "03" },
   { cls: "cube-left", icon: Cpu, top: "SOFTWARE", bottom: "ARCHITECT", no: "04" },
   { cls: "cube-top", icon: Gamepad2, top: "GAME", bottom: "BUILDER", no: "05" },
   { cls: "cube-bottom", icon: Rocket, top: "ALWAYS", bottom: "SHIPPING", no: "06" },
@@ -110,10 +110,10 @@ export default function Cube3D() {
                   transition={{ duration: 0.32, ease: "easeOut" }}
                   className="max-w-md"
                 >
-                  <p className="font-display text-3xl font-semibold italic text-emerald-deep md:text-4xl">
+                  <p className="font-display text-3xl font-bold italic text-emerald-deep md:text-4xl">
                     {CAPTIONS[active].title}
                   </p>
-                  <p className="mt-4 font-body text-sm leading-relaxed text-ink-soft md:text-base">
+                  <p className="mt-4 font-body text-[15px] leading-relaxed text-ink-soft md:text-base">
                     {CAPTIONS[active].desc}
                   </p>
                 </motion.div>
@@ -128,7 +128,7 @@ export default function Cube3D() {
               />
             </div>
 
-            <div className="mt-6 flex items-center gap-2.5 font-body text-[10px] tracking-[0.35em] text-ink-soft/70">
+            <div className="mt-6 flex items-center gap-2.5 font-body text-[11px] font-medium tracking-[0.3em] text-ink-soft">
               <Orbit
                 className="h-3.5 w-3.5 text-emerald/70"
                 aria-hidden="true"
@@ -215,7 +215,7 @@ export default function Cube3D() {
                       <span className="font-display text-xs font-semibold tracking-tight text-ink sm:text-sm md:text-base">
                         {f.top}
                       </span>
-                      <span className="font-body text-[8px] tracking-[0.3em] text-ink-soft sm:text-[9px] md:text-[10px]">
+                      <span className="font-body text-[9px] font-medium tracking-[0.26em] text-ink-soft sm:text-[10px] md:text-[11px]">
                         {f.bottom}
                       </span>
                     </div>

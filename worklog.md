@@ -110,3 +110,42 @@ Stage Summary:
 - Background: flicker-free gamer circuit grid with traveling emerald data pulses, cursor-reactive nodes, luxury white/navy/emerald palette — old aurora canvas removed
 - Identity: John Paul is now presented as a Software Developer first (hero, marquee, about, cube, arsenal, ventures, intro, metadata) — Blender, video editing, and 4-years-accounting fully removed; HaypBooks kept as product (haypbooks.com link only, no tech stack, no repo)
 - Lint passing, dev server 200 OK, zero console/page errors, desktop + mobile verified
+
+---
+Task ID: 5
+Agent: Super Z (main agent)
+Task: (1) Fix letter/word visibility — text too small & thin; (2) Replace background concept with an INTERACTIVE gamer-feel background; (3) Reposition V.Studio as a software hub (all software works + upcoming updates + new releases)
+
+Work Log:
+- Read all current components + worklog state (Task 4 delivered circuit background + identity purge)
+- Built new ArcadeBackground.tsx replacing CircuitBackground (deleted): interactive "arcade energy field" — seeded constellation of navy/emerald nodes with slow drift; cursor acts as player entity (nodes gravitate toward it + emerald energy lines to nodes within 180px); node-to-node constellation links; CLICK/TAP ANYWHERE fires a shockwave: expanding emerald ring + navy echo ring + impact flash + 16 sparks + radial momentum impulse (300*(1-d/380)) on nearby nodes with exp damping; mouse parallax ±8px
+- Discoverability hint chip "CLICK / TAP — FIRE A PULSE" (bottom-right, own fixed z-[60] layer so it escapes the z-0 background stacking context — first version trapped inside z-0 was invisible on mobile behind content; fixed by fragment return), fades after first pulse or 16s; hidden for reduced-motion users; visibility driven by direct DOM updates (ref.style.opacity) to satisfy react-hooks/set-state-in-effect lint rule
+- Flicker-proofing preserved from circuit: no scroll-linked opacity, height-only resize never rebuilds, width resize debounced 180ms + same-task repaint, DPR capped at 2, passive pointer listeners
+- globals.css: renamed circuit-grid/circuit-glow → arcade-grid/arcade-glow (keyframes + reduced-motion list updated); darkened --ink-soft #5b6c84 → #46586f (and --muted-foreground) for body-text contrast
+- Typography visibility pass (user: "letters not too visible due to small or thin letter"):
+  - All display headings font-semibold → font-bold (Hero h1, IntroCurtain name, SectionHeading h2, About name/stats, Ventures HAYPBooks/V.Studio h3, Cube3D captions, Arsenal/Playground card titles, Contact "Let's build")
+  - Italic serif accents font-light (300) → font-normal (400): Hero surname, Intro surname, HAYPBooks "Books", V.Studio "Studio", Contact "something great."
+  - Micro labels 9px→10-11px, 10px→11px with font-medium/semibold; body 13px→15px, sm→[15px]; CTAs text-xs→13px; About dossier labels /40→/55 semibold; stat labels 10px→11-12px
+  - Muted opacities raised: white/40→55-65, white/50→70, white/60→80, white/70→85, white/80→90 (Ventures/Contact); ink-soft/70→ink-soft; emerald-deep/80→emerald-deep
+  - Marquee text-lg font-medium → text-xl font-semibold
+- V.Studio repositioned as SOFTWARE HUB per user clarification ("all of my works of software can be seen there, also upcoming software update and new software"):
+  - Ventures: badge FOUNDER · CREATIVE → FOUNDER · SOFTWARE; label CREATIVE STUDIO → SOFTWARE HUB; copy rewritten (software hub, one gallery of every app, upcoming updates, new releases, projects taking shape); features → AppWindow "Every app I build, in one place" / RefreshCw "Upcoming updates, tracked live" / Rocket "New releases land here first" / Sparkles "Works in progress, on display"; quote strip → "One hub — every build, every update, every next thing"
+  - Cube3D: face V.STUDIO/CREATIVE → V.STUDIO/SOFTWARE HUB (icon Sparkles→AppWindow); caption → "V.Studio · Software Hub" with hub copy
+  - Hero paragraph: V.Studio → "the home of all my software: every app I ship, every update, and every new release as it lands"
+  - layout.tsx metadata description/keywords updated (added "Software Hub")
+- CursorGlow upgraded to gamer reticle: ring border → 1.5px dashed + continuous 0.45deg/frame rotation; dot gains emerald glow shadow
+- ESLint: fixed 1 error (setState in effect → direct DOM control of hint)
+
+Verification:
+- ESLint clean; dev server 200; zero page errors after full-page scroll
+- Interaction VLM-verified (desktop 1440 + mobile 390): ripple ring (green/teal) + sparks + constellation + grid + hint chip all confirmed; "background feels highly interactive and alive"
+- Typography VLM-verified: "No text is too thin or faint... excellent visibility" across hero/about/ventures; mobile hero readable, nothing cut off
+- V.Studio copy VLM-verified: explicitly recognized as software hub with updates + new releases
+- Flicker/stability: canvas instrumented monitor over 4 scripted viewport resizes (height-only + width changes): 127 samples, 0 blank frames, 5 backing-store changes, min content coverage never zero
+- Hint chip mobile: initially invisible (z-0 stacking trap) → moved to fixed z-[60] layer → pixel-verified (1423 non-white px) + VLM-verified as "clean floating HUD chip"
+
+Stage Summary:
+- Background: interactive gamer arcade field (click/tap shockwaves + cursor gravity/links + constellation) on white/navy/emerald — flicker-free through resizes, discoverable via HUD hint chip
+- Typography: systematically bolder (700 headings, 400 italic accents), larger (labels 10-13px, body 15-16px), higher contrast (darker ink-soft, raised opacities)
+- V.Studio: presented as software hub — home of all his software works, upcoming updates, and new releases (Ventures card, cube face/caption, hero paragraph, metadata)
+- All privacy constraints intact: HaypBooks stack/repo still absent, haypbooks.com link only

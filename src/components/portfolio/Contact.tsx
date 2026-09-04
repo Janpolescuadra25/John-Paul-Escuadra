@@ -54,7 +54,7 @@ export default function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="font-body text-[10px] tracking-[0.5em] text-emerald md:text-xs"
+          className="font-body text-[11px] font-semibold tracking-[0.45em] text-emerald md:text-[13px]"
         >
           AVAILABLE FOR SELECT COLLABORATIONS
         </motion.p>
@@ -65,7 +65,7 @@ export default function Contact() {
             whileInView={{ y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.95, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display text-[11vw] font-semibold leading-[1.02] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl"
+            className="font-display text-[11vw] font-bold leading-[1.02] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl"
           >
             Let&apos;s build
           </motion.h2>
@@ -76,7 +76,7 @@ export default function Contact() {
             whileInView={{ y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.95, delay: 0.14, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display text-[11vw] font-light italic leading-[1.02] tracking-tight text-emerald sm:text-6xl md:text-7xl lg:text-8xl"
+            className="font-display text-[11vw] font-normal italic leading-[1.02] tracking-tight text-emerald sm:text-6xl md:text-7xl lg:text-8xl"
           >
             something great.
           </motion.h2>
@@ -87,7 +87,7 @@ export default function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.28 }}
-          className="mt-9 max-w-lg font-body text-base leading-relaxed text-white/60 md:text-lg"
+          className="mt-9 max-w-lg font-body text-base leading-relaxed text-white/80 md:text-lg"
         >
           Got a product to launch, books to fix, or a world to build? I
           answer fast — especially for interesting problems.
@@ -103,7 +103,7 @@ export default function Contact() {
           <Magnetic>
             <a
               href="mailto:paulescuadra25@gmail.com"
-              className="btn-sheen group relative inline-flex items-center gap-3 rounded-full bg-emerald px-9 py-4.5 font-body text-xs font-semibold tracking-[0.25em] text-white transition-all duration-500 hover:lux-shadow-emerald"
+              className="btn-sheen group relative inline-flex items-center gap-3 rounded-full bg-emerald px-9 py-4.5 font-body text-[13px] font-semibold tracking-[0.22em] text-white transition-all duration-500 hover:lux-shadow-emerald"
             >
               <Mail className="h-4.5 w-4.5" aria-hidden="true" />
               SEND AN EMAIL
@@ -119,7 +119,7 @@ export default function Contact() {
               href="https://www.facebook.com/paul.escuadra.1/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 rounded-full border border-white/20 px-9 py-4.5 font-body text-xs font-semibold tracking-[0.25em] text-white/85 transition-all duration-500 hover:border-emerald/60 hover:text-white"
+              className="inline-flex items-center gap-3 rounded-full border border-white/20 px-9 py-4.5 font-body text-[13px] font-semibold tracking-[0.22em] text-white/90 transition-all duration-500 hover:border-emerald/60 hover:text-white"
             >
               <Facebook className="h-4.5 w-4.5" aria-hidden="true" />
               FACEBOOK
@@ -132,7 +132,7 @@ export default function Contact() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, delay: 0.55 }}
-          className="mt-9 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 font-body text-xs tracking-wider text-white/40"
+          className="mt-9 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 font-body text-[13px] font-medium tracking-wider text-white/65"
         >
           <span>paulescuadra25@gmail.com</span>
           <span className="hidden h-1 w-1 rounded-full bg-white/25 sm:inline-block" />
