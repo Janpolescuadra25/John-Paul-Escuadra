@@ -8,6 +8,7 @@ import Hero from "@/components/portfolio/Hero";
 import Marquee from "@/components/portfolio/Marquee";
 import About from "@/components/portfolio/About";
 import Ventures from "@/components/portfolio/Ventures";
+import Cube3D from "@/components/portfolio/Cube3D";
 import Arsenal from "@/components/portfolio/Arsenal";
 import Playground from "@/components/portfolio/Playground";
 import Contact from "@/components/portfolio/Contact";
@@ -28,6 +29,7 @@ export default function PortfolioHome() {
         <Marquee />
         <About />
         <Ventures />
+        <Cube3D />
         <Arsenal />
         <Playground />
         <Contact />

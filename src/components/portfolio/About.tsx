@@ -4,6 +4,7 @@ import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { SectionHeading } from "./SectionHeading";
+import DepthSection from "./DepthSection";
 
 /** Count-up number when in view */
 function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
@@ -51,10 +52,11 @@ const SKILL_BARS = [
 
 export default function About() {
   return (
-    <section
+    <DepthSection
       id="about"
-      className="relative z-10 mx-auto max-w-7xl px-6 py-24 md:px-10 md:py-32"
-      aria-label="About John Paul Escuadra"
+      className="py-24 md:py-32"
+      innerClassName="mx-auto max-w-7xl px-6 md:px-10"
+      ariaLabel="About John Paul Escuadra"
     >
       <SectionHeading
         index="01"
@@ -215,6 +217,6 @@ export default function About() {
           </motion.div>
         </div>
       </div>
-    </section>
+    </DepthSection>
   );
 }

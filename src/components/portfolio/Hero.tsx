@@ -1,8 +1,8 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 import { ArrowDown, ExternalLink, Sparkles } from "lucide-react";
 
 /** Scramble-in text effect */
@@ -67,6 +67,24 @@ export default function Hero() {
   const bgY = useTransform(scrollYProgress, [0, 1], [0, 120]);
 
   const scramble = useScramble("FOUNDER × DEVELOPER × CREATOR");
+
+  // Mouse-driven 3D tilt for the portrait (desktop)
+  const tiltRX = useMotionValue(0);
+  const tiltRY = useMotionValue(0);
+  const portraitRX = useSpring(tiltRX, { stiffness: 130, damping: 18 });
+  const portraitRY = useSpring(tiltRY, { stiffness: 130, damping: 18 });
+
+  const handlePortraitTilt = (e: MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const px = (e.clientX - rect.left) / rect.width - 0.5;
+    const py = (e.clientY - rect.top) / rect.height - 0.5;
+    tiltRY.set(px * 12);
+    tiltRX.set(-py * 12);
+  };
+  const resetPortraitTilt = () => {
+    tiltRX.set(0);
+    tiltRY.set(0);
+  };
 
   return (
     <section
@@ -188,7 +206,15 @@ export default function Hero() {
 
         {/* ============ RIGHT: portrait ============ */}
         <motion.div
-          style={{ y: photoY, scale: photoScale }}
+          style={{
+            y: photoY,
+            scale: photoScale,
+            rotateX: portraitRX,
+            rotateY: portraitRY,
+            transformPerspective: 900,
+          }}
+          onMouseMove={handlePortraitTilt}
+          onMouseLeave={resetPortraitTilt}
           className="relative order-1 mx-auto w-[min(78vw,420px)] lg:order-2 lg:w-full lg:max-w-[400px]"
           aria-label="Portrait of John Paul Escuadra"
         >

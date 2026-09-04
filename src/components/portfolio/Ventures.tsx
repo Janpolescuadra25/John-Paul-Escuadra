@@ -19,6 +19,7 @@ import {
   Workflow,
 } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
+import DepthSection from "./DepthSection";
 
 /** 3D tilt-on-hover wrapper */
 function TiltCard({ children, className }: { children: ReactNode; className?: string }) {
@@ -41,7 +42,12 @@ function TiltCard({ children, className }: { children: ReactNode; className?: st
         mx.set(0.5);
         my.set(0.5);
       }}
-      style={{ rotateX: rx, rotateY: ry, transformPerspective: 1000 }}
+      style={{
+        rotateX: rx,
+        rotateY: ry,
+        transformPerspective: 1000,
+        transformStyle: "preserve-3d",
+      }}
       className={className}
     >
       {children}
@@ -67,10 +73,11 @@ const VSTUDIO_FEATURES = [
 
 export default function Ventures() {
   return (
-    <section
+    <DepthSection
       id="ventures"
-      className="relative z-10 mx-auto max-w-7xl px-6 py-24 md:px-10 md:py-32"
-      aria-label="Ventures — HaypBooks and V.Studio"
+      className="py-24 md:py-32"
+      innerClassName="mx-auto max-w-7xl px-6 md:px-10"
+      ariaLabel="Ventures — HaypBooks and V.Studio"
     >
       <SectionHeading
         index="02"
@@ -93,9 +100,9 @@ export default function Ventures() {
           <span aria-hidden="true" className="absolute bottom-0 left-0 h-8 w-8 border-b-2 border-l-2 border-[#c9f73a]" />
           <span aria-hidden="true" className="absolute bottom-0 right-0 h-8 w-8 border-b-2 border-r-2 border-[#c9f73a]" />
 
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.2fr_0.8fr]">
-            <div>
-              <div className="flex flex-wrap items-center gap-3">
+          <div className="preserve-3d grid grid-cols-1 gap-10 lg:grid-cols-[1.2fr_0.8fr]">
+            <div className="preserve-3d">
+              <div className="pop-3d-sm flex flex-wrap items-center gap-3">
                 <span className="rounded-sm bg-[#c9f73a] px-3 py-1 font-display text-[10px] font-bold tracking-[0.25em] text-[#09090b]">
                   FLAGSHIP · FOUNDER
                 </span>
@@ -104,7 +111,7 @@ export default function Ventures() {
                 </span>
               </div>
 
-              <h3 className="mt-6 font-display text-4xl font-bold tracking-tight text-zinc-100 md:text-6xl">
+              <h3 className="pop-3d mt-6 font-display text-4xl font-bold tracking-tight text-zinc-100 md:text-6xl">
                 HAYP
                 <span className="text-[#c9f73a]">BOOKS</span>
               </h3>
@@ -121,15 +128,18 @@ export default function Ventures() {
                 the first login screen to the dashboards teams rely on.
               </p>
 
-              <a
-                href="https://haypbooks.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-8 inline-flex items-center gap-3 rounded-sm bg-[#c9f73a] px-7 py-3.5 font-display text-sm font-semibold tracking-[0.2em] text-[#09090b] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_40px_-10px_rgba(201,247,58,0.6)]"
-              >
-                VISIT HAYPBOOKS.COM
-                <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-              </a>
+              <div className="pop-3d mt-8 inline-block">
+                <a
+                  href="https://haypbooks.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative inline-flex items-center gap-3 overflow-hidden rounded-sm bg-[#c9f73a] px-7 py-3.5 font-display text-sm font-semibold tracking-[0.2em] text-[#09090b] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_40px_-10px_rgba(201,247,58,0.6)]"
+                >
+                  <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
+                  VISIT HAYPBOOKS.COM
+                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                </a>
+              </div>
             </div>
 
             {/* feature grid */}
@@ -165,10 +175,10 @@ export default function Ventures() {
         transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
         className="mt-10"
       >
-        <TiltCard className="relative rounded-lg border border-[#f5c542]/20 bg-[#101013] p-6 shadow-[0_0_80px_-30px_rgba(245,197,66,0.22)] md:p-10">
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.2fr_0.8fr]">
-            <div>
-              <div className="flex flex-wrap items-center gap-3">
+        <TiltCard className="group relative rounded-lg border border-[#f5c542]/20 bg-[#101013] p-6 shadow-[0_0_80px_-30px_rgba(245,197,66,0.22)] md:p-10">
+          <div className="preserve-3d grid grid-cols-1 gap-10 lg:grid-cols-[1.2fr_0.8fr]">
+            <div className="preserve-3d">
+              <div className="pop-3d-sm flex flex-wrap items-center gap-3">
                 <span className="rounded-sm bg-[#f5c542] px-3 py-1 font-display text-[10px] font-bold tracking-[0.25em] text-[#09090b]">
                   FOUNDER · CREATIVE
                 </span>
@@ -177,7 +187,7 @@ export default function Ventures() {
                 </span>
               </div>
 
-              <h3 className="mt-6 font-display text-4xl font-bold tracking-tight text-zinc-100 md:text-6xl">
+              <h3 className="pop-3d mt-6 font-display text-4xl font-bold tracking-tight text-zinc-100 md:text-6xl">
                 V.<span className="text-[#f5c542]">STUDIO</span>
               </h3>
 
@@ -232,6 +242,6 @@ export default function Ventures() {
         ONE FOUNDER · TWO WORLDS · ZERO SHORTCUTS
         <Layers className="h-3.5 w-3.5 text-[#c9f73a]/50" aria-hidden="true" />
       </motion.p>
-    </section>
+    </DepthSection>
   );
 }

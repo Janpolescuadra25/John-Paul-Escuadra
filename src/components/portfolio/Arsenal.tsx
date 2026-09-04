@@ -139,9 +139,16 @@ export default function Arsenal() {
       className="relative z-10 py-24 md:py-32"
       aria-label="Skills and capabilities"
     >
-      <div className="mx-auto max-w-7xl px-6 md:px-10">
+      <motion.div
+        initial={{ opacity: 0, y: 50, rotateX: 15 }}
+        whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        style={{ transformPerspective: 1000 }}
+        className="mx-auto max-w-7xl px-6 md:px-10"
+      >
         <SectionHeading
-          index="03"
+          index="04"
           title="THE ARSENAL"
           subtitle="Skills earned, not claimed"
         />
@@ -149,7 +156,7 @@ export default function Arsenal() {
           {`Everything here has receipts — years, shipped products, or rendered
           scenes. Keep scrolling; the shelf slides sideways.`}
         </p>
-      </div>
+      </motion.div>
 
       {/* MOBILE: vertical stack */}
       <div className="mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-4 md:px-10 lg:hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">

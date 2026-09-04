@@ -3,6 +3,7 @@
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { Facebook, Mail, Send } from "lucide-react";
 import { useRef } from "react";
+import DepthSection from "./DepthSection";
 
 /** Magnetic hover wrapper */
 function Magnetic({ children }: { children: React.ReactNode }) {
@@ -35,10 +36,11 @@ function Magnetic({ children }: { children: React.ReactNode }) {
 
 export default function Contact() {
   return (
-    <section
+    <DepthSection
       id="contact"
-      className="relative z-10 flex min-h-[90vh] flex-col overflow-hidden pt-24 md:pt-32"
-      aria-label="Contact"
+      className="flex min-h-[90vh] flex-col overflow-hidden pt-24 md:pt-32"
+      innerClassName="flex flex-1 flex-col"
+      ariaLabel="Contact"
     >
       <div className="relative mx-auto flex w-full max-w-7xl flex-1 flex-col items-center justify-center px-6 py-16 text-center md:px-10">
         {/* Glow */}
@@ -149,6 +151,6 @@ export default function Contact() {
           </p>
         </div>
       </footer>
-    </section>
+    </DepthSection>
   );
 }

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Boxes, Flame, Gamepad2, Globe, Heart, Lock } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
+import DepthSection from "./DepthSection";
 
 const ENGINES = [
   {
@@ -33,10 +34,11 @@ const BADGES = [
 
 export default function Playground() {
   return (
-    <section
+    <DepthSection
       id="playground"
-      className="relative z-10 overflow-hidden py-24 md:py-32"
-      aria-label="Personal game development"
+      className="overflow-hidden py-24 md:py-32"
+      innerClassName="relative mx-auto max-w-7xl px-6 md:px-10"
+      ariaLabel="Personal game development"
     >
       {/* Ambient glow */}
       <div
@@ -44,12 +46,11 @@ export default function Playground() {
         className="absolute left-1/2 top-1/2 -z-10 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#c9f73a]/[0.04] blur-[120px]"
       />
 
-      <div className="mx-auto max-w-7xl px-6 md:px-10">
-        <SectionHeading
-          index="04"
-          title="THE PLAYGROUND"
-          subtitle="What I build when nobody's watching"
-        />
+      <SectionHeading
+        index="05"
+        title="THE PLAYGROUND"
+        subtitle="What I build when nobody's watching"
+      />
 
         <div className="mt-6 grid grid-cols-1 gap-10 lg:grid-cols-[1fr_1.4fr] lg:items-start">
           <motion.div
@@ -130,7 +131,6 @@ export default function Playground() {
             ))}
           </div>
         </div>
-      </div>
-    </section>
+    </DepthSection>
   );
 }
