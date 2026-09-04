@@ -3,12 +3,12 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import {
-  Boxes,
   Code2,
+  Cpu,
+  Database,
   Gamepad2,
-  Landmark,
+  PenTool,
   Rocket,
-  Scissors,
 } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
 
@@ -21,24 +21,24 @@ const SKILLS = [
     accent: "#0ba678",
   },
   {
-    icon: Landmark,
-    title: "Accounting & Finance",
-    level: "4 YEARS · FIELD",
-    desc: "Four years inside the accounting field — ledgers, reconciliation, closings, reports. I don't just build finance software, I've done the job it replaces.",
+    icon: Cpu,
+    title: "Software Architecture",
+    level: "SYSTEMS THAT LAST",
+    desc: "Clean data flows, honest boundaries, decisions that survive the second version. The best architecture is the kind you never have to think about.",
     accent: "#0a2540",
   },
   {
-    icon: Scissors,
-    title: "Video Editing",
-    level: "1 YR · PRO CUTS",
-    desc: "Nearly a year of professional editing — pacing, rhythm, color, and sound. If a frame doesn't earn its place, it's gone.",
+    icon: PenTool,
+    title: "Interface Design",
+    level: "PIXELS WITH INTENT",
+    desc: "Typography, spacing, motion — tuned until the interface feels inevitable. The kind of polish users can't point at, but always feel.",
     accent: "#0ba678",
   },
   {
-    icon: Boxes,
-    title: "3D Modeling · Blender",
-    level: "EXPERT",
-    desc: "Blender is my second workshop. Models, materials, lighting, full scenes — from product mockups to entire worlds.",
+    icon: Database,
+    title: "APIs & Data",
+    level: "THE ENGINE ROOM",
+    desc: "Where products live or die: clean schemas, honest data, integrations that don't break at 2 AM. The invisible work that makes everything else possible.",
     accent: "#0a2540",
   },
   {
@@ -161,8 +161,8 @@ export default function Arsenal() {
           subtitle="Skills earned, not claimed"
         />
         <p className="mt-6 max-w-xl font-body text-sm leading-relaxed text-ink-soft md:text-base">
-          Everything here has receipts — years, shipped products, or rendered
-          scenes. Keep scrolling; the gallery slides sideways.
+          Everything here has receipts — shipped products, live systems, or
+          worlds that run. Keep scrolling; the gallery slides sideways.
         </p>
       </motion.div>
 

@@ -84,3 +84,29 @@ Stage Summary:
 - Privacy preserved: zero tech-stack/repo references in user-visible content (grep verified — only invisible source imports)
 - Palette: white + navy #0a2540/#061a33 + emerald #0ba678/#067a56; Fonts: Fraunces + Manrope
 - Scroll transitions: DepthSection 3D settle on every section + pinned cube + pinned horizontal arsenal + curtain intro
+
+---
+Task ID: 4
+Agent: Super Z (main agent)
+Task: Fix flickering/buggy background (replace with gamer-feel concept) + remove Blender / Video Editor / 4-years-accounting from all site content; reposition identity as Software Developer
+
+Work Log:
+- Diagnosed old AuroraBackground flicker: (a) resize handler rebuilt the random dot field — mobile URL-bar show/hide fires resize on every scroll → dots teleported + canvas blank-flash; (b) scroll progress directly modulated every dot/orb opacity → whole background pulsed while scrolling
+- Built new CircuitBackground.tsx: "living circuit" concept (gamer × luxury) — seeded deterministic node lattice on an 84px engineering grid, orthogonal traces, emerald data pulses that chain node-to-node like packets on a motherboard with fading trails + glow, nodes/traces heat up near cursor, gentle mouse parallax, DPR-capped, reduced-motion static frame
+- Flicker-proofing: no scroll-linked opacity; height-only resizes never rebuild (positions are absolute viewport px); width resizes rebuild deterministically after 180ms debounce with same-task repaint (no blank frame possible)
+- globals.css: added .circuit-grid (hairline CSS grid matched to canvas lattice), .circuit-glow-a/b (pre-softened radial washes, transform-only drift 32s/38s), reduced-motion disables both
+- page.tsx: swapped AuroraBackground → CircuitBackground; deleted AuroraBackground.tsx
+- Content purge (identity = software developer, not "only Blender"):
+  - Hero: paragraph rewritten (no accounting/ledgers), stat "04+ YRS ACCOUNTING" → "100% SELF-BUILT", chips "4 YRS ACCOUNTING / BLENDER 3D ARTIST / VIDEO EDITOR" → "SOFTWARE DEVELOPER / FULLSTACK BUILDER / ALWAYS SHIPPING"
+  - Marquee: removed Accounting Expert / Video Editor / 3D Artist → Software Developer / Fullstack Builder / Product Maker / System Thinker
+  - About: stats (4+ yrs accounting → 0 handoffs "one owner, whole stack"), skill bars (accounting/Blender/video → Software Architecture / Interface & Product Design / APIs-Data & Integrations), FIELD→FOCUS row, narrative + footnote rewritten
+  - Cube3D: faces BLENDER/3D ARTIST + VIDEO/EDITOR → SOFTWARE/ARCHITECT + GAME/BUILDER (moved) + ALWAYS/SHIPPING; captions rewritten (V.Studio = design/visual work; HaypBooks = business & practice management suite, "live at haypbooks.com")
+  - Arsenal: removed Accounting/Video/Blender cards → Software Architecture / Interface Design / APIs & Data cards
+  - Ventures: HaypBooks copy de-accountinged ("BUSINESS SUITE", removed "lived inside the books"); V.Studio copy + features rewritten (design & visual systems, interfaces, motion, polish)
+  - IntroCurtain tagline → "SOFTWARE DEVELOPER · FOUNDER"; layout.tsx metadata description + keywords purged
+- Verified: ESLint clean; dev server 200; SSR HTML + full source grep = zero Blender/video-editor/accounting-experience terms; VLM screenshot review (desktop 1440 + mobile 390) confirms grid + nodes + green pulses, premium/clean, no artifacts; canvas animation confirmed via pixel-signature sampling; idle 5s video frame analysis = max brightness drift 0.15 (stable, no flicker); height-only resize test (390x844 → 390x640) = no errors, no rebuild; full scroll to bottom = zero page errors
+
+Stage Summary:
+- Background: flicker-free gamer circuit grid with traveling emerald data pulses, cursor-reactive nodes, luxury white/navy/emerald palette — old aurora canvas removed
+- Identity: John Paul is now presented as a Software Developer first (hero, marquee, about, cube, arsenal, ventures, intro, metadata) — Blender, video editing, and 4-years-accounting fully removed; HaypBooks kept as product (haypbooks.com link only, no tech stack, no repo)
+- Lint passing, dev server 200 OK, zero console/page errors, desktop + mobile verified

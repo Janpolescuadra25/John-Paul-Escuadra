@@ -9,13 +9,13 @@ import {
 } from "framer-motion";
 import { useRef, useState } from "react";
 import {
-  Boxes,
-  Clapperboard,
   Code2,
+  Cpu,
   Gamepad2,
   Landmark,
   Orbit,
-  Scissors,
+  Rocket,
+  Sparkles,
   type LucideIcon,
 } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
@@ -27,15 +27,15 @@ const CAPTIONS = [
   },
   {
     title: "HaypBooks · Founder",
-    desc: "A modern accounting and practice management suite — founded, designed, and shipped end-to-end. Four years in the field, turned into the software that runs the field.",
+    desc: "A modern business & practice management suite — founded, designed, and shipped end-to-end by one builder. Live at haypbooks.com, running real businesses.",
   },
   {
     title: "V.Studio · Creative",
-    desc: "My creative studio for video editing, 3D visuals, and motion work. Nearly a year of professional cuts, plus years of Blender-crafted worlds.",
+    desc: "My creative studio for design and visual work — the place where precision meets play, and every pixel earns its place.",
   },
   {
-    title: "Blender · 3D Artist",
-    desc: "Models, materials, lighting, full scenes. From product mockups to entire worlds — if it can be imagined, it can be rendered.",
+    title: "Software Architect",
+    desc: "Systems that stay upright under real load: clean data flows, honest boundaries, and structure built to outlast the demo.",
   },
 ];
 
@@ -48,10 +48,10 @@ const FACES: {
 }[] = [
   { cls: "cube-front", icon: Code2, top: "FULLSTACK", bottom: "DEVELOPER", no: "01" },
   { cls: "cube-right", icon: Landmark, top: "HAYPBOOKS", bottom: "FOUNDER", no: "02" },
-  { cls: "cube-back", icon: Clapperboard, top: "V.STUDIO", bottom: "CREATIVE", no: "03" },
-  { cls: "cube-left", icon: Boxes, top: "BLENDER", bottom: "3D ARTIST", no: "04" },
-  { cls: "cube-top", icon: Scissors, top: "VIDEO", bottom: "EDITOR", no: "05" },
-  { cls: "cube-bottom", icon: Gamepad2, top: "GAME", bottom: "BUILDER", no: "06" },
+  { cls: "cube-back", icon: Sparkles, top: "V.STUDIO", bottom: "CREATIVE", no: "03" },
+  { cls: "cube-left", icon: Cpu, top: "SOFTWARE", bottom: "ARCHITECT", no: "04" },
+  { cls: "cube-top", icon: Gamepad2, top: "GAME", bottom: "BUILDER", no: "05" },
+  { cls: "cube-bottom", icon: Rocket, top: "ALWAYS", bottom: "SHIPPING", no: "06" },
 ];
 
 /**

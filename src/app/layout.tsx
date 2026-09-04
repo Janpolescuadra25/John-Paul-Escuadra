@@ -18,16 +18,14 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   title: "John Paul Escuadra — Fullstack Developer & Founder",
   description:
-    "Portfolio of John Paul Escuadra — Fullstack Developer, Founder of HaypBooks and V.Studio. 4+ years in accounting, video editing, 3D art, and game development.",
+    "Portfolio of John Paul Escuadra — Software Developer and Founder of HaypBooks & V.Studio. Building products end-to-end: interfaces, systems, and everything in between.",
   keywords: [
     "John Paul Escuadra",
+    "Software Developer",
     "Fullstack Developer",
     "HaypBooks",
     "V.Studio",
-    "Accounting System",
-    "Video Editor",
-    "3D Artist",
-    "Blender",
+    "Product Builder",
     "Game Development",
   ],
   authors: [{ name: "John Paul Escuadra" }],

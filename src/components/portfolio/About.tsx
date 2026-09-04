@@ -36,7 +36,7 @@ function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
 }
 
 const STATS = [
-  { value: 4, suffix: "+", label: "Years in the accounting field" },
+  { value: 0, suffix: "", label: "Handoffs — one owner, whole stack" },
   { value: 2, suffix: "", label: "Companies founded from zero" },
   { value: 3, suffix: "", label: "Game engines he builds worlds in" },
   { value: 100, suffix: "%", label: "Self-driven, idea to shipped" },
@@ -44,9 +44,9 @@ const STATS = [
 
 const SKILL_BARS = [
   { name: "Fullstack Development", level: 95, tag: "CORE" },
-  { name: "Accounting & Finance", level: 92, tag: "4 YEARS" },
-  { name: "3D Modeling — Blender", level: 88, tag: "EXPERT" },
-  { name: "Video Editing", level: 82, tag: "1 YR+" },
+  { name: "Software Architecture", level: 90, tag: "SYSTEMS" },
+  { name: "Interface & Product Design", level: 88, tag: "CRAFT" },
+  { name: "APIs, Data & Integrations", level: 87, tag: "ENGINE" },
   { name: "Game Development", level: 85, tag: "PASSION" },
 ];
 
@@ -119,15 +119,15 @@ export default function About() {
                 </span>
               </p>
               <p>
-                <span className="text-ink/40">FIELD</span>{" "}
+                <span className="text-ink/40">FOCUS</span>{" "}
                 <span className="font-medium text-ink">
-                  Accounting — 4 years on the front lines
+                  Product engineering, end to end
                 </span>
               </p>
               <p>
                 <span className="text-ink/40">CRAFT</span>{" "}
                 <span className="font-medium text-ink">
-                  3D worlds · video edits · personal games
+                  Products · interfaces · personal games
                 </span>
               </p>
               <p>
@@ -141,10 +141,12 @@ export default function About() {
           </div>
 
           <p className="mt-8 border-t border-ink/10 pt-7 font-body text-sm leading-relaxed text-ink-soft md:text-[15px]">
-            I started inside the numbers — four years deep in accounting,
-            where one wrong cell ruins a whole week. That discipline now fuels
-            everything I build: software that treats your business like it
-            matters, and creative work that treats every frame like it counts.
+            Software developer, through and through. I build products the
+            whole way — the architecture underneath, the interface on top,
+            and every deploy in between. Two companies founded from zero, one
+            flagship suite live in production. The discipline is simple:
+            treat every screen like it matters, and every line like it
+            lasts.
           </p>
         </motion.div>
 
@@ -210,7 +212,8 @@ export default function About() {
               ))}
             </div>
             <p className="mt-8 font-body text-xs leading-relaxed text-ink-soft/80">
-              Earned the long way — real clients, real books, real deadlines.
+              Earned the long way — real users, real deadlines, real products
+              in production.
             </p>
           </motion.div>
         </div>

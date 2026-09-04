@@ -9,13 +9,13 @@ import {
 } from "framer-motion";
 
 const WORDS = [
-  "Fullstack Developer",
+  "Software Developer",
+  "Fullstack Builder",
   "Founder",
-  "Accounting Expert",
-  "Video Editor",
-  "3D Artist",
+  "Product Maker",
   "Game Builder",
   "Problem Solver",
+  "System Thinker",
 ];
 
 /**

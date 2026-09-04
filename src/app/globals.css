@@ -315,6 +315,67 @@ html {
   background-size: 180px 180px;
 }
 
+/* ============ CIRCUIT BACKGROUND — gamer × luxury ============ */
+
+/* Hairline engineering grid — matches the canvas node lattice (84px cells) */
+.circuit-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(10, 37, 64, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(10, 37, 64, 0.05) 1px, transparent 1px);
+  background-size: 84px 84px;
+}
+
+/* Ambient tint washes — pre-softened radial gradients, transform-only drift */
+.circuit-glow {
+  position: absolute;
+  border-radius: 9999px;
+  will-change: transform;
+}
+.circuit-glow-a {
+  width: 46vw;
+  height: 46vw;
+  left: -12vw;
+  top: -14vw;
+  background: radial-gradient(
+    circle,
+    rgba(11, 166, 120, 0.1) 0%,
+    rgba(11, 166, 120, 0.035) 45%,
+    transparent 70%
+  );
+  animation: circuit-glow-a 32s ease-in-out infinite alternate;
+}
+.circuit-glow-b {
+  width: 42vw;
+  height: 42vw;
+  right: -14vw;
+  bottom: -12vw;
+  background: radial-gradient(
+    circle,
+    rgba(10, 37, 64, 0.09) 0%,
+    rgba(10, 37, 64, 0.03) 45%,
+    transparent 70%
+  );
+  animation: circuit-glow-b 38s ease-in-out infinite alternate;
+}
+@keyframes circuit-glow-a {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(9vw, 7vh, 0) scale(1.15);
+  }
+}
+@keyframes circuit-glow-b {
+  from {
+    transform: translate3d(0, 0, 0) scale(1.06);
+  }
+  to {
+    transform: translate3d(-8vw, -6vh, 0) scale(0.92);
+  }
+}
+
 /* Underline draw-in for links */
 .link-underline {
   position: relative;
@@ -515,7 +576,9 @@ html {
   .animate-scroll-dot,
   .animate-pulse-soft,
   .orbit-ring,
-  .orbit-ring-rev {
+  .orbit-ring-rev,
+  .circuit-glow-a,
+  .circuit-glow-b {
     animation: none !important;
   }
   html {

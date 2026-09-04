@@ -105,7 +105,7 @@ export default function IntroCurtain() {
               transition={{ delay: 1.35, duration: 0.6 }}
               className="mt-5 font-body text-[9px] tracking-[0.4em] text-ink-soft/80 md:text-[10px]"
             >
-              DEVELOPER · FOUNDER · CREATOR
+              SOFTWARE DEVELOPER · FOUNDER
             </motion.p>
           </motion.div>
         </motion.div>

@@ -5,17 +5,16 @@ import { ReactNode, useRef } from "react";
 import {
   ArrowUpRight,
   Banknote,
-  Boxes,
   Building2,
-  Clapperboard,
   FileBarChart,
   HeartPulse,
   Layers,
   ListChecks,
-  Play,
+  Monitor,
+  Palette,
   Sparkles,
-  Video,
   Workflow,
+  Zap,
 } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
 import DepthSection from "./DepthSection";
@@ -64,9 +63,9 @@ const HAYP_FEATURES = [
 ];
 
 const VSTUDIO_FEATURES = [
-  { icon: Video, label: "Video editing & cuts" },
-  { icon: Boxes, label: "3D modeling & renders" },
-  { icon: Clapperboard, label: "Motion & visual stories" },
+  { icon: Palette, label: "Design & visual systems" },
+  { icon: Monitor, label: "Interfaces & experiences" },
+  { icon: Zap, label: "Motion & micro-interactions" },
   { icon: Sparkles, label: "Brand-grade polish" },
 ];
 
@@ -117,7 +116,7 @@ export default function Ventures() {
                   FLAGSHIP · FOUNDER
                 </span>
                 <span className="font-body text-[10px] tracking-[0.3em] text-ink-soft">
-                  ACCOUNTING SYSTEM
+                  BUSINESS SUITE
                 </span>
               </div>
 
@@ -127,11 +126,10 @@ export default function Ventures() {
               </h3>
 
               <p className="mt-7 max-w-xl font-body text-base leading-relaxed text-ink-soft md:text-lg">
-                A modern accounting &amp; practice management suite — built by
-                someone who actually lived inside the books. HaypBooks gives
-                businesses and accounting practices one place to run their
-                finances: clean books, live reporting, and workspaces that
-                scale across companies.
+                A modern business &amp; practice management suite that gives
+                companies and their teams one place to run the numbers:
+                clean books, live reporting, and workspaces that scale
+                across companies.
               </p>
               <p className="mt-4 max-w-xl font-body text-sm leading-relaxed text-ink-soft/85">
                 I founded it, designed it, and shipped it end-to-end — from
@@ -205,10 +203,9 @@ export default function Ventures() {
 
               <p className="mt-7 max-w-xl font-body text-base leading-relaxed text-white/70 md:text-lg">
                 Where the other half of my brain lives. V.Studio is my
-                creative studio for video editing, 3D visuals, and motion
-                work — the place where precision meets play. Nearly a year of
-                professional editing, plus years of Blender-crafted 3D, all
-                folded into one house style: sharp, cinematic, deliberate.
+                creative studio for design, visuals, and brand work — the
+                place where precision meets play. One house style: sharp,
+                deliberate, impossible to ignore.
               </p>
             </div>
 
@@ -232,9 +229,9 @@ export default function Ventures() {
                 </motion.div>
               ))}
               <div className="flex items-center gap-3 rounded-xl border border-emerald/25 bg-gradient-to-r from-emerald/10 to-transparent px-4 py-3.5 sm:col-span-2">
-                <Play className="h-4 w-4 shrink-0 text-emerald" aria-hidden="true" />
+                <Zap className="h-4 w-4 shrink-0 text-emerald" aria-hidden="true" />
                 <span className="font-body text-[13px] font-medium italic text-white/80">
-                  Every frame earns its place
+                  Precision meets play — every pixel earns its place
                 </span>
               </div>
             </div>

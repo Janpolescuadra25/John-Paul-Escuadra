@@ -108,8 +108,9 @@ export default function Hero() {
             variants={item}
             className="mt-7 max-w-xl font-body text-base leading-relaxed text-ink-soft md:text-lg"
           >
-            I turn ideas into running products — the kind with logins, ledgers,
-            and dashboards. Founder of{" "}
+            I turn ideas into running products — the kind with real users,
+            real data, and real deadlines. I&apos;m a software developer at
+            the core: founder of{" "}
             <a
               href="https://haypbooks.com"
               target="_blank"
@@ -118,9 +119,9 @@ export default function Hero() {
             >
               HaypBooks
             </a>{" "}
-            and <span className="font-semibold text-ink">V.Studio</span>. Four
-            years in the accounting field taught me how business really works —
-            now I build the software that runs it.
+            and <span className="font-semibold text-ink">V.Studio</span> — I
+            design and build software end-to-end: the systems underneath,
+            the interfaces on top.
           </motion.p>
 
           <motion.div
@@ -157,7 +158,7 @@ export default function Hero() {
             className="mt-14 grid max-w-xl grid-cols-3 divide-x divide-ink/10 border-y border-ink/10"
           >
             {[
-              { v: "04+", l: "YRS ACCOUNTING" },
+              { v: "100%", l: "SELF-BUILT" },
               { v: "02", l: "VENTURES FOUNDED" },
               { v: "03", l: "GAME ENGINES" },
             ].map((s) => (
@@ -253,7 +254,7 @@ export default function Hero() {
             transition={{ delay: 3.25, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="lux-shadow absolute -left-4 top-[20%] hidden rounded-full border border-ink/5 bg-white/95 px-4 py-2 font-body text-[10px] tracking-[0.2em] text-ink-soft backdrop-blur md:block lg:-left-12"
           >
-            4 YRS <span className="font-semibold text-emerald-deep">ACCOUNTING</span>
+            SOFTWARE <span className="font-semibold text-emerald-deep">DEVELOPER</span>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: 26 }}
@@ -261,7 +262,7 @@ export default function Hero() {
             transition={{ delay: 3.45, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="lux-shadow absolute -right-3 top-[52%] hidden rounded-full border border-ink/5 bg-white/95 px-4 py-2 font-body text-[10px] tracking-[0.2em] text-ink-soft backdrop-blur md:block lg:-right-10"
           >
-            BLENDER <span className="font-semibold text-emerald-deep">3D ARTIST</span>
+            FULLSTACK <span className="font-semibold text-emerald-deep">BUILDER</span>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: -26 }}
@@ -269,7 +270,7 @@ export default function Hero() {
             transition={{ delay: 3.65, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="lux-shadow absolute -left-3 bottom-[16%] hidden rounded-full border border-ink/5 bg-white/95 px-4 py-2 font-body text-[10px] tracking-[0.2em] text-ink-soft backdrop-blur md:block lg:-left-10"
           >
-            VIDEO <span className="font-semibold text-emerald-deep">EDITOR</span>
+            ALWAYS <span className="font-semibold text-emerald-deep">SHIPPING</span>
           </motion.div>
         </motion.div>
       </div>
