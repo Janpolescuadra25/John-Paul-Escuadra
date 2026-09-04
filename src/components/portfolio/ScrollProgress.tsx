@@ -3,7 +3,7 @@
 import { motion, useScroll, useSpring } from "framer-motion";
 
 /**
- * ScrollProgress — neon progress bar pinned to top, like a level meter.
+ * ScrollProgress — an emerald hairline that fills as you travel the page.
  */
 export default function ScrollProgress() {
   const { scrollYProgress } = useScroll();
@@ -16,8 +16,8 @@ export default function ScrollProgress() {
   return (
     <motion.div
       aria-hidden="true"
-      className="fixed inset-x-0 top-0 z-[60] h-[3px] origin-left bg-gradient-to-r from-[#c9f73a] via-[#e8ff8a] to-[#f5c542]"
-      style={{ scaleX, boxShadow: "0 0 12px rgba(201,247,58,0.55)" }}
+      className="fixed inset-x-0 top-0 z-[60] h-[2.5px] origin-left bg-gradient-to-r from-emerald-deep via-emerald to-[#35d69a]"
+      style={{ scaleX }}
     />
   );
 }

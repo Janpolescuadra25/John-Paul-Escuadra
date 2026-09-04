@@ -52,3 +52,35 @@ Stage Summary:
 - Portfolio now has: 3D rotating cube centerpiece, 3D depth transitions on every scroll, speed-warp marquee, 3D pop-out venture cards, mouse-tilt hero portrait
 - All privacy constraints still honored (no tech stack, no repo link)
 - Lint passing, dev server 200 OK, no runtime errors
+
+---
+Task ID: 3
+Agent: Super Z (main agent)
+Task: Luxury light-theme redesign per user request — white-dominant background, new background animation, navy blue + emerald green theme, new cinematic intro, "expensive advertisement" feel.
+
+Work Log:
+- Read all 14 portfolio components + globals.css/layout.tsx to map the dark theme
+- Rewrote globals.css: light luxury theme (white bg, navy #0a2540 ink, navy-deep #061a33, emerald #0ba678 / #067a56), Fraunces/Manrope font vars, new keyframes (sheen-sweep, scroll-dot, pulse-soft, float-soft), porcelain cube faces with directional shading + specular + backface-visibility, refined orbit dots
+- layout.tsx: swapped fonts to Fraunces (normal+italic, opsz axis) + Manrope; themeColor #ffffff; removed .dark class
+- New IntroCurtain.tsx: luxury split-curtain intro (~2.9s) — serif name masked rise, emerald rule draw, panels slide apart, body scroll locked, reduced-motion skip
+- New AuroraBackground.tsx: light animated canvas — 5 drifting aurora orbs (emerald/navy/mint, mouse parallax), 72 dust motes with faint constellation lines, scroll-reactive energy, reduced-motion static frame
+- Hero: editorial serif layout (italic emerald surname), arched portrait (rounded-t-full) with orbit rings + ad-style sheen + floating white credential chips, navy/emerald pill CTAs with btn-sheen, serif stat strip, vertical "PORTFOLIO — MMXXVI" sidebar note, hairline scroll indicator
+- Marquee: straight navy brand-ticker band, italic Fraunces words + emerald diamonds, subtle velocity skew
+- About: white profile dossier card (arch mini-portrait, ROLE/HOUSE/FIELD/CRAFT labels), serif counters, emerald skill bars
+- Ventures: full-bleed navy band (dark contrast moment) — HaypBooks as white flagship card with thin emerald corner ticks + 3D tilt, V.Studio as glass navy card
+- Cube3D: "The Craft" — porcelain cube (per-face shading), stage plate + grounding elliptical shadow, serif italic captions
+- Arsenal: "The Collection" on #f8fbf9 — white cards, hairline borders, emerald/navy accent rotation, pinned horizontal scroll kept
+- Playground: "After Hours" — mint ambient wash, white engine cards, pill badges
+- Contact: navy-deep finale — huge serif "Let's build something great." with italic emerald, magnetic emerald CTA pills
+- ScrollProgress (emerald hairline), CursorGlow (emerald dot + navy ring), DepthSection (gentler tilt/fade), SectionHeading (editorial, dark variant)
+- Removed BootScreen.tsx + ParticleField.tsx
+
+Issue found & fixed:
+- Stale Turbopack cache served OLD dark CSS after rewrite (computed colors were #09090b) → restarted dev server (setsid nohup) → all colors resolved (verified via getComputedStyle: ink rgb(10,37,64), emerald rgb(11,166,120), white body)
+- VLM flagged cube as flat/low-contrast with edge artifacts → added per-face directional shading, specular highlight, backface-visibility:hidden, stronger borders, grounding shadow, stage plate → re-verified: "reads as solid object, premium porcelain feel, no artifacts"
+
+Stage Summary:
+- Full luxury light redesign complete & verified: desktop 1440px + mobile 390px screenshots VLM-verified, lint clean, zero page errors
+- Privacy preserved: zero tech-stack/repo references in user-visible content (grep verified — only invisible source imports)
+- Palette: white + navy #0a2540/#061a33 + emerald #0ba678/#067a56; Fonts: Fraunces + Manrope
+- Scroll transitions: DepthSection 3D settle on every section + pinned cube + pinned horizontal arsenal + curtain intro

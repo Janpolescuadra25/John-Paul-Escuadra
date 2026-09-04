@@ -22,19 +22,19 @@ import { SectionHeading } from "./SectionHeading";
 
 const CAPTIONS = [
   {
-    title: "FULLSTACK DEVELOPER",
+    title: "Fullstack Developer",
     desc: "Interfaces people love, engines that don't break, data that stays honest. One builder across the whole stack — front, back, and everything in between.",
   },
   {
-    title: "HAYPBOOKS · FOUNDER",
+    title: "HaypBooks · Founder",
     desc: "A modern accounting and practice management suite — founded, designed, and shipped end-to-end. Four years in the field, turned into the software that runs the field.",
   },
   {
-    title: "V.STUDIO · CREATIVE",
+    title: "V.Studio · Creative",
     desc: "My creative studio for video editing, 3D visuals, and motion work. Nearly a year of professional cuts, plus years of Blender-crafted worlds.",
   },
   {
-    title: "BLENDER · 3D ARTIST",
+    title: "Blender · 3D Artist",
     desc: "Models, materials, lighting, full scenes. From product mockups to entire worlds — if it can be imagined, it can be rendered.",
   },
 ];
@@ -55,9 +55,9 @@ const FACES: {
 ];
 
 /**
- * Cube3D — "THE CORE": a sticky, pinned section where a glowing 3D cube
- * tumbles as you scroll. Six faces = six identities. Orbiting satellite
- * rings spin continuously. Side caption crossfades to the face in view.
+ * Cube3D — "The Craft": a pinned section where a porcelain 3D cube tumbles
+ * as you scroll. Six faces = six disciplines. Emerald & navy satellite
+ * rings orbit continuously. The caption crossfades to the face in view.
  */
 export default function Cube3D() {
   const wrapRef = useRef<HTMLElement>(null);
@@ -80,34 +80,40 @@ export default function Cube3D() {
   return (
     <section
       ref={wrapRef}
-      id="core"
+      id="craft"
       className="relative z-10 h-[300vh]"
-      aria-label="The core — rotating cube of identities"
+      aria-label="The craft — rotating cube of disciplines"
     >
       <div className="sticky top-0 flex h-svh items-center overflow-hidden">
-        <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-8 px-6 md:px-10 lg:grid-cols-2 lg:gap-6">
+        {/* soft mint glow floor */}
+        <div
+          aria-hidden="true"
+          className="absolute bottom-[8%] left-1/2 h-64 w-[min(700px,90vw)] -translate-x-1/2 rounded-full bg-emerald/10 blur-[110px]"
+        />
+
+        <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-6 md:px-10 lg:grid-cols-2 lg:gap-6">
           {/* ============ LEFT: heading + live caption ============ */}
           <div>
             <SectionHeading
               index="03"
-              title="THE CORE"
-              subtitle="One builder, six faces"
+              title="The Craft"
+              subtitle="One builder, six disciplines"
             />
 
-            <div className="mt-8 min-h-[170px] md:min-h-[190px]">
+            <div className="mt-10 min-h-[190px] md:min-h-[200px]">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={active}
-                  initial={{ opacity: 0, y: 18 }}
+                  initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -14 }}
-                  transition={{ duration: 0.28, ease: "easeOut" }}
+                  exit={{ opacity: 0, y: -16 }}
+                  transition={{ duration: 0.32, ease: "easeOut" }}
                   className="max-w-md"
                 >
-                  <p className="font-display text-xl font-bold text-[#c9f73a] md:text-3xl">
+                  <p className="font-display text-3xl font-semibold italic text-emerald-deep md:text-4xl">
                     {CAPTIONS[active].title}
                   </p>
-                  <p className="mt-3 font-body text-sm leading-relaxed text-zinc-400 md:text-base">
+                  <p className="mt-4 font-body text-sm leading-relaxed text-ink-soft md:text-base">
                     {CAPTIONS[active].desc}
                   </p>
                 </motion.div>
@@ -115,19 +121,19 @@ export default function Cube3D() {
             </div>
 
             {/* rotation progress */}
-            <div className="mt-2 h-[3px] w-40 max-w-full overflow-hidden rounded-full bg-zinc-800">
+            <div className="mt-3 h-[3px] w-44 max-w-full overflow-hidden rounded-full bg-ink/10">
               <motion.div
                 style={{ scaleX: scrollYProgress }}
-                className="h-full w-full origin-left bg-gradient-to-r from-[#7ba312] to-[#c9f73a]"
+                className="h-full w-full origin-left bg-gradient-to-r from-emerald-deep to-emerald"
               />
             </div>
 
-            <div className="mt-5 flex items-center gap-2 font-body text-[10px] tracking-[0.3em] text-zinc-600">
+            <div className="mt-6 flex items-center gap-2.5 font-body text-[10px] tracking-[0.35em] text-ink-soft/70">
               <Orbit
-                className="h-3.5 w-3.5 text-[#c9f73a]/60"
+                className="h-3.5 w-3.5 text-emerald/70"
                 aria-hidden="true"
               />
-              SCROLL TO ROTATE THE CORE
+              SCROLL TO TURN THE CUBE
             </div>
           </div>
 
@@ -136,14 +142,19 @@ export default function Cube3D() {
             className="flex items-center justify-center"
             style={{ perspective: 1500 }}
           >
-            {/* glow floor */}
-            <div
-              aria-hidden="true"
-              className="absolute bottom-[6%] left-1/2 h-16 w-56 -translate-x-1/2 rounded-full bg-[#c9f73a]/15 blur-2xl"
-            />
-
             <div className="preserve-3d relative h-[var(--cube)] w-[var(--cube)] [--cube:9.5rem] sm:[--cube:11.5rem] md:[--cube:13.5rem] lg:[--cube:15rem] [--orbit:7.5rem] sm:[--orbit:9.25rem] md:[--orbit:10.75rem] lg:[--orbit:12rem]">
-              {/* Orbit ring 1 — lime, equatorial */}
+              {/* Soft stage plate behind the cube */}
+              <div
+                aria-hidden="true"
+                className="absolute left-1/2 top-1/2 -z-20 h-[150%] w-[150%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald/[0.06] blur-2xl"
+              />
+              {/* Grounding elliptical shadow beneath the cube */}
+              <div
+                aria-hidden="true"
+                className="absolute left-1/2 top-[105%] h-12 w-[72%] -translate-x-1/2 rounded-[50%] bg-navy/20 blur-xl"
+              />
+
+              {/* Orbit ring 1 — emerald, equatorial */}
               <div
                 aria-hidden="true"
                 className="preserve-3d absolute left-1/2 top-1/2"
@@ -162,7 +173,7 @@ export default function Cube3D() {
                 </div>
               </div>
 
-              {/* Orbit ring 2 — gold, tilted */}
+              {/* Orbit ring 2 — navy, tilted */}
               <div
                 aria-hidden="true"
                 className="preserve-3d absolute left-1/2 top-1/2"
@@ -172,7 +183,7 @@ export default function Cube3D() {
                   {[60, 180, 300].map((a) => (
                     <span
                       key={a}
-                      className="orbit-dot orbit-dot-gold"
+                      className="orbit-dot orbit-dot-navy"
                       style={{
                         transform: `rotateY(${a}deg) translateZ(var(--orbit))`,
                       }}
@@ -193,18 +204,18 @@ export default function Cube3D() {
                     <div key={f.cls} className={`cube-face ${f.cls}`}>
                       <span
                         aria-hidden="true"
-                        className="absolute left-2.5 top-2 font-display text-[9px] font-bold text-[#c9f73a]/40"
+                        className="absolute left-3 top-2.5 font-display text-[9px] font-semibold text-emerald-deep/40"
                       >
                         {f.no}
                       </span>
                       <Icon
-                        className="h-7 w-7 text-[#c9f73a] md:h-9 md:w-9"
+                        className="h-7 w-7 text-emerald-deep md:h-9 md:w-9"
                         aria-hidden="true"
                       />
-                      <span className="font-display text-xs font-bold tracking-tight text-zinc-100 sm:text-sm md:text-base">
+                      <span className="font-display text-xs font-semibold tracking-tight text-ink sm:text-sm md:text-base">
                         {f.top}
                       </span>
-                      <span className="font-body text-[8px] tracking-[0.3em] text-zinc-500 sm:text-[9px] md:text-[10px]">
+                      <span className="font-body text-[8px] tracking-[0.3em] text-ink-soft sm:text-[9px] md:text-[10px]">
                         {f.bottom}
                       </span>
                     </div>

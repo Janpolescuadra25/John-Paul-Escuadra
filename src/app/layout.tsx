@@ -1,18 +1,18 @@
 import type { Metadata, Viewport } from "next";
-import { Chakra_Petch, Space_Grotesk } from "next/font/google";
+import { Fraunces, Manrope } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 
-const chakraPetch = Chakra_Petch({
+const fraunces = Fraunces({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  axes: ["opsz"],
 });
 
-const spaceGrotesk = Space_Grotesk({
+const manrope = Manrope({
   variable: "--font-body",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#09090b",
+  themeColor: "#ffffff",
   width: "device-width",
   initialScale: 1,
 };
@@ -51,9 +51,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className="dark">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${chakraPetch.variable} ${spaceGrotesk.variable} antialiased bg-background text-foreground portfolio-body`}
+        className={`${fraunces.variable} ${manrope.variable} antialiased bg-background text-foreground portfolio-body`}
       >
         {children}
         <Toaster />

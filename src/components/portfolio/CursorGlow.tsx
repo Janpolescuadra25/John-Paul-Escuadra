@@ -3,9 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 
 /**
- * CursorGlow — glowing dot + trailing ring custom cursor (desktop only).
- * Ring scales up over interactive elements. Uses direct DOM updates
- * (no re-renders on mouse move).
+ * CursorGlow — refined emerald dot + trailing navy ring cursor (desktop only).
+ * Ring expands over interactive elements. Direct DOM updates only.
  */
 export default function CursorGlow() {
   const dotRef = useRef<HTMLDivElement>(null);
@@ -32,22 +31,22 @@ export default function CursorGlow() {
         ? 1.6
         : 1;
       if (dotRef.current) {
-        dotRef.current.style.transform = `translate(${mouse.x - 4}px, ${mouse.y - 4}px)`;
+        dotRef.current.style.transform = `translate(${mouse.x - 3.5}px, ${mouse.y - 3.5}px)`;
       }
     };
 
     const loop = () => {
-      ring.x += (mouse.x - ring.x) * 0.16;
-      ring.y += (mouse.y - ring.y) * 0.16;
+      ring.x += (mouse.x - ring.x) * 0.15;
+      ring.y += (mouse.y - ring.y) * 0.15;
       ring.scale += (targetScale - ring.scale) * 0.18;
       if (ringRef.current) {
-        ringRef.current.style.transform = `translate(${ring.x - 14}px, ${
-          ring.y - 14
+        ringRef.current.style.transform = `translate(${ring.x - 16}px, ${
+          ring.y - 16
         }px) scale(${ring.scale})`;
         ringRef.current.style.borderColor =
           ring.scale > 1.25
-            ? "rgba(201,247,58,0.9)"
-            : "rgba(255,255,255,0.35)";
+            ? "rgba(11,166,120,0.9)"
+            : "rgba(10,37,64,0.35)";
       }
       raf = requestAnimationFrame(loop);
     };
@@ -69,13 +68,12 @@ export default function CursorGlow() {
       <div
         ref={dotRef}
         aria-hidden="true"
-        className="pointer-events-none fixed left-0 top-0 z-[80] h-2 w-2 rounded-full bg-[#c9f73a] will-change-transform"
-        style={{ boxShadow: "0 0 12px 2px rgba(201,247,58,0.65)" }}
+        className="pointer-events-none fixed left-0 top-0 z-[80] h-[7px] w-[7px] rounded-full bg-emerald will-change-transform"
       />
       <div
         ref={ringRef}
         aria-hidden="true"
-        className="pointer-events-none fixed left-0 top-0 z-[80] h-7 w-7 rounded-full border will-change-transform"
+        className="pointer-events-none fixed left-0 top-0 z-[80] h-8 w-8 rounded-full border will-change-transform"
       />
     </>
   );

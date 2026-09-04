@@ -2,54 +2,19 @@
 
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useRef, useState, type MouseEvent } from "react";
-import { ArrowDown, ExternalLink, Sparkles } from "lucide-react";
-
-/** Scramble-in text effect */
-function useScramble(text: string, delay = 900, speed = 40) {
-  const [out, setOut] = useState(text.replace(/[^\s]/g, " "));
-  useEffect(() => {
-    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ01#$%&*/<>";
-    let frame = 0;
-    let timer: ReturnType<typeof setInterval>;
-    const start = setTimeout(() => {
-      timer = setInterval(() => {
-        frame++;
-        const reveal = Math.floor(frame * 0.9);
-        setOut(
-          text
-            .split("")
-            .map((c, i) => {
-              if (c === " ") return " ";
-              if (i < reveal) return c;
-              return chars[Math.floor(Math.random() * chars.length)];
-            })
-            .join("")
-        );
-        if (reveal >= text.length) {
-          setOut(text);
-          clearInterval(timer);
-        }
-      }, speed);
-    }, delay);
-    return () => {
-      clearTimeout(start);
-      clearInterval(timer);
-    };
-  }, [text, delay, speed]);
-  return out;
-}
+import { type MouseEvent, useRef } from "react";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 
 const container = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.12, delayChildren: 2.0 } },
+  show: { transition: { staggerChildren: 0.13, delayChildren: 2.45 } },
 };
 const item = {
-  hidden: { y: 40, opacity: 0 },
+  hidden: { y: 44, opacity: 0 },
   show: {
     y: 0,
     opacity: 1,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const },
+    transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] as const },
   },
 };
 
@@ -60,26 +25,23 @@ export default function Hero() {
     offset: ["start start", "end start"],
   });
 
-  const nameY = useTransform(scrollYProgress, [0, 1], [0, -140]);
+  const nameY = useTransform(scrollYProgress, [0, 1], [0, -120]);
   const nameOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
-  const photoY = useTransform(scrollYProgress, [0, 1], [0, -60]);
-  const photoScale = useTransform(scrollYProgress, [0, 1], [1, 0.92]);
-  const bgY = useTransform(scrollYProgress, [0, 1], [0, 120]);
-
-  const scramble = useScramble("FOUNDER × DEVELOPER × CREATOR");
+  const photoY = useTransform(scrollYProgress, [0, 1], [0, -56]);
+  const photoScale = useTransform(scrollYProgress, [0, 1], [1, 0.94]);
 
   // Mouse-driven 3D tilt for the portrait (desktop)
   const tiltRX = useMotionValue(0);
   const tiltRY = useMotionValue(0);
-  const portraitRX = useSpring(tiltRX, { stiffness: 130, damping: 18 });
-  const portraitRY = useSpring(tiltRY, { stiffness: 130, damping: 18 });
+  const portraitRX = useSpring(tiltRX, { stiffness: 120, damping: 20 });
+  const portraitRY = useSpring(tiltRY, { stiffness: 120, damping: 20 });
 
   const handlePortraitTilt = (e: MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const px = (e.clientX - rect.left) / rect.width - 0.5;
     const py = (e.clientY - rect.top) / rect.height - 0.5;
-    tiltRY.set(px * 12);
-    tiltRX.set(-py * 12);
+    tiltRY.set(px * 8);
+    tiltRX.set(-py * 8);
   };
   const resetPortraitTilt = () => {
     tiltRX.set(0);
@@ -93,14 +55,19 @@ export default function Hero() {
       className="relative flex min-h-screen items-center overflow-hidden"
       aria-label="Introduction"
     >
-      {/* Parallax grid bg + vignette */}
-      <motion.div style={{ y: bgY }} className="absolute inset-0 z-0" aria-hidden="true">
-        <div className="bg-hud-grid absolute inset-0" />
-        <div className="absolute inset-0 bg-[radial-gradient(70%_60%_at_50%_40%,transparent_0%,#09090b_100%)]" />
-      </motion.div>
+      {/* Vertical editorial sidebar note */}
+      <div
+        aria-hidden="true"
+        className="absolute left-7 top-1/2 hidden -translate-y-1/2 items-center gap-4 xl:flex"
+      >
+        <span className="font-body text-[9px] tracking-[0.5em] text-ink-soft/70 [writing-mode:vertical-rl]">
+          PORTFOLIO — MMXXVI
+        </span>
+        <span className="h-16 w-px bg-ink/15" />
+      </div>
 
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-6 pb-24 pt-28 md:px-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-4 lg:pb-16 lg:pt-16">
-        {/* ============ LEFT: text ============ */}
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 px-6 pb-24 pt-28 md:px-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-6 lg:pb-16 lg:pt-16">
+        {/* ============ LEFT: editorial text ============ */}
         <motion.div
           variants={container}
           initial="hidden"
@@ -110,42 +77,36 @@ export default function Hero() {
         >
           <motion.div
             variants={item}
-            className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#c9f73a]/30 bg-[#c9f73a]/5 px-4 py-1.5 font-body text-xs tracking-[0.25em] text-[#c9f73a]"
+            className="mb-7 inline-flex items-center gap-3 font-body text-[10px] tracking-[0.45em] text-ink-soft md:text-xs"
           >
-            <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald" />
             FULLSTACK DEVELOPER · FOUNDER
           </motion.div>
 
           <motion.h1
             variants={item}
-            className="font-display text-[13vw] font-bold leading-[0.95] tracking-tight text-zinc-100 sm:text-6xl md:text-7xl xl:text-[5.2rem]"
+            className="font-display text-[12.5vw] font-semibold leading-[0.98] tracking-tight text-ink sm:text-6xl md:text-7xl xl:text-[5.4rem]"
           >
-            <span
-              className="glitch block"
-              data-text="JOHN PAUL"
-            >
-              JOHN PAUL
-            </span>
-            <span
-              className="glitch block text-outline"
-              data-text="ESCUADRA"
-            >
-              ESCUADRA
+            John Paul
+            <span className="block font-light italic text-emerald-deep">
+              Escuadra
             </span>
           </motion.h1>
 
           <motion.div
             variants={item}
-            className="mt-5 font-body text-sm tracking-[0.35em] text-zinc-400 md:text-base"
+            className="mt-7 flex items-center gap-4"
             aria-label="Founder, developer, creator"
           >
-            {scramble}
-            <span className="animate-blink ml-1 inline-block h-4 w-[2px] translate-y-[3px] bg-[#c9f73a]" />
+            <span className="h-px w-10 bg-emerald" />
+            <p className="font-body text-[11px] tracking-[0.35em] text-ink-soft md:text-xs">
+              FOUNDER × DEVELOPER × CREATOR
+            </p>
           </motion.div>
 
           <motion.p
             variants={item}
-            className="mt-7 max-w-xl font-body text-base leading-relaxed text-zinc-400 md:text-lg"
+            className="mt-7 max-w-xl font-body text-base leading-relaxed text-ink-soft md:text-lg"
           >
             I turn ideas into running products — the kind with logins, ledgers,
             and dashboards. Founder of{" "}
@@ -153,50 +114,58 @@ export default function Hero() {
               href="https://haypbooks.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-semibold text-[#c9f73a] underline decoration-[#c9f73a]/40 underline-offset-4 transition-colors hover:decoration-[#c9f73a]"
+              className="link-underline font-semibold text-ink"
             >
               HaypBooks
             </a>{" "}
-            and <span className="text-zinc-200">V.Studio</span>. Four years in
-            the accounting field taught me how business really works — now I
-            build the software that runs it.
+            and <span className="font-semibold text-ink">V.Studio</span>. Four
+            years in the accounting field taught me how business really works —
+            now I build the software that runs it.
           </motion.p>
 
-          <motion.div variants={item} className="mt-10 flex flex-wrap items-center gap-4">
+          <motion.div
+            variants={item}
+            className="mt-10 flex flex-wrap items-center gap-4"
+          >
             <a
               href="#ventures"
-              className="group relative inline-flex items-center gap-3 overflow-hidden rounded-sm bg-[#c9f73a] px-8 py-4 font-display text-sm font-semibold tracking-[0.2em] text-[#09090b] transition-transform duration-300 hover:-translate-y-0.5"
+              className="btn-sheen group inline-flex items-center gap-3 rounded-full bg-navy px-8 py-4 font-body text-xs font-semibold tracking-[0.25em] text-white transition-all duration-500 hover:-translate-y-0.5 hover:bg-navy-deep hover:lux-shadow-emerald"
             >
-              <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
-              VIEW MY WORK
-              <ArrowDown className="h-4 w-4 transition-transform duration-300 group-hover:translate-y-0.5" aria-hidden="true" />
+              VIEW THE WORK
+              <ArrowDown
+                className="h-4 w-4 transition-transform duration-500 group-hover:translate-y-0.5"
+                aria-hidden="true"
+              />
             </a>
             <a
               href="https://haypbooks.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-sm border border-zinc-700 px-8 py-4 font-display text-sm font-semibold tracking-[0.2em] text-zinc-300 transition-all duration-300 hover:border-[#c9f73a]/60 hover:text-[#c9f73a]"
+              className="group inline-flex items-center gap-2.5 rounded-full border border-ink/15 bg-white/60 px-8 py-4 font-body text-xs font-semibold tracking-[0.25em] text-ink backdrop-blur-sm transition-all duration-500 hover:-translate-y-0.5 hover:border-emerald/50 hover:text-emerald-deep hover:lux-shadow"
             >
-              HAYPBOOKS
-              <ExternalLink className="h-4 w-4" aria-hidden="true" />
+              HAYPBOOKS.COM
+              <ArrowUpRight
+                className="h-4 w-4 transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                aria-hidden="true"
+              />
             </a>
           </motion.div>
 
-          {/* Hero stats strip */}
+          {/* Stats strip — hairline, serif numerals */}
           <motion.div
             variants={item}
-            className="mt-14 grid max-w-xl grid-cols-3 divide-x divide-zinc-800 border-y border-zinc-800"
+            className="mt-14 grid max-w-xl grid-cols-3 divide-x divide-ink/10 border-y border-ink/10"
           >
             {[
-              { v: "4+", l: "YRS ACCOUNTING" },
-              { v: "02", l: "COMPANIES FOUNDED" },
+              { v: "04+", l: "YRS ACCOUNTING" },
+              { v: "02", l: "VENTURES FOUNDED" },
               { v: "03", l: "GAME ENGINES" },
             ].map((s) => (
-              <div key={s.l} className="px-4 py-4 first:pl-0">
-                <div className="font-display text-2xl font-bold text-[#c9f73a] md:text-3xl">
+              <div key={s.l} className="px-5 py-5 first:pl-0">
+                <div className="font-display text-3xl font-semibold text-emerald-deep md:text-4xl">
                   {s.v}
                 </div>
-                <div className="mt-1 font-body text-[10px] tracking-[0.18em] text-zinc-500 md:text-[11px]">
+                <div className="mt-1.5 font-body text-[10px] tracking-[0.22em] text-ink-soft md:text-[11px]">
                   {s.l}
                 </div>
               </div>
@@ -204,123 +173,124 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* ============ RIGHT: portrait ============ */}
+        {/* ============ RIGHT: arched portrait ============ */}
         <motion.div
           style={{
             y: photoY,
             scale: photoScale,
             rotateX: portraitRX,
             rotateY: portraitRY,
-            transformPerspective: 900,
+            transformPerspective: 1000,
           }}
           onMouseMove={handlePortraitTilt}
           onMouseLeave={resetPortraitTilt}
-          className="relative order-1 mx-auto w-[min(78vw,420px)] lg:order-2 lg:w-full lg:max-w-[400px]"
+          className="relative order-1 mx-auto w-[min(76vw,400px)] lg:order-2"
           aria-label="Portrait of John Paul Escuadra"
         >
-          {/* Rotating rings */}
+          {/* Orbit rings */}
           <div
             aria-hidden="true"
-            className="animate-spin-slow absolute left-1/2 top-1/2 -z-10 h-[105%] w-[105%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[#c9f73a]/20"
+            className="animate-spin-slow absolute left-1/2 top-1/2 -z-10 h-[108%] w-[108%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-emerald/25"
           />
           <div
             aria-hidden="true"
-            className="animate-spin-slower absolute left-1/2 top-1/2 -z-10 h-[118%] w-[118%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-zinc-800/60"
-          />
-
-          {/* Glow behind portrait */}
-          <div
-            aria-hidden="true"
-            className="absolute inset-x-6 bottom-0 -z-10 h-2/3 rounded-full bg-[#c9f73a]/15 blur-3xl"
+            className="animate-spin-slower absolute left-1/2 top-1/2 -z-10 h-[122%] w-[122%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-ink/10"
           />
 
-          {/* Portrait card with HUD frame */}
+          {/* Emerald aura behind the arch */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-x-8 bottom-0 -z-10 h-2/3 rounded-full bg-emerald/20 blur-3xl"
+          />
+
+          {/* Arched portrait card */}
           <motion.div
-            initial={{ opacity: 0, y: 60, filter: "blur(6px)" }}
+            initial={{ opacity: 0, y: 56, filter: "blur(8px)" }}
             animate={{
               opacity: 1,
               y: 0,
               filter: "blur(0px)",
-              transition: { delay: 2.1, duration: 0.9, ease: [0.22, 1, 0.36, 1] },
+              transition: { delay: 2.55, duration: 1.05, ease: [0.22, 1, 0.36, 1] },
             }}
-            className="hud-frame animate-float-soft relative overflow-hidden rounded-sm border border-zinc-800 bg-gradient-to-b from-zinc-900/40 to-[#09090b]"
+            className="animate-float-soft relative overflow-hidden rounded-t-full border-[6px] border-white bg-white lux-shadow"
           >
-            <div className="scanlines relative aspect-[9/11] w-full">
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-t-full">
               <Image
                 src="/images/profile-cutout.png"
                 alt="John Paul Escuadra — formal portrait"
                 fill
                 priority
-                sizes="(max-width: 1024px) 78vw, 400px"
+                sizes="(max-width: 1024px) 76vw, 400px"
                 className="object-cover object-top"
               />
-              {/* Sweep light */}
+              {/* Luminous ad-style sheen */}
               <div
                 aria-hidden="true"
-                className="absolute left-0 h-24 w-full bg-gradient-to-b from-transparent via-[#c9f73a]/14 to-transparent"
-                style={{ animation: "scan-sweep 5.5s ease-in-out infinite" }}
+                className="animate-sheen absolute left-0 top-0 h-full w-1/3 bg-gradient-to-r from-transparent via-white/35 to-transparent"
               />
-              {/* Bottom fade into page */}
+              {/* Bottom fade into card */}
               <div
                 aria-hidden="true"
-                className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#09090b] to-transparent"
+                className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-navy/25 to-transparent"
               />
-              {/* ID tag on photo */}
-              <div className="absolute bottom-3 left-3 z-10 rounded-sm border border-[#c9f73a]/30 bg-black/60 px-3 py-1.5 font-body text-[10px] tracking-[0.25em] text-[#c9f73a] backdrop-blur-sm">
-                ID: JPE-001 · FOUNDER
-              </div>
-              <div className="absolute right-3 top-3 z-10 flex items-center gap-1.5 rounded-sm border border-zinc-700/60 bg-black/60 px-3 py-1.5 font-body text-[10px] tracking-[0.2em] text-zinc-400 backdrop-blur-sm">
-                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#c9f73a]" />
-                ONLINE
+              {/* Nameplate */}
+              <div className="absolute inset-x-0 bottom-0 z-10 flex items-center justify-between bg-gradient-to-t from-navy/70 to-transparent px-5 pb-4 pt-10">
+                <span className="font-body text-[9px] tracking-[0.4em] text-white">
+                  JPE — 001
+                </span>
+                <span className="flex items-center gap-1.5 font-body text-[9px] tracking-[0.3em] text-white">
+                  <span className="h-1 w-1 animate-pulse-soft rounded-full bg-emerald" />
+                  AVAILABLE
+                </span>
               </div>
             </div>
           </motion.div>
 
-          {/* Floating chips */}
+          {/* Floating credential chips — white, soft shadow */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -26 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 2.9, duration: 0.6 }}
-            className="animate-pulse-glow absolute -left-4 top-[22%] hidden rounded-sm border border-[#c9f73a]/40 bg-[#0c0c0e]/90 px-3 py-2 font-body text-[10px] tracking-[0.15em] text-zinc-300 backdrop-blur md:block lg:-left-10"
+            transition={{ delay: 3.25, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="lux-shadow absolute -left-4 top-[20%] hidden rounded-full border border-ink/5 bg-white/95 px-4 py-2 font-body text-[10px] tracking-[0.2em] text-ink-soft backdrop-blur md:block lg:-left-12"
           >
-            4 YRS <span className="text-[#c9f73a]">ACCOUNTING</span>
+            4 YRS <span className="font-semibold text-emerald-deep">ACCOUNTING</span>
           </motion.div>
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 26 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 3.1, duration: 0.6 }}
-            className="absolute -right-3 top-[48%] hidden rounded-sm border border-zinc-700 bg-[#0c0c0e]/90 px-3 py-2 font-body text-[10px] tracking-[0.15em] text-zinc-300 backdrop-blur md:block lg:-right-8"
+            transition={{ delay: 3.45, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="lux-shadow absolute -right-3 top-[52%] hidden rounded-full border border-ink/5 bg-white/95 px-4 py-2 font-body text-[10px] tracking-[0.2em] text-ink-soft backdrop-blur md:block lg:-right-10"
           >
-            BLENDER <span className="text-[#f5c542]">3D ARTIST</span>
+            BLENDER <span className="font-semibold text-emerald-deep">3D ARTIST</span>
           </motion.div>
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -26 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 3.3, duration: 0.6 }}
-            className="absolute -left-3 bottom-[18%] hidden rounded-sm border border-zinc-700 bg-[#0c0c0e]/90 px-3 py-2 font-body text-[10px] tracking-[0.15em] text-zinc-300 backdrop-blur md:block lg:-left-8"
+            transition={{ delay: 3.65, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="lux-shadow absolute -left-3 bottom-[16%] hidden rounded-full border border-ink/5 bg-white/95 px-4 py-2 font-body text-[10px] tracking-[0.2em] text-ink-soft backdrop-blur md:block lg:-left-10"
           >
-            VIDEO <span className="text-[#c9f73a]">EDITOR</span>
+            VIDEO <span className="font-semibold text-emerald-deep">EDITOR</span>
           </motion.div>
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator — hairline with travelling dot */}
       <motion.a
         href="#about"
         aria-label="Scroll to about section"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 3.6, duration: 0.8 }}
+        transition={{ delay: 4, duration: 0.8 }}
         style={{ opacity: nameOpacity }}
-        className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2 text-zinc-500 transition-colors hover:text-[#c9f73a]"
+        className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-3"
       >
-        <span className="font-body text-[10px] tracking-[0.4em]">SCROLL</span>
-        <motion.span
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <ArrowDown className="h-4 w-4" aria-hidden="true" />
-        </motion.span>
+        <span className="font-body text-[9px] tracking-[0.5em] text-ink-soft/70">
+          SCROLL
+        </span>
+        <span className="relative h-10 w-px overflow-hidden bg-ink/10">
+          <span className="animate-scroll-dot absolute left-[-1.5px] top-0 h-1.5 w-1 rounded-full bg-emerald" />
+        </span>
+        <ArrowDown className="h-3.5 w-3.5 text-ink-soft/50" aria-hidden="true" />
       </motion.a>
     </section>
   );

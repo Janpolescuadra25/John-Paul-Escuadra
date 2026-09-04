@@ -1,7 +1,7 @@
 "use client";
 
-import ParticleField from "@/components/portfolio/ParticleField";
-import BootScreen from "@/components/portfolio/BootScreen";
+import AuroraBackground from "@/components/portfolio/AuroraBackground";
+import IntroCurtain from "@/components/portfolio/IntroCurtain";
 import CursorGlow from "@/components/portfolio/CursorGlow";
 import ScrollProgress from "@/components/portfolio/ScrollProgress";
 import Hero from "@/components/portfolio/Hero";
@@ -15,13 +15,13 @@ import Contact from "@/components/portfolio/Contact";
 
 export default function PortfolioHome() {
   return (
-    <main className="relative min-h-screen bg-[#09090b] font-body text-zinc-100">
+    <main className="relative min-h-screen bg-white font-body text-ink">
       {/* Fixed ambient layers */}
-      <BootScreen />
-      <div className="noise-overlay" aria-hidden="true" />
+      <IntroCurtain />
+      <div className="grain-overlay" aria-hidden="true" />
       <ScrollProgress />
       <CursorGlow />
-      <ParticleField />
+      <AuroraBackground />
 
       {/* Content flows above the fixed canvas */}
       <div className="relative z-10 flex min-h-screen flex-col">

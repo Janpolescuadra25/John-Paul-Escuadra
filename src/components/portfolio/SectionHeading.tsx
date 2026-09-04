@@ -2,24 +2,44 @@
 
 import { motion } from "framer-motion";
 
-/** SectionHeading — numbered chapter heading with masked reveal. */
+/**
+ * SectionHeading — editorial chapter heading.
+ * Numbered like a magazine feature, serif title with masked rise reveal,
+ * ghost outline numeral floating behind.
+ */
 export function SectionHeading({
   index,
   title,
   subtitle,
+  dark = false,
 }: {
   index: string;
   title: string;
   subtitle: string;
+  dark?: boolean;
 }) {
   return (
     <div className="relative">
       <div className="flex items-center gap-4">
-        <span className="font-display text-sm font-bold tracking-[0.3em] text-[#c9f73a]">
+        <span
+          className={`font-display text-sm font-semibold tracking-[0.3em] ${
+            dark ? "text-emerald" : "text-emerald-deep"
+          }`}
+        >
           {index}
         </span>
-        <span className="h-px w-12 bg-gradient-to-r from-[#c9f73a]/60 to-transparent" />
-        <span className="font-body text-[10px] tracking-[0.35em] text-zinc-500 md:text-xs">
+        <span
+          className={`h-px w-14 ${
+            dark
+              ? "bg-gradient-to-r from-emerald/60 to-transparent"
+              : "bg-gradient-to-r from-ink/25 to-transparent"
+          }`}
+        />
+        <span
+          className={`font-body text-[10px] tracking-[0.4em] md:text-xs ${
+            dark ? "text-white/60" : "text-ink-soft"
+          }`}
+        >
           {subtitle.toUpperCase()}
         </span>
       </div>
@@ -29,17 +49,21 @@ export function SectionHeading({
           initial={{ y: "110%" }}
           whileInView={{ y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-          className="font-display text-4xl font-bold tracking-tight text-zinc-100 md:text-5xl lg:text-6xl"
+          transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+          className={`font-display text-4xl font-semibold tracking-tight md:text-5xl lg:text-6xl ${
+            dark ? "text-white" : "text-ink"
+          }`}
         >
           {title}
         </motion.h2>
       </div>
 
-      {/* Giant ghost number */}
+      {/* Giant ghost numeral */}
       <span
         aria-hidden="true"
-        className="text-outline-white pointer-events-none absolute -top-8 right-0 select-none font-display text-[7rem] font-bold leading-none opacity-35 md:text-[9rem]"
+        className={`pointer-events-none absolute -top-10 right-0 select-none font-display text-[7rem] font-semibold leading-none opacity-40 md:text-[9rem] ${
+          dark ? "text-outline-white" : "text-outline-navy"
+        }`}
       >
         {index}
       </span>
