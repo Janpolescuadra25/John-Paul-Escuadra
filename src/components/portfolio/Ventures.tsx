@@ -113,26 +113,26 @@ export default function Ventures() {
           <div className="preserve-3d grid grid-cols-1 gap-12 lg:grid-cols-[1.2fr_0.8fr]">
             <div className="preserve-3d">
               <div className="pop-3d-sm flex flex-wrap items-center gap-3">
-                <span className="rounded-full bg-navy px-4 py-1.5 font-body text-[10px] font-semibold tracking-[0.3em] text-white">
+                <span className="rounded-full bg-navy px-4 py-1.5 font-body text-[11px] font-semibold tracking-[0.3em] text-white">
                   FLAGSHIP · FOUNDER
                 </span>
-                <span className="font-body text-[11px] font-medium tracking-[0.28em] text-ink-soft">
+                <span className="font-body text-xs font-medium tracking-[0.28em] text-ink-soft">
                   BUSINESS SUITE
                 </span>
               </div>
 
-              <h3 className="pop-3d mt-7 font-display text-5xl font-bold tracking-tight text-ink md:text-7xl">
+              <h3 className="pop-3d mt-7 font-display text-6xl font-bold tracking-tight text-ink md:text-8xl">
                 HAYP
                 <span className="italic font-semibold text-emerald-deep">Books</span>
               </h3>
 
-              <p className="mt-7 max-w-xl font-body text-base leading-relaxed text-ink-soft md:text-lg">
+              <p className="mt-7 max-w-xl font-body text-lg leading-relaxed text-ink-soft md:text-xl">
                 A modern business &amp; practice management suite that gives
                 companies and their teams one place to run the numbers:
                 clean books, live reporting, and workspaces that scale
                 across companies.
               </p>
-              <p className="mt-4 max-w-xl font-body text-sm leading-relaxed text-ink-soft/85">
+              <p className="mt-4 max-w-xl font-body text-base leading-relaxed text-ink-soft/85">
                 I founded it, designed it, and shipped it end-to-end — from
                 the first login screen to the dashboards teams rely on.
               </p>
@@ -142,7 +142,7 @@ export default function Ventures() {
                   href="https://haypbooks.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-sheen group relative inline-flex items-center gap-3 rounded-full bg-emerald px-8 py-4 font-body text-xs font-semibold tracking-[0.25em] text-white transition-all duration-500 hover:-translate-y-0.5 hover:bg-emerald-deep hover:lux-shadow-emerald"
+                  className="btn-sheen group relative inline-flex items-center gap-3 rounded-full bg-emerald px-8 py-4 font-body text-sm font-semibold tracking-[0.25em] text-white transition-all duration-500 hover:-translate-y-0.5 hover:bg-emerald-deep hover:lux-shadow-emerald"
                 >
                   VISIT HAYPBOOKS.COM
                   <ArrowUpRight
@@ -168,7 +168,7 @@ export default function Ventures() {
                     className="h-4.5 w-4.5 shrink-0 text-emerald-deep"
                     aria-hidden="true"
                   />
-                  <span className="font-body text-sm font-semibold leading-snug text-ink">
+                  <span className="font-body text-[15px] font-semibold leading-snug text-ink">
                     {f.label}
                   </span>
                 </motion.div>
@@ -190,19 +190,19 @@ export default function Ventures() {
           <div className="preserve-3d grid grid-cols-1 gap-12 lg:grid-cols-[1.2fr_0.8fr]">
             <div className="preserve-3d">
               <div className="pop-3d-sm flex flex-wrap items-center gap-3">
-                <span className="rounded-full border border-emerald/40 px-4 py-1.5 font-body text-[10px] font-semibold tracking-[0.3em] text-emerald">
+                <span className="rounded-full border border-emerald/40 px-4 py-1.5 font-body text-[11px] font-semibold tracking-[0.3em] text-emerald">
                   FOUNDER · SOFTWARE
                 </span>
-                <span className="font-body text-[11px] font-medium tracking-[0.28em] text-white/70">
+                <span className="font-body text-xs font-medium tracking-[0.28em] text-white/70">
                   SOFTWARE HUB
                 </span>
               </div>
 
-              <h3 className="pop-3d mt-7 font-display text-5xl font-bold tracking-tight text-white md:text-7xl">
+              <h3 className="pop-3d mt-7 font-display text-6xl font-bold tracking-tight text-white md:text-8xl">
                 V.<span className="italic font-semibold text-emerald">Studio</span>
               </h3>
 
-              <p className="mt-7 max-w-xl font-body text-base leading-relaxed text-white/85 md:text-lg">
+              <p className="mt-7 max-w-xl font-body text-lg leading-relaxed text-white/85 md:text-xl">
                 The home of everything I build. V.Studio is my software
                 hub — every app and tool I&apos;ve shipped lives there in one
                 gallery, side by side with what&apos;s coming next: upcoming
@@ -225,14 +225,14 @@ export default function Ventures() {
                     className="h-4.5 w-4.5 shrink-0 text-emerald"
                     aria-hidden="true"
                   />
-                  <span className="font-body text-sm font-semibold leading-snug text-white/90">
+                  <span className="font-body text-[15px] font-semibold leading-snug text-white/90">
                     {f.label}
                   </span>
                 </motion.div>
               ))}
               <div className="flex items-center gap-3 rounded-xl border border-emerald/25 bg-gradient-to-r from-emerald/10 to-transparent px-4 py-3.5 sm:col-span-2">
                 <Zap className="h-4 w-4 shrink-0 text-emerald" aria-hidden="true" />
-                <span className="font-body text-sm font-semibold italic text-white/90">
+                <span className="font-body text-[15px] font-semibold italic text-white/90">
                   One hub — every build, every update, every next thing
                 </span>
               </div>
@@ -247,7 +247,7 @@ export default function Ventures() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.9, delay: 0.2 }}
-        className="mt-14 flex items-center justify-center gap-4 text-center font-body text-xs font-semibold tracking-[0.3em] text-white/65"
+        className="mt-14 flex items-center justify-center gap-4 text-center font-body text-[13px] font-semibold tracking-[0.3em] text-white/65"
       >
         <Layers className="h-3.5 w-3.5 text-emerald/50" aria-hidden="true" />
         ONE FOUNDER · TWO WORLDS · ZERO SHORTCUTS

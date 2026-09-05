@@ -105,16 +105,16 @@ function SkillCard({
         </span>
       </div>
 
-      <h3 className="mt-7 font-display text-2xl font-bold tracking-tight text-ink md:text-[1.75rem]">
+      <h3 className="mt-7 font-display text-3xl font-bold tracking-tight text-ink md:text-4xl">
         {skill.title}
       </h3>
       <p
-        className="mt-2.5 font-body text-[11px] font-semibold tracking-[0.26em]"
+        className="mt-2.5 font-body text-xs font-semibold tracking-[0.26em]"
         style={{ color: skill.accent }}
       >
         {skill.level}
       </p>
-      <p className="mt-5 font-body text-[15px] leading-relaxed text-ink-soft">
+      <p className="mt-5 font-body text-base leading-relaxed text-ink-soft">
         {skill.desc}
       </p>
     </motion.article>
@@ -160,7 +160,7 @@ export default function Arsenal() {
           title="The Collection"
           subtitle="Skills earned, not claimed"
         />
-        <p className="mt-6 max-w-xl font-body text-[15px] leading-relaxed text-ink-soft md:text-base">
+        <p className="mt-6 max-w-xl font-body text-base leading-relaxed text-ink-soft md:text-[17px]">
           Everything here has receipts — shipped products, live systems, or
           worlds that run. Keep scrolling; the gallery slides sideways.
         </p>
@@ -188,14 +188,14 @@ export default function Arsenal() {
             ))}
             {/* end card */}
             <div className="flex w-[300px] shrink-0 items-center justify-center rounded-2xl border border-dashed border-ink/15 sm:w-[340px]">
-              <p className="px-8 text-center font-display text-xl font-medium italic text-ink-soft">
+              <p className="px-8 text-center font-display text-2xl font-medium italic text-ink-soft">
                 More in the works<span className="animate-blink text-emerald">.</span>
               </p>
             </div>
           </motion.div>
 
           {/* progress hint */}
-          <div className="absolute inset-x-0 bottom-16 mx-auto flex w-max items-center gap-4 font-body text-[11px] font-medium tracking-[0.3em] text-ink-soft">
+          <div className="absolute inset-x-0 bottom-16 mx-auto flex w-max items-center gap-4 font-body text-xs font-medium tracking-[0.3em] text-ink-soft">
             <span className="h-px w-10 bg-ink/15" />
             SCROLL TO EXPLORE
             <span className="h-px w-10 bg-ink/15" />

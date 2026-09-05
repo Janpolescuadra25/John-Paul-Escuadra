@@ -60,12 +60,12 @@ export default function Playground() {
           transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-lg"
         >
-          <p className="font-body text-base leading-relaxed text-ink-soft md:text-lg">
+          <p className="font-body text-lg leading-relaxed text-ink-soft md:text-xl">
             After the workday ends, a different screen turns on. I build my
             own games — worlds, systems, characters — purely for the fun of
             it. No launch dates, no audience, no pressure.
           </p>
-          <p className="mt-5 font-body text-base leading-relaxed text-ink-soft md:text-lg">
+          <p className="mt-5 font-body text-lg leading-relaxed text-ink-soft md:text-xl">
             Some things you make just because making them feels good. These
             games will never be sold or shown — and honestly, that freedom
             is exactly what makes them the best projects I&apos;ve ever
@@ -76,7 +76,7 @@ export default function Playground() {
             {BADGES.map((b) => (
               <span
                 key={b.label}
-                className="inline-flex items-center gap-2 rounded-full border border-emerald/25 bg-white px-4 py-2 font-body text-[11px] font-semibold tracking-[0.22em] text-emerald-deep lux-shadow"
+                className="inline-flex items-center gap-2 rounded-full border border-emerald/25 bg-white px-4 py-2 font-body text-xs font-semibold tracking-[0.22em] text-emerald-deep lux-shadow"
               >
                 <b.icon className="h-3.5 w-3.5" aria-hidden="true" />
                 {b.label}
@@ -115,13 +115,13 @@ export default function Playground() {
                   {String(i + 1)}
                 </span>
               </div>
-              <h3 className="mt-6 font-display text-2xl font-bold tracking-tight text-ink">
+              <h3 className="mt-6 font-display text-3xl font-bold tracking-tight text-ink">
                 {e.name}
               </h3>
-              <p className="mt-2 font-body text-[11px] font-semibold tracking-[0.28em] text-emerald-deep">
+              <p className="mt-2 font-body text-xs font-semibold tracking-[0.28em] text-emerald-deep">
                 {e.tag}
               </p>
-              <p className="mt-4 font-body text-[15px] leading-relaxed text-ink-soft">
+              <p className="mt-4 font-body text-base leading-relaxed text-ink-soft">
                 {e.desc}
               </p>
               <div className="mt-6 h-[2px] w-full bg-ink/[0.06]">

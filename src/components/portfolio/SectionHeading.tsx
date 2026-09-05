@@ -36,7 +36,7 @@ export function SectionHeading({
           }`}
         />
         <span
-          className={`font-body text-xs font-semibold tracking-[0.35em] md:text-[13px] ${
+          className={`font-body text-[13px] font-semibold tracking-[0.35em] md:text-sm ${
             dark ? "text-white/70" : "text-ink-soft"
           }`}
         >
@@ -50,7 +50,7 @@ export function SectionHeading({
           whileInView={{ y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-          className={`font-display text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl ${
+          className={`font-display text-5xl font-bold tracking-tight md:text-6xl lg:text-7xl ${
             dark ? "text-white" : "text-ink"
           }`}
         >

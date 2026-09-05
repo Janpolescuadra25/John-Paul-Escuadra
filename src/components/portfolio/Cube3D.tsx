@@ -110,10 +110,10 @@ export default function Cube3D() {
                   transition={{ duration: 0.32, ease: "easeOut" }}
                   className="max-w-md"
                 >
-                  <p className="font-display text-3xl font-bold italic text-emerald-deep md:text-4xl">
+                  <p className="font-display text-4xl font-bold italic text-emerald-deep md:text-5xl">
                     {CAPTIONS[active].title}
                   </p>
-                  <p className="mt-4 font-body text-[15px] leading-relaxed text-ink-soft md:text-base">
+                  <p className="mt-4 font-body text-base leading-relaxed text-ink-soft md:text-[17px]">
                     {CAPTIONS[active].desc}
                   </p>
                 </motion.div>
@@ -128,7 +128,7 @@ export default function Cube3D() {
               />
             </div>
 
-            <div className="mt-6 flex items-center gap-2.5 font-body text-[11px] font-medium tracking-[0.3em] text-ink-soft">
+            <div className="mt-6 flex items-center gap-2.5 font-body text-xs font-medium tracking-[0.3em] text-ink-soft">
               <Orbit
                 className="h-3.5 w-3.5 text-emerald/70"
                 aria-hidden="true"
@@ -204,7 +204,7 @@ export default function Cube3D() {
                     <div key={f.cls} className={`cube-face ${f.cls}`}>
                       <span
                         aria-hidden="true"
-                        className="absolute left-3 top-2.5 font-display text-[9px] font-semibold text-emerald-deep/40"
+                        className="absolute left-3 top-2.5 font-display text-[10px] font-semibold text-emerald-deep/40"
                       >
                         {f.no}
                       </span>
@@ -212,10 +212,10 @@ export default function Cube3D() {
                         className="h-7 w-7 text-emerald-deep md:h-9 md:w-9"
                         aria-hidden="true"
                       />
-                      <span className="font-display text-xs font-semibold tracking-tight text-ink sm:text-sm md:text-base">
+                      <span className="font-display text-sm font-semibold tracking-tight text-ink sm:text-base md:text-lg">
                         {f.top}
                       </span>
-                      <span className="font-body text-[9px] font-medium tracking-[0.26em] text-ink-soft sm:text-[10px] md:text-[11px]">
+                      <span className="font-body text-[10px] font-semibold tracking-[0.26em] text-ink-soft sm:text-[11px] md:text-xs">
                         {f.bottom}
                       </span>
                     </div>

@@ -75,18 +75,18 @@ export default function About() {
         >
           <div className="flex items-start justify-between border-b border-ink/10 pb-6">
             <div>
-              <p className="font-body text-[11px] font-semibold tracking-[0.35em] text-ink-soft">
+              <p className="font-body text-xs font-semibold tracking-[0.35em] text-ink-soft">
                 PROFILE
               </p>
-              <p className="mt-2 font-display text-2xl font-bold tracking-tight text-ink">
+              <p className="mt-2 font-display text-3xl font-bold tracking-tight text-ink">
                 John Paul Escuadra
               </p>
             </div>
             <div className="flex flex-col items-end gap-1.5">
-              <span className="rounded-full bg-navy px-3.5 py-1.5 font-body text-[10px] font-semibold tracking-[0.25em] text-white">
+              <span className="rounded-full bg-navy px-3.5 py-1.5 font-body text-[11px] font-semibold tracking-[0.25em] text-white">
                 FOUNDER
               </span>
-              <span className="font-body text-[11px] font-medium tracking-[0.28em] text-ink-soft">
+              <span className="font-body text-xs font-medium tracking-[0.28em] text-ink-soft">
                 Nº JPE-001
               </span>
             </div>
@@ -107,7 +107,7 @@ export default function About() {
               />
             </div>
 
-            <div className="min-w-0 space-y-2.5 font-body text-base leading-relaxed text-ink-soft">
+            <div className="min-w-0 space-y-2.5 font-body text-[17px] leading-relaxed text-ink-soft">
               <p>
                 <span className="font-semibold text-ink/55">ROLE</span>{" "}
                 <span className="font-semibold text-ink">Fullstack Developer</span>
@@ -140,7 +140,7 @@ export default function About() {
             </div>
           </div>
 
-          <p className="mt-8 border-t border-ink/10 pt-7 font-body text-base leading-relaxed text-ink-soft md:text-[17px]">
+          <p className="mt-8 border-t border-ink/10 pt-7 font-body text-[17px] leading-relaxed text-ink-soft md:text-lg">
             Software developer, through and through. I build products the
             whole way — the architecture underneath, the interface on top,
             and every deploy in between. Two companies founded from zero, one
@@ -163,10 +163,10 @@ export default function About() {
                 transition={{ duration: 0.6, delay: i * 0.1 }}
                 className="group rounded-2xl border border-ink/5 bg-white p-5 transition-all duration-500 hover:-translate-y-1 hover:border-emerald/30 hover:lux-shadow"
               >
-                <div className="font-display text-4xl font-bold text-ink transition-colors duration-500 group-hover:text-emerald-deep md:text-5xl">
+                <div className="font-display text-5xl font-bold text-ink transition-colors duration-500 group-hover:text-emerald-deep md:text-6xl">
                   <Counter to={s.value} suffix={s.suffix} />
                 </div>
-                <div className="mt-2.5 font-body text-[13px] font-semibold leading-snug text-ink-soft">
+                <div className="mt-2.5 font-body text-sm font-semibold leading-snug text-ink-soft">
                   {s.label}
                 </div>
               </motion.div>
@@ -181,17 +181,17 @@ export default function About() {
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             className="lux-shadow flex-1 rounded-2xl border border-ink/5 bg-white p-7 md:p-9"
           >
-            <p className="mb-8 font-body text-[11px] font-semibold tracking-[0.35em] text-ink-soft">
+            <p className="mb-8 font-body text-xs font-semibold tracking-[0.35em] text-ink-soft">
               THE CAPABILITIES
             </p>
             <div className="space-y-7">
               {SKILL_BARS.map((bar, i) => (
                 <div key={bar.name}>
                   <div className="mb-2.5 flex items-center justify-between">
-                    <span className="font-body text-[15px] font-semibold text-ink">
+                    <span className="font-body text-base font-semibold text-ink">
                       {bar.name}
                     </span>
-                    <span className="font-body text-[11px] font-semibold tracking-[0.22em] text-emerald-deep">
+                    <span className="font-body text-xs font-semibold tracking-[0.22em] text-emerald-deep">
                       {bar.tag}
                     </span>
                   </div>
@@ -211,7 +211,7 @@ export default function About() {
                 </div>
               ))}
             </div>
-            <p className="mt-8 font-body text-sm leading-relaxed text-ink-soft">
+            <p className="mt-8 font-body text-[15px] leading-relaxed text-ink-soft">
               Earned the long way — real users, real deadlines, real products
               in production.
             </p>

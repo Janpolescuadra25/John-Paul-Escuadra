@@ -315,18 +315,9 @@ html {
   background-size: 180px 180px;
 }
 
-/* ============ HUD BACKGROUND — quiet gamer, readable-first ============ */
-
-/* Ultra-faint engineering grid — barely there at rest, so typography
-   always sits on clean white. Cell size must match CELL in HudBackground. */
-.hud-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(to right, rgba(10, 37, 64, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(10, 37, 64, 0.03) 1px, transparent 1px);
-  background-size: 96px 96px;
-}
+/* ============ DEPTH FIELD BACKGROUND — 3D gamer space ============ */
+/* The entire 3D scene (perspective floor grid, depth beacons, ground
+   shockwaves, camera parallax) is canvas-rendered in DepthFieldBackground. */
 
 /* Underline draw-in for links */
 .link-underline {

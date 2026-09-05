@@ -182,3 +182,39 @@ Stage Summary:
 - Background: quiet HUD grid (near-white at rest) with cursor-ignited emerald markers, comet trail, and clean click/tap pulse — gamer interaction preserved, readability restored
 - Lettering: systematically heavier (semibold italic accents, larger body 17-20px, semibold 11-13px labels, raised opacities)
 - All privacy constraints intact (HaypBooks link only; no stack/repo); V.Studio software-hub copy untouched from Task 5
+---
+Task ID: 7
+Agent: Super Z (main agent)
+Task: User feedback "change the concept of background that should feel 3D too, then make big a bit the wordings in my page"
+
+Work Log:
+- Replaced HudBackground.tsx (deleted) with DepthFieldBackground.tsx — "3D depth field" concept, all hand-rolled 3D math on Canvas 2D (no three.js, no deps):
+  - Perspective camera: world space with ground plane y=0, camera at height 170, Euler yaw/pitch; project() with perspective divide; unproject() via inverse rotations for click ray-cast
+  - Floor: perspective grid (17 longitudinal lines in fade segments + lateral lines, cell 150 world units) converging to a vanishing point, alpha fades from ~0.11 near-bottom to ~0 at horizon so the text band stays clean; horizon hairline + tiny emerald reticle at the VP
+  - 64 seeded beacons in world space (biased near, 26% floating with slow bob) rendered as depth-scaled "+" markers, painted far-first; cursor proximity ignites them emerald (heat easing); comet trail kept
+  - CAMERA PARALLAX = the 3D feel: mouse position eases camera yaw ±5.2° / pitch ±2.6° — near markers shift more than far ones (true parallax); slow idle sway (±1.7° over ~21s) keeps depth alive on touch devices
+  - Click/tap ray-casts into the floor and fires a 3D shockwave: world-space circle (40 sampled points) projected in perspective = elliptical ring traveling along the floor, emerald main + navy echo; beacons flash as the wavefront passes (|dist-R|<90); clicks above horizon get a flat sky-ripple fallback; 8 screen sparks at the point
+  - Flicker-proof: beacons live in world coords → resize NEVER rebuilds (just lens rescale + repaint); no scroll-linked opacity; DPR cap 2; passive listeners; reduced-motion static render; hint chip kept (text bumped to xs)
+- globals.css: removed .hud-grid (entire 3D scene is canvas-rendered now)
+- page.tsx: DepthFieldBackground replaces HudBackground
+- Typography "big a bit" pass (NOTiced: previous round's Hero MultiEdit had aborted mid-batch — sequential tool stops at first failed match, so round-6 Hero edits after the failed line were silently missing; re-applied everything this round with verified old_strs):
+  - Hero: h1 5.4rem→6.2rem xl / 7xl→8xl md / 12.5vw→13vw; body 18/20px→20/22px; eyebrow sm/base; FOUNDER strip base/lg; CTAs 13px→sm; stats 3xl/4xl→4xl/5xl + labels 13px/sm; nameplate 12px; chips 13px; sidebar/SCROLL bumps
+  - SectionHeading: h2 4/5/6xl→5/6/7xl; subtitle 13px/sm
+  - IntroCurtain: h1 11vw→12vw, 6/7xl→7/8xl; labels sm
+  - About: name 2xl→3xl; dossier 17px; narrative 17/18px; stat numerals 4/5xl→5/6xl; labels sm; skill names base; THE CAPABILITIES xs
+  - Ventures: h3 5/7xl→6/8xl; body lg/xl; second para base; feature labels 15px; badges 11px/xs; CTA sm; bottom strip 13px
+  - Cube3D: caption title 3/4xl→4/5xl; desc base/17px; face top sm/base/lg; face bottom 10/11/12px; SCROLL hint xs
+  - Arsenal: card titles 2xl/[1.75rem]→3xl/4xl; level tags xs; desc base; intro base/17px; end card 2xl; progress hint xs
+  - Playground: body lg/xl; engine names 2xl→3xl; tags xs; desc base; badges xs
+  - Contact: h2 8xl→[7rem] + 7/8xl; eyebrow sm; body lg/xl; buttons sm; contact strip sm; footer 13px
+  - Marquee: xl→2xl
+
+Verification:
+- ESLint clean; dev server 200; zero page errors on desktop + mobile (incl. full scroll to bottom)
+- VLM review of 7 screenshots: 3D confirmed (grid converges to VP, depth markers, horizon); text "highly readable... grid lines extremely faint... text sits cleanly above the 3D environment"; wordings "significantly enlarged... very comfortable"; parallax confirmed between mouse-left/mouse-right frames (VP + markers shift); click ripple "distorted/stretched to match the perspective of the 3D floor... travels outward along the grid lines"; no critical bugs
+- Canvas monitor through height-only + width resizes + full scroll: 358 frames, 0 blank, 1 backing-store change (initial only), zero errors
+
+Stage Summary:
+- Background: true 3D depth field — perspective floor grid + depth beacons + camera parallax on mouse + 3D ground shockwaves on click/tap (white/navy/emerald, readable-first preserved)
+- Typography: everything a notch bigger (hero 6.2rem/8xl, body 20-22px, section h2 up to 7xl, card titles 3-4xl, labels 13-15px)
+- Privacy constraints intact: HaypBooks link only, no stack/repo; V.Studio software-hub copy unchanged
