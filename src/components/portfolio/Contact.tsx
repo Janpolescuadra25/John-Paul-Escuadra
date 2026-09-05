@@ -76,7 +76,7 @@ export default function Contact() {
             whileInView={{ y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.95, delay: 0.14, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display text-[11vw] font-normal italic leading-[1.02] tracking-tight text-emerald sm:text-6xl md:text-7xl lg:text-8xl"
+            className="font-display text-[11vw] font-semibold italic leading-[1.02] tracking-tight text-emerald sm:text-6xl md:text-7xl lg:text-8xl"
           >
             something great.
           </motion.h2>
@@ -143,10 +143,10 @@ export default function Contact() {
       {/* ============ FOOTER ============ */}
       <footer className="relative mt-auto border-t border-white/10">
         <div className="mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-4 px-6 py-8 pb-[max(2rem,env(safe-area-inset-bottom))] sm:flex-row md:px-10">
-          <p className="font-body text-xs tracking-[0.3em] text-white/40">
+          <p className="font-body text-xs tracking-[0.3em] text-white/55">
             © {new Date().getFullYear()} JOHN PAUL ESCUADRA
           </p>
-          <p className="flex items-center gap-2 font-body text-[10px] tracking-[0.35em] text-white/40">
+          <p className="flex items-center gap-2 font-body text-[11px] font-semibold tracking-[0.35em] text-white/55">
             <span className="h-1.5 w-1.5 animate-pulse-soft rounded-full bg-emerald" />
             BUILT FROM SCRATCH · NO TEMPLATES
           </p>

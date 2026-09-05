@@ -149,3 +149,36 @@ Stage Summary:
 - Typography: systematically bolder (700 headings, 400 italic accents), larger (labels 10-13px, body 15-16px), higher contrast (darker ink-soft, raised opacities)
 - V.Studio: presented as software hub — home of all his software works, upcoming updates, and new releases (Ventures card, cube face/caption, hero paragraph, metadata)
 - All privacy constraints intact: HaypBooks stack/repo still absent, haypbooks.com link only
+---
+Task ID: 6
+Agent: Super Z (main agent)
+Task: User feedback "background is too fancy, can't read the words because of the background; change the lettering too" (screenshot confirmed: 8/10 density — green halos/dot clusters/grid behind hero text, thin green italic "Escuadra" blending into green bg elements)
+
+Work Log:
+- VLM-analyzed user screenshot (pasted_image_1788587129693.png): dense bokeh halos + node clusters + grid lines directly behind "Escuadra" and hero body text; stats emerald blending with green decoration; density 8/10
+- Replaced ArcadeBackground.tsx (deleted) with HudBackground.tsx — "quiet gamer HUD, readable-first" concept:
+  - At rest: almost pure white — ultra-faint grid (.hud-grid alpha 0.05→0.03, cells 84→96px, CSS-only) + sparse tiny "+" markers on interior grid intersections (seeded PRNG, ~38% density, navy alpha 0.13)
+  - Removed entirely: ambient particle constellation, node halos, node-to-node links, cursor energy lines, arcade-glow-a/b ambient washes, impact flash blob, parallax
+  - Interaction kept & cleaner: cursor proximity ignites markers emerald (heat easing, scale 1→1.55); subtle comet trail (14 samples, 0.45s fade) behind pointer; click/tap fires clean pulse = thin emerald ring (1.8px) + navy echo ring + 8 small sparks + nearby marker flash (300px radius)
+  - Flicker-proofing preserved: rebuild only when grid cols/rows change (seeded → identical positions, same-task repaint), DPR cap 2, passive listeners, reduced-motion static render; hint chip kept
+- Typography ("lettering") pass across all components:
+  - Hero: "Escuadra" font-normal→font-semibold (italic emerald-deep kept); body text-base/lg→text-lg/xl; eyebrow 11/13px→xs/sm font-semibold; FOUNDER×DEVELOPER×CREATOR xs/sm→sm/base; sidebar 10px→11px semibold; stat labels→font-semibold; nameplate JPE-001/AVAILABLE 10px→11px semibold; credential chips 11px→xs semibold; SCROLL 10px→11px
+  - IntroCurtain: "Escuadra" font-normal→font-semibold; tagline 11px/medium→xs/semibold
+  - SectionHeading: subtitle 11px/medium→xs/semibold (md 13px); ghost numeral opacity 40→25 (never fights title)
+  - Ventures: "Books" + "Studio" italic accents font-normal→font-semibold; bottom strip 11px/medium→xs/semibold + white/60→65
+  - Contact: "something great." font-normal→font-semibold italic; footer text white/40→55 + semibold
+  - About: dossier text 15px→text-base; narrative md→17px; stat labels xs→13px semibold; footnote 13px→sm
+  - Playground: engine card descriptions text-sm→15px
+- globals.css: .arcade-grid→.hud-grid (0.03 alpha, 96px); deleted .arcade-glow-a/b + keyframes + reduced-motion refs
+- page.tsx: HudBackground replaces ArcadeBackground
+
+Verification:
+- ESLint clean (all 9 touched files)
+- Dev server 200; zero page errors on desktop + mobile, full scroll
+- VLM re-review of 5 screenshots (desktop rest/pulse/about, mobile rest/pulse): density 8/10 → 3/10; "Escuadra ... now legible ... enough stroke width to be easily read"; body/labels/stats/vertical sidebar all readable; grid + plus markers + pulse rings read as "technical/blueprint" gamer aesthetic; "no critical readability issues"
+- Canvas stability monitor through height-only + width resizes + full scroll: 350 frames sampled, 0 blank, 1 backing-store change (initial only), zero errors
+
+Stage Summary:
+- Background: quiet HUD grid (near-white at rest) with cursor-ignited emerald markers, comet trail, and clean click/tap pulse — gamer interaction preserved, readability restored
+- Lettering: systematically heavier (semibold italic accents, larger body 17-20px, semibold 11-13px labels, raised opacities)
+- All privacy constraints intact (HaypBooks link only; no stack/repo); V.Studio software-hub copy untouched from Task 5

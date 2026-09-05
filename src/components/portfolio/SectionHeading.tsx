@@ -36,7 +36,7 @@ export function SectionHeading({
           }`}
         />
         <span
-          className={`font-body text-[11px] font-medium tracking-[0.35em] md:text-xs ${
+          className={`font-body text-xs font-semibold tracking-[0.35em] md:text-[13px] ${
             dark ? "text-white/70" : "text-ink-soft"
           }`}
         >
@@ -58,10 +58,10 @@ export function SectionHeading({
         </motion.h2>
       </div>
 
-      {/* Giant ghost numeral */}
+      {/* Giant ghost numeral — kept faint so it never fights the title */}
       <span
         aria-hidden="true"
-        className={`pointer-events-none absolute -top-10 right-0 select-none font-display text-[7rem] font-semibold leading-none opacity-40 md:text-[9rem] ${
+        className={`pointer-events-none absolute -top-10 right-0 select-none font-display text-[7rem] font-semibold leading-none opacity-25 md:text-[9rem] ${
           dark ? "text-outline-white" : "text-outline-navy"
         }`}
       >

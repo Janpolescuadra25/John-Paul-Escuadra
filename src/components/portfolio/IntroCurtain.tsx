@@ -85,7 +85,7 @@ export default function IntroCurtain() {
                 className="font-display text-[11vw] font-bold leading-[0.98] tracking-tight text-ink sm:text-6xl md:text-7xl"
               >
                 {NAME_1}{" "}
-                <span className="italic font-normal text-emerald-deep">
+                <span className="italic font-semibold text-emerald-deep">
                   {NAME_2}
                 </span>
               </motion.h1>
@@ -103,7 +103,7 @@ export default function IntroCurtain() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.35, duration: 0.6 }}
-              className="mt-5 font-body text-[11px] font-medium tracking-[0.35em] text-ink-soft md:text-xs"
+              className="mt-5 font-body text-xs font-semibold tracking-[0.35em] text-ink-soft md:text-sm"
             >
               SOFTWARE DEVELOPER · FOUNDER
             </motion.p>

@@ -123,7 +123,7 @@ export default function Ventures() {
 
               <h3 className="pop-3d mt-7 font-display text-5xl font-bold tracking-tight text-ink md:text-7xl">
                 HAYP
-                <span className="italic font-normal text-emerald-deep">Books</span>
+                <span className="italic font-semibold text-emerald-deep">Books</span>
               </h3>
 
               <p className="mt-7 max-w-xl font-body text-base leading-relaxed text-ink-soft md:text-lg">
@@ -199,7 +199,7 @@ export default function Ventures() {
               </div>
 
               <h3 className="pop-3d mt-7 font-display text-5xl font-bold tracking-tight text-white md:text-7xl">
-                V.<span className="italic font-normal text-emerald">Studio</span>
+                V.<span className="italic font-semibold text-emerald">Studio</span>
               </h3>
 
               <p className="mt-7 max-w-xl font-body text-base leading-relaxed text-white/85 md:text-lg">
@@ -247,7 +247,7 @@ export default function Ventures() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.9, delay: 0.2 }}
-        className="mt-14 flex items-center justify-center gap-4 text-center font-body text-[11px] font-medium tracking-[0.3em] text-white/60"
+        className="mt-14 flex items-center justify-center gap-4 text-center font-body text-xs font-semibold tracking-[0.3em] text-white/65"
       >
         <Layers className="h-3.5 w-3.5 text-emerald/50" aria-hidden="true" />
         ONE FOUNDER · TWO WORLDS · ZERO SHORTCUTS

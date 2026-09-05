@@ -1,6 +1,6 @@
 "use client";
 
-import ArcadeBackground from "@/components/portfolio/ArcadeBackground";
+import HudBackground from "@/components/portfolio/HudBackground";
 import IntroCurtain from "@/components/portfolio/IntroCurtain";
 import CursorGlow from "@/components/portfolio/CursorGlow";
 import ScrollProgress from "@/components/portfolio/ScrollProgress";
@@ -21,7 +21,7 @@ export default function PortfolioHome() {
       <div className="grain-overlay" aria-hidden="true" />
       <ScrollProgress />
       <CursorGlow />
-      <ArcadeBackground />
+      <HudBackground />
 
       {/* Content flows above the fixed canvas */}
       <div className="relative z-10 flex min-h-screen flex-col">

@@ -60,7 +60,7 @@ export default function Hero() {
         aria-hidden="true"
         className="absolute left-7 top-1/2 hidden -translate-y-1/2 items-center gap-4 xl:flex"
       >
-        <span className="font-body text-[10px] font-medium tracking-[0.45em] text-ink-soft [writing-mode:vertical-rl]">
+        <span className="font-body text-[11px] font-semibold tracking-[0.45em] text-ink-soft [writing-mode:vertical-rl]">
           PORTFOLIO — MMXXVI
         </span>
         <span className="h-16 w-px bg-ink/15" />
@@ -77,7 +77,7 @@ export default function Hero() {
         >
           <motion.div
             variants={item}
-            className="mb-7 inline-flex items-center gap-3 font-body text-[11px] font-medium tracking-[0.42em] text-ink-soft md:text-[13px]"
+            className="mb-7 inline-flex items-center gap-3 font-body text-xs font-semibold tracking-[0.42em] text-ink-soft md:text-sm"
           >
             <span className="h-1.5 w-1.5 rounded-full bg-emerald" />
             FULLSTACK DEVELOPER · FOUNDER
@@ -88,7 +88,7 @@ export default function Hero() {
             className="font-display text-[12.5vw] font-bold leading-[0.98] tracking-tight text-ink sm:text-6xl md:text-7xl xl:text-[5.4rem]"
           >
             John Paul
-            <span className="block font-normal italic text-emerald-deep">
+            <span className="block font-semibold italic text-emerald-deep">
               Escuadra
             </span>
           </motion.h1>
@@ -99,7 +99,7 @@ export default function Hero() {
             aria-label="Founder, developer, creator"
           >
             <span className="h-px w-10 bg-emerald" />
-            <p className="font-body text-xs font-semibold tracking-[0.3em] text-ink-soft md:text-sm">
+            <p className="font-body text-sm font-semibold tracking-[0.3em] text-ink-soft md:text-base">
               FOUNDER × DEVELOPER × CREATOR
             </p>
           </motion.div>

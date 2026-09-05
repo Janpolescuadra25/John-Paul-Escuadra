@@ -107,7 +107,7 @@ export default function About() {
               />
             </div>
 
-            <div className="min-w-0 space-y-2.5 font-body text-[15px] leading-relaxed text-ink-soft">
+            <div className="min-w-0 space-y-2.5 font-body text-base leading-relaxed text-ink-soft">
               <p>
                 <span className="font-semibold text-ink/55">ROLE</span>{" "}
                 <span className="font-semibold text-ink">Fullstack Developer</span>
@@ -140,7 +140,7 @@ export default function About() {
             </div>
           </div>
 
-          <p className="mt-8 border-t border-ink/10 pt-7 font-body text-[15px] leading-relaxed text-ink-soft md:text-base">
+          <p className="mt-8 border-t border-ink/10 pt-7 font-body text-base leading-relaxed text-ink-soft md:text-[17px]">
             Software developer, through and through. I build products the
             whole way — the architecture underneath, the interface on top,
             and every deploy in between. Two companies founded from zero, one
@@ -166,7 +166,7 @@ export default function About() {
                 <div className="font-display text-4xl font-bold text-ink transition-colors duration-500 group-hover:text-emerald-deep md:text-5xl">
                   <Counter to={s.value} suffix={s.suffix} />
                 </div>
-                <div className="mt-2.5 font-body text-xs font-medium leading-snug text-ink-soft">
+                <div className="mt-2.5 font-body text-[13px] font-semibold leading-snug text-ink-soft">
                   {s.label}
                 </div>
               </motion.div>
@@ -211,7 +211,7 @@ export default function About() {
                 </div>
               ))}
             </div>
-            <p className="mt-8 font-body text-[13px] leading-relaxed text-ink-soft">
+            <p className="mt-8 font-body text-sm leading-relaxed text-ink-soft">
               Earned the long way — real users, real deadlines, real products
               in production.
             </p>

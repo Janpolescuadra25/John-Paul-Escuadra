@@ -121,7 +121,7 @@ export default function Playground() {
               <p className="mt-2 font-body text-[11px] font-semibold tracking-[0.28em] text-emerald-deep">
                 {e.tag}
               </p>
-              <p className="mt-4 font-body text-sm leading-relaxed text-ink-soft">
+              <p className="mt-4 font-body text-[15px] leading-relaxed text-ink-soft">
                 {e.desc}
               </p>
               <div className="mt-6 h-[2px] w-full bg-ink/[0.06]">
