@@ -76,7 +76,7 @@ export default function Playground() {
             {BADGES.map((b) => (
               <span
                 key={b.label}
-                className="inline-flex items-center gap-2 rounded-full border border-emerald/25 bg-white px-4 py-2 font-body text-xs font-semibold tracking-[0.22em] text-emerald-deep lux-shadow"
+                className="chamfer-tag inline-flex items-center gap-2 border border-emerald/25 bg-white px-4 py-2 font-body text-xs font-semibold tracking-[0.22em] text-emerald-deep lux-shadow"
               >
                 <b.icon className="h-3.5 w-3.5" aria-hidden="true" />
                 {b.label}

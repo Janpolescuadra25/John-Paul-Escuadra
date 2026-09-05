@@ -15,6 +15,7 @@ function mulberry32(seed: number) {
 
 const NAVY = "10,37,64";
 const EMERALD = "11,166,120";
+const GOLD = "184,147,62";
 
 /* ---- world constants ---- */
 const CAM_Y = 170; // camera height above the floor
@@ -22,11 +23,14 @@ const Z_FAR = 2600;
 const Z_NEAR = 80;
 const GRID = 150; // floor cell size
 const SEG_Z = [80, 140, 230, 380, 620, 1000, 1600, 2600]; // fade segments
+const Z_BASE = 90; // nearest depth of the scroll stream
+const Z_SPAN = 2550; // 17 × GRID — wrap length of the scroll dolly
 
 type BeaconT = {
   x: number;
   y: number;
   z: number;
+  glyph: number; // 0 diamond · 1 cross · 2 chevron
   bobAmp: number;
   bobPhase: number;
   heat: number;
@@ -58,9 +62,12 @@ type TrailT = { x: number; y: number; age: number };
  * - MOVING THE MOUSE turns the camera (yaw + pitch) with easing — near
  *   objects shift more than far ones, so the parallax reads as genuine 3D
  *   depth. A very slow idle sway keeps the depth alive on touch devices.
- * - CLICK / TAP ray-casts into the floor and fires a shockwave that
- *   travels across the ground plane in perspective (an elliptical ring),
- *   flashing every beacon it passes through.
+ * - CLICK / TAP ray-casts into the floor and fires a synchronization
+ *   wave that travels across the ground plane in perspective (an
+ *   elliptical ring), flashing every beacon it passes through.
+ * - SCROLLING glides the camera forward — the floor grid and beacons
+ *   stream toward you (position only, never opacity, so no flicker).
+ *   Beacons render as Animus glyphs: diamonds, crosses, chevrons.
  *
  * Readability rules (learned from the arcade field): nothing bright lives
  * behind the text band. The floor fades to almost nothing near the
@@ -109,6 +116,11 @@ export default function DepthFieldBackground() {
     const cam = { tYaw: 0, tPitch: 0, yaw: 0, pitch: 0.03 };
     const mouse = { x: -9999, y: -9999, sx: -9999, sy: -9999, seen: false };
 
+    // scroll dolly — the camera glides forward as the page travels, so
+    // the whole 3D world streams past. Pure position change, never opacity.
+    let scrollZ = 0;
+    let scrollN = 0;
+
     // ---- build the seeded world (viewport-independent) ----
     const rand = mulberry32(20260906);
     const beacons: BeaconT[] = [];
@@ -119,6 +131,7 @@ export default function DepthFieldBackground() {
         x: (rand() * 2 - 1) * 1150,
         y: floating ? 40 + rand() * 170 : 4,
         z,
+        glyph: Math.floor(rand() * 3),
         bobAmp: floating ? 8 + rand() * 10 : 0,
         bobPhase: rand() * Math.PI * 2,
         heat: 0,
@@ -126,6 +139,45 @@ export default function DepthFieldBackground() {
       });
     }
     beacons.sort((a, b) => b.z - a.z); // paint far first
+
+    /** wrap a world z into the visible depth stream [Z_BASE, Z_BASE+Z_SPAN) */
+    const wrapZ = (z: number) => {
+      let d = z - scrollZ - Z_BASE;
+      d = ((d % Z_SPAN) + Z_SPAN) % Z_SPAN;
+      return Z_BASE + d;
+    };
+
+    /** Animus glyphs — 0 diamond · 1 cross · 2 chevron */
+    const drawGlyph = (
+      glyph: number,
+      sx: number,
+      sy: number,
+      arm: number,
+      rot: number
+    ) => {
+      if (glyph === 0) {
+        const r = arm * 0.62;
+        ctx.save();
+        ctx.translate(sx, sy);
+        ctx.rotate(Math.PI / 4 + rot);
+        ctx.strokeRect(-r, -r, r * 2, r * 2);
+        ctx.restore();
+      } else if (glyph === 1) {
+        ctx.beginPath();
+        ctx.moveTo(sx - arm, sy);
+        ctx.lineTo(sx + arm, sy);
+        ctx.moveTo(sx, sy - arm);
+        ctx.lineTo(sx, sy + arm);
+        ctx.stroke();
+      } else {
+        const wd = arm * 0.95;
+        ctx.beginPath();
+        ctx.moveTo(sx - wd, sy + arm * 0.42);
+        ctx.lineTo(sx, sy - arm * 0.55);
+        ctx.lineTo(sx + wd, sy + arm * 0.42);
+        ctx.stroke();
+      }
+    };
 
     const applySize = () => {
       dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -162,7 +214,8 @@ export default function DepthFieldBackground() {
         }
       }
       if (hit) {
-        ripples.push({ gx: hit.gx, gz: hit.gz, t: 0 });
+        // anchor the wave in world space (camera sits at z = scrollZ)
+        ripples.push({ gx: hit.gx, gz: hit.gz + scrollZ, t: 0 });
       } else {
         skyRipples.push({ x: sx, y: sy, t: 0 }); // clicked above the horizon
       }
@@ -200,7 +253,8 @@ export default function DepthFieldBackground() {
         const sway = 0.03 * Math.sin(now * 0.0003);
         const swayP = 0.01 * Math.sin(now * 0.00023 + 1.7);
         cam.yaw = cam.tYaw + sway;
-        cam.pitch = 0.03 + cam.tPitch + swayP;
+        // the gaze lifts slightly as the page travels — cinematic dolly feel
+        cam.pitch = 0.03 + cam.tPitch + swayP + scrollN * 0.022;
       }
       const cyy = Math.cos(cam.yaw);
       const syw = Math.sin(cam.yaw);
@@ -223,6 +277,8 @@ export default function DepthFieldBackground() {
       };
 
       // ---- floor: perspective grid, fading toward the horizon ----
+      // Longitudinal lines are infinite, so the dolly never moves them;
+      // lateral lines live in world space and stream toward the viewer.
       ctx.lineWidth = 1;
       for (let kk = -8; kk <= 8; kk++) {
         const x = kk * GRID;
@@ -239,12 +295,13 @@ export default function DepthFieldBackground() {
           ctx.stroke();
         }
       }
-      for (let m = 1; m * GRID < Z_FAR; m++) {
-        const z = m * GRID;
+      for (let m = 1; m <= 17; m++) {
+        const z = wrapZ(m * GRID);
         const a = project(-1200, 0, z);
         const b = project(1200, 0, z);
         if (!a || !b) continue;
-        ctx.strokeStyle = `rgba(${NAVY},${0.09 * (1 - z / Z_FAR) + 0.012})`;
+        const alpha = Math.max(0, 0.09 * (1 - z / Z_FAR) + 0.012);
+        ctx.strokeStyle = `rgba(${NAVY},${alpha})`;
         ctx.beginPath();
         ctx.moveTo(a[0], a[1]);
         ctx.lineTo(b[0], b[1]);
@@ -261,12 +318,16 @@ export default function DepthFieldBackground() {
           ctx.moveTo(0, vp[1]);
           ctx.lineTo(w, vp[1]);
           ctx.stroke();
-          // tiny emerald reticle at the vanishing point
-          ctx.strokeStyle = `rgba(${EMERALD},0.4)`;
+          // Animus mark at the vanishing point — gold diamond + reticle
+          ctx.strokeStyle = `rgba(${GOLD},0.55)`;
           ctx.lineWidth = 1.2;
-          ctx.beginPath();
-          ctx.arc(vp[0], vp[1], 5, 0, Math.PI * 2);
-          ctx.stroke();
+          ctx.save();
+          ctx.translate(vp[0], vp[1]);
+          ctx.rotate(Math.PI / 4);
+          ctx.strokeRect(-4, -4, 8, 8);
+          ctx.restore();
+          ctx.strokeStyle = `rgba(${NAVY},0.3)`;
+          ctx.lineWidth = 1;
           ctx.beginPath();
           ctx.moveTo(vp[0] - 8, vp[1]);
           ctx.lineTo(vp[0] + 8, vp[1]);
@@ -290,7 +351,7 @@ export default function DepthFieldBackground() {
         const R = 80 + 720 * e;
         for (const [rad, alpha, width, color] of [
           [1, 0.55, 1.8, EMERALD],
-          [0.62, 0.26, 1, NAVY],
+          [0.62, 0.28, 1, GOLD],
         ] as const) {
           ctx.strokeStyle = `rgba(${color},${alpha * (1 - rp.t)})`;
           ctx.lineWidth = width;
@@ -301,7 +362,7 @@ export default function DepthFieldBackground() {
             const p = project(
               rp.gx + R * rad * Math.cos(ang),
               4,
-              rp.gz + R * rad * Math.sin(ang)
+              rp.gz + R * rad * Math.sin(ang) - scrollZ
             );
             if (!p) {
               open = false;
@@ -318,7 +379,9 @@ export default function DepthFieldBackground() {
         // beacons flash as the wavefront passes through them
         if (animate) {
           for (const bcn of beacons) {
-            const d = Math.hypot(bcn.x - rp.gx, bcn.z - rp.gz);
+            const bz = wrapZ(bcn.z);
+            const rz = rp.gz - scrollZ;
+            const d = Math.hypot(bcn.x - rp.gx, bz - rz);
             const near = Math.abs(d - R);
             if (near < 90) bcn.flash = Math.max(bcn.flash, 1 - near / 90);
           }
@@ -336,20 +399,23 @@ export default function DepthFieldBackground() {
           }
         }
         const e = 1 - Math.pow(1 - Math.min(rp.t, 1), 3);
-        const R = 220 * e;
+        const R = 26 + 210 * e;
+        // a rotating diamond ring — the Animus synchronize mark
         ctx.strokeStyle = `rgba(${EMERALD},${0.5 * (1 - rp.t)})`;
         ctx.lineWidth = 1.6;
-        ctx.beginPath();
-        ctx.arc(rp.x, rp.y, R, 0, Math.PI * 2);
-        ctx.stroke();
+        ctx.save();
+        ctx.translate(rp.x, rp.y);
+        ctx.rotate(Math.PI / 4);
+        ctx.strokeRect(-R, -R, R * 2, R * 2);
+        ctx.restore();
       }
 
-      // ---- beacons: "+" markers with depth, heat and flash ----
+      // ---- beacons: Animus glyphs with depth, heat and flash ----
       for (const bcn of beacons) {
         const bob = animate
           ? bcn.bobAmp * Math.sin(now * 0.0006 + bcn.bobPhase)
           : 0;
-        const p = project(bcn.x, bcn.y + bob, bcn.z);
+        const p = project(bcn.x, bcn.y + bob, wrapZ(bcn.z));
         if (!p) continue;
         const [sx, sy, depth] = p;
 
@@ -365,27 +431,20 @@ export default function DepthFieldBackground() {
 
         const depthFade = Math.pow(1 - Math.min(1, depth / Z_FAR), 0.8);
         const glow = Math.min(1, bcn.heat * 0.85 + bcn.flash);
-        const arm = Math.max(1.4, Math.min(5, (F * 1.35) / depth)) * (1 + 0.55 * bcn.heat + 0.4 * bcn.flash);
+        const arm =
+          Math.max(1.6, Math.min(5.5, (F * 1.45) / depth)) *
+          (1 + 0.55 * bcn.heat + 0.4 * bcn.flash);
+        const spin = bcn.flash * 0.7; // diamonds snap-rotate when synchronized
 
         // quiet navy base
         ctx.strokeStyle = `rgba(${NAVY},${0.16 * depthFade + 0.05})`;
         ctx.lineWidth = 1.3;
-        ctx.beginPath();
-        ctx.moveTo(sx - arm, sy);
-        ctx.lineTo(sx + arm, sy);
-        ctx.moveTo(sx, sy - arm);
-        ctx.lineTo(sx, sy + arm);
-        ctx.stroke();
+        drawGlyph(bcn.glyph, sx, sy, arm, spin);
         // ignited emerald overlay
         if (glow > 0.02) {
           ctx.strokeStyle = `rgba(${EMERALD},${0.9 * glow})`;
           ctx.lineWidth = 1.5;
-          ctx.beginPath();
-          ctx.moveTo(sx - arm, sy);
-          ctx.lineTo(sx + arm, sy);
-          ctx.moveTo(sx, sy - arm);
-          ctx.lineTo(sx, sy + arm);
-          ctx.stroke();
+          drawGlyph(bcn.glyph, sx, sy, arm, spin);
         }
       }
 
@@ -471,6 +530,13 @@ export default function DepthFieldBackground() {
       showHint(false);
     };
 
+    const onScroll = () => {
+      const doc = document.documentElement;
+      const max = Math.max(1, doc.scrollHeight - window.innerHeight);
+      scrollN = Math.min(1, window.scrollY / max);
+      scrollZ = window.scrollY * 0.5;
+    };
+
     const onResize = () => {
       // beacons live in world space — a resize just rescales the lens.
       // No rebuild, no teleporting, no blank frame.
@@ -482,9 +548,11 @@ export default function DepthFieldBackground() {
     if (reduced) {
       renderStatic();
     } else {
+      onScroll(); // pick up mid-page loads (anchors, refreshes)
       raf = requestAnimationFrame(draw);
       window.addEventListener("pointermove", onPointerMove, { passive: true });
       window.addEventListener("pointerdown", onPointerDown, { passive: true });
+      window.addEventListener("scroll", onScroll, { passive: true });
       hintTimer = setTimeout(() => showHint(false), 16000);
     }
     window.addEventListener("resize", onResize);
@@ -495,6 +563,7 @@ export default function DepthFieldBackground() {
       window.removeEventListener("resize", onResize);
       window.removeEventListener("pointermove", onPointerMove);
       window.removeEventListener("pointerdown", onPointerDown);
+      window.removeEventListener("scroll", onScroll);
     };
   }, []);
 
@@ -509,11 +578,11 @@ export default function DepthFieldBackground() {
       <div
         ref={hintRef}
         style={{ opacity: 0 }}
-        className="pointer-events-none fixed bottom-6 right-5 z-[60] flex items-center gap-2.5 rounded-full border border-ink/15 bg-white/95 px-4 py-2.5 shadow-[0_10px_36px_-14px_rgba(10,37,64,0.4)] backdrop-blur-sm transition-opacity duration-1000 md:right-7"
+        className="chamfer-tag pointer-events-none fixed bottom-6 right-5 z-[60] flex items-center gap-2.5 border border-ink/15 bg-white/95 px-4 py-2.5 shadow-[0_10px_36px_-14px_rgba(10,37,64,0.4)] backdrop-blur-sm transition-opacity duration-1000 md:right-7"
       >
-        <span className="h-1.5 w-1.5 animate-pulse-soft rounded-full bg-emerald" />
+        <span className="h-1.5 w-1.5 rotate-45 bg-gold" />
         <span className="font-body text-xs font-semibold tracking-[0.22em] text-ink-soft">
-          CLICK / TAP — FIRE A PULSE
+          CLICK / TAP — SYNCHRONIZE
         </span>
       </div>
     </>

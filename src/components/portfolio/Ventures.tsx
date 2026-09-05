@@ -113,7 +113,7 @@ export default function Ventures() {
           <div className="preserve-3d grid grid-cols-1 gap-12 lg:grid-cols-[1.2fr_0.8fr]">
             <div className="preserve-3d">
               <div className="pop-3d-sm flex flex-wrap items-center gap-3">
-                <span className="rounded-full bg-navy px-4 py-1.5 font-body text-[11px] font-semibold tracking-[0.3em] text-white">
+                <span className="chamfer-tag bg-navy px-4 py-1.5 font-body text-[11px] font-semibold tracking-[0.3em] text-white">
                   FLAGSHIP · FOUNDER
                 </span>
                 <span className="font-body text-xs font-medium tracking-[0.28em] text-ink-soft">
@@ -162,7 +162,7 @@ export default function Ventures() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true, margin: "-40px" }}
                   transition={{ duration: 0.45, delay: 0.35 + i * 0.08 }}
-                  className="flex items-center gap-3 rounded-xl border border-ink/5 bg-[#f7faf8] px-4 py-3.5 transition-all duration-500 hover:border-emerald/30 hover:bg-[#eff8f3]"
+                  className="chamfer-tag flex items-center gap-3 border border-ink/5 bg-[#f7faf8] px-4 py-3.5 transition-all duration-500 hover:border-emerald/30 hover:bg-[#eff8f3]"
                 >
                   <f.icon
                     className="h-4.5 w-4.5 shrink-0 text-emerald-deep"
@@ -190,7 +190,7 @@ export default function Ventures() {
           <div className="preserve-3d grid grid-cols-1 gap-12 lg:grid-cols-[1.2fr_0.8fr]">
             <div className="preserve-3d">
               <div className="pop-3d-sm flex flex-wrap items-center gap-3">
-                <span className="rounded-full border border-emerald/40 px-4 py-1.5 font-body text-[11px] font-semibold tracking-[0.3em] text-emerald">
+                <span className="chamfer-tag border border-emerald/40 px-4 py-1.5 font-body text-[11px] font-semibold tracking-[0.3em] text-emerald">
                   FOUNDER · SOFTWARE
                 </span>
                 <span className="font-body text-xs font-medium tracking-[0.28em] text-white/70">
@@ -219,7 +219,7 @@ export default function Ventures() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true, margin: "-40px" }}
                   transition={{ duration: 0.45, delay: 0.35 + i * 0.08 }}
-                  className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3.5 transition-colors duration-500 hover:border-emerald/40"
+                  className="chamfer-tag flex items-center gap-3 border border-white/10 bg-white/[0.04] px-4 py-3.5 transition-colors duration-500 hover:border-emerald/40"
                 >
                   <f.icon
                     className="h-4.5 w-4.5 shrink-0 text-emerald"
@@ -230,7 +230,7 @@ export default function Ventures() {
                   </span>
                 </motion.div>
               ))}
-              <div className="flex items-center gap-3 rounded-xl border border-emerald/25 bg-gradient-to-r from-emerald/10 to-transparent px-4 py-3.5 sm:col-span-2">
+              <div className="chamfer-tag flex items-center gap-3 border border-emerald/25 bg-gradient-to-r from-emerald/10 to-transparent px-4 py-3.5 sm:col-span-2">
                 <Zap className="h-4 w-4 shrink-0 text-emerald" aria-hidden="true" />
                 <span className="font-body text-[15px] font-semibold italic text-white/90">
                   One hub — every build, every update, every next thing

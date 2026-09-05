@@ -74,7 +74,8 @@ export default function IntroCurtain() {
               transition={{ delay: 0.55, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
               className="font-body text-xs font-semibold tracking-[0.5em] text-ink-soft md:text-sm"
             >
-              PORTFOLIO
+              ANIMUS · SYNCHRONIZING
+              <span className="animate-blink ml-1 inline-block h-[0.9em] w-[0.35em] translate-y-[0.12em] bg-emerald/80" />
             </motion.p>
 
             <div className="mt-5 overflow-hidden">
@@ -91,13 +92,22 @@ export default function IntroCurtain() {
               </motion.h1>
             </div>
 
-            {/* Emerald rule draws outward */}
+            {/* Emerald rule draws outward between gold diamonds */}
             <motion.div
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ delay: 1.05, duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-6 h-[2px] w-[min(180px,42vw)] origin-center bg-emerald"
-            />
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.95, duration: 0.4 }}
+              className="mt-6 flex items-center gap-3"
+            >
+              <span className="h-1.5 w-1.5 rotate-45 bg-gold" />
+              <motion.div
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ delay: 1.05, duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+                className="h-[2px] w-[min(180px,42vw)] origin-center bg-emerald"
+              />
+              <span className="h-1.5 w-1.5 rotate-45 bg-gold" />
+            </motion.div>
 
             <motion.p
               initial={{ opacity: 0 }}

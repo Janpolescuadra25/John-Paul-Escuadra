@@ -45,6 +45,7 @@
   --color-navy-deep: var(--navy-deep);
   --color-emerald: var(--emerald);
   --color-emerald-deep: var(--emerald-deep);
+  --color-gold: var(--gold);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -65,6 +66,7 @@
   --navy-deep: #061a33;
   --emerald: #0ba678;
   --emerald-deep: #067a56;
+  --gold: #b8933e; /* Animus antique brass — hairlines, diamonds, sync accents */
 
   --card: #ffffff;
   --card-foreground: #0a2540;
@@ -315,9 +317,67 @@ html {
   background-size: 180px 180px;
 }
 
+/* ============ ANIMUS / ASSASSIN'S FORMAT ============ */
+
+/* Chamfered (45° corner-cut) panels — the AC HUD signature.
+   chamfer-tag: one cut corner, for small chips & badges.
+   chamfer:     two opposite cut corners, for cards.
+   chamfer-md:  larger cuts for medium cards. */
+.chamfer-tag {
+  clip-path: polygon(8px 0, 100% 0, 100% 100%, 0 100%, 0 8px);
+}
+.chamfer {
+  clip-path: polygon(
+    14px 0,
+    100% 0,
+    100% calc(100% - 14px),
+    calc(100% - 14px) 100%,
+    0 100%,
+    0 14px
+  );
+}
+.chamfer-md {
+  clip-path: polygon(
+    22px 0,
+    100% 0,
+    100% calc(100% - 22px),
+    calc(100% - 22px) 100%,
+    0 100%,
+    0 22px
+  );
+}
+
+/* Segmented Animus sync bar (ScrollProgress) */
+.sync-track {
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(10, 37, 64, 0.14) 0px,
+    rgba(10, 37, 64, 0.14) 10px,
+    transparent 10px,
+    transparent 14px
+  );
+}
+.sync-fill {
+  mask-image: repeating-linear-gradient(
+    90deg,
+    black 0px,
+    black 10px,
+    transparent 10px,
+    transparent 14px
+  );
+  -webkit-mask-image: repeating-linear-gradient(
+    90deg,
+    black 0px,
+    black 10px,
+    transparent 10px,
+    transparent 14px
+  );
+}
+
 /* ============ DEPTH FIELD BACKGROUND — 3D gamer space ============ */
 /* The entire 3D scene (perspective floor grid, depth beacons, ground
-   shockwaves, camera parallax) is canvas-rendered in DepthFieldBackground. */
+   shockwaves, camera parallax, scroll dolly) is canvas-rendered in
+   DepthFieldBackground. */
 
 /* Underline draw-in for links */
 .link-underline {

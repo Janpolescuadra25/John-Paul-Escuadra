@@ -38,6 +38,7 @@ export default function Contact() {
   return (
     <DepthSection
       id="contact"
+      fill
       className="flex min-h-[92vh] flex-col overflow-hidden border-t border-white/10 bg-navy-deep pt-24 md:pt-32"
       innerClassName="flex flex-1 flex-col"
       ariaLabel="Contact"

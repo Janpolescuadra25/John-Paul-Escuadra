@@ -79,7 +79,7 @@ export default function Hero() {
             variants={item}
             className="mb-7 inline-flex items-center gap-3 font-body text-sm font-semibold tracking-[0.42em] text-ink-soft md:text-base"
           >
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald" />
+            <span className="h-1.5 w-1.5 rotate-45 bg-gold" />
             FULLSTACK DEVELOPER · FOUNDER
           </motion.div>
 
@@ -247,30 +247,33 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* Floating credential chips — white, soft shadow */}
+          {/* Floating credential tags — compact Animus chips, chamfered */}
           <motion.div
             initial={{ opacity: 0, x: -26 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 3.25, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="lux-shadow absolute -left-4 top-[20%] hidden rounded-full border border-ink/5 bg-white/95 px-4 py-2 font-body text-[13px] font-semibold tracking-[0.18em] text-ink-soft backdrop-blur md:block lg:-left-12"
+            className="chamfer-tag absolute -left-4 top-[22%] hidden bg-white/95 px-3 py-1.5 font-body text-[10px] font-semibold tracking-[0.2em] text-ink-soft shadow-[0_8px_22px_-14px_rgba(10,37,64,0.45)] backdrop-blur md:block lg:-left-10"
           >
-            SOFTWARE <span className="font-semibold text-emerald-deep">DEVELOPER</span>
+            <span className="mr-1.5 inline-block h-1 w-1 rotate-45 bg-gold" />
+            SOFTWARE <span className="text-emerald-deep">DEVELOPER</span>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: 26 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 3.45, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="lux-shadow absolute -right-3 top-[52%] hidden rounded-full border border-ink/5 bg-white/95 px-4 py-2 font-body text-[13px] font-semibold tracking-[0.18em] text-ink-soft backdrop-blur md:block lg:-right-10"
+            className="chamfer-tag absolute -right-3 top-[52%] hidden bg-white/95 px-3 py-1.5 font-body text-[10px] font-semibold tracking-[0.2em] text-ink-soft shadow-[0_8px_22px_-14px_rgba(10,37,64,0.45)] backdrop-blur md:block lg:-right-8"
           >
-            FULLSTACK <span className="font-semibold text-emerald-deep">BUILDER</span>
+            <span className="mr-1.5 inline-block h-1 w-1 rotate-45 bg-gold" />
+            FULLSTACK <span className="text-emerald-deep">BUILDER</span>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: -26 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 3.65, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="lux-shadow absolute -left-3 bottom-[16%] hidden rounded-full border border-ink/5 bg-white/95 px-4 py-2 font-body text-[13px] font-semibold tracking-[0.18em] text-ink-soft backdrop-blur md:block lg:-left-10"
+            className="chamfer-tag absolute -left-3 bottom-[16%] hidden bg-white/95 px-3 py-1.5 font-body text-[10px] font-semibold tracking-[0.2em] text-ink-soft shadow-[0_8px_22px_-14px_rgba(10,37,64,0.45)] backdrop-blur md:block lg:-left-8"
           >
-            ALWAYS <span className="font-semibold text-emerald-deep">SHIPPING</span>
+            <span className="mr-1.5 inline-block h-1 w-1 rotate-45 bg-gold" />
+            ALWAYS <span className="text-emerald-deep">SHIPPING</span>
           </motion.div>
         </motion.div>
       </div>

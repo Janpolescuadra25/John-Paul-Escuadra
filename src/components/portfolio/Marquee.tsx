@@ -42,7 +42,7 @@ export default function Marquee() {
               className="flex items-center gap-12 font-display text-2xl font-semibold italic tracking-wide text-white"
             >
               {w}
-              <span className="not-italic text-sm text-emerald">✦</span>
+              <span className="not-italic text-sm text-gold">✦</span>
             </span>
           ))}
         </div>

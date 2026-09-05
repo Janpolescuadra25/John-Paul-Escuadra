@@ -83,7 +83,7 @@ export default function About() {
               </p>
             </div>
             <div className="flex flex-col items-end gap-1.5">
-              <span className="rounded-full bg-navy px-3.5 py-1.5 font-body text-[11px] font-semibold tracking-[0.25em] text-white">
+              <span className="chamfer-tag bg-navy px-3.5 py-1.5 font-body text-[11px] font-semibold tracking-[0.25em] text-white">
                 FOUNDER
               </span>
               <span className="font-body text-xs font-medium tracking-[0.28em] text-ink-soft">
@@ -161,7 +161,7 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="group rounded-2xl border border-ink/5 bg-white p-5 transition-all duration-500 hover:-translate-y-1 hover:border-emerald/30 hover:lux-shadow"
+                className="group chamfer border border-ink/5 bg-white p-5 transition-all duration-500 hover:-translate-y-1 hover:border-emerald/30 hover:lux-shadow"
               >
                 <div className="font-display text-5xl font-bold text-ink transition-colors duration-500 group-hover:text-emerald-deep md:text-6xl">
                   <Counter to={s.value} suffix={s.suffix} />

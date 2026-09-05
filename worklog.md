@@ -218,3 +218,36 @@ Stage Summary:
 - Background: true 3D depth field — perspective floor grid + depth beacons + camera parallax on mouse + 3D ground shockwaves on click/tap (white/navy/emerald, readable-first preserved)
 - Typography: everything a notch bigger (hero 6.2rem/8xl, body 20-22px, section h2 up to 7xl, card titles 3-4xl, labels 13-15px)
 - Privacy constraints intact: HaypBooks link only, no stack/repo; V.Studio software-hub copy unchanged
+
+---
+Task ID: 8
+Agent: Super Z (main agent)
+Task: User feedback "make like assassin creed theme format a bit, but still a good transition every scrolling; make small the cards for SOFTWARE DEVELOPER / FULLSTACK BUILDER / ALWAYS SHIPPING" (screenshot VLM: chips were 50-60% of portrait width)
+
+Work Log:
+- globals.css: added Animus theme kit — --gold #b8933e (antique brass) + --color-gold, .chamfer-tag / .chamfer / .chamfer-md clip-path corner-cut utilities, .sync-track / .sync-fill segmented bar styles
+- DepthFieldBackground.tsx restyled to Animus space (no filename churn):
+  - Beacons → 3 seeded AC glyphs (diamond / cross / chevron), drawn via drawGlyph(); diamonds snap-rotate 0.7 rad on flash (synchronization moment)
+  - SCROLL DOLLY: passive scroll listener drives camera forward (scrollZ = scrollY × 0.5, gaze pitch + scrollN × 0.022) — lateral grid lines + beacons wrap through a 2550-unit depth stream (Z_BASE 90, Z_SPAN = 17×GRID so the uniform grid wraps seamlessly; beacons recycle near→far where they're invisible); longitudinal lines are infinite so dolly never moves them (correct 3D). Position-only, never opacity → no flicker
+  - Click pulse = synchronization wave: ground ripple emerald + GOLD echo ring; sky ripple now a rotating diamond ring; VP mark now gold diamond + navy reticle; hint chip copy "CLICK / TAP — SYNCHRONIZE" with gold diamond bullet + chamfer-tag
+  - Ripple anchored in world space (gz + scrollZ at fire), rendered camera-relative; beacon flash check compares stream-space depths
+  - Fixed during edit: restored missing ctx.beginPath() before VP reticle cross (would have re-stroked the horizon hairline at 0.3 alpha)
+- DepthSection.tsx → Animus scroll transitions: enter = top-down clip-path wipe (inset 0→90%→0) + 42px rise + fade (once, margin -10%); travel = existing rotateX/scale/y scroll-linked motion kept; gold hairline with diamond head draws across every section's top edge (scaleX, margin -16%); new `fill` prop so Contact's flex footer layout still sticks
+- SectionHeading.tsx → AC menu format: chamfered "SEQ. NN" navy/emerald chip + hairline-with-gold-diamond divider + spaced-caps subtitle (was: bare numeral + gradient rule)
+- ScrollProgress.tsx → Animus sync bar: segmented track + emerald-to-gold masked fill + gold diamond riding the leading edge (useTransform left)
+- Hero.tsx: the 3 credential cards shrunk ~45-50% — 13px→10px semibold, px-4 py-2→px-3 py-1.5, rounded-full→chamfer-tag, border removed, lighter shadow, gold diamond bullets, positions tightened (top 20%→22%, lg offsets -12/-10→-10/-8); eyebrow dot → gold diamond
+- IntroCurtain.tsx: eyebrow "PORTFOLIO"→"ANIMUS · SYNCHRONIZING" with blinking emerald caret; emerald rule now draws between two gold diamonds
+- Marquee.tsx: ✦ separators emerald→gold on navy band
+- About.tsx (FOUNDER badge + stat cards chamfered), Playground.tsx (badges chamfer-tag), Ventures.tsx (FLAGSHIP/FOUNDER·SOFTWARE badges + all feature chips + quote strip chamfer-tag), Contact.tsx (fill prop)
+
+Verification:
+- ESLint clean; dev server 200; zero page errors desktop + mobile (incl. full scroll)
+- VLM desktop review (5 shots): density 3/10 (quiet preserved); hero tags now 25-30% of portrait width (was 50-60%); SEQ. chips, chamfers, gold diamonds, segmented top bar all confirmed; 3D grid + vanishing point + pulse visible; mid-wipe transition captured ("partially revealed... wipe-like"); no bugs
+- VLM mobile + dolly review (4 shots): mobile hero fully readable, diamond pulse ring visible, no cut-offs; scroll A vs B backgrounds differ → world streams on scroll (dolly confirmed)
+- Canvas stability monitor: 357 frames, 0 blank, 1 backing-store change (initial only), zero errors
+
+Stage Summary:
+- AC format delivered "a bit": SEQUENCE headings, chamfered HUD chips, gold diamond accents, Animus sync bar, SYNCHRONIZING intro — on the existing white/navy/emerald luxury base
+- Scroll transitions: every section materializes via clip-wipe + gold hairline draw + continuous 3D settle; the 3D background itself dollies forward as you scroll
+- Hero credential cards compacted from ~55% to ~25-30% of portrait width
+- Privacy constraints intact: HaypBooks link only, no stack/repo; V.Studio software-hub copy unchanged
