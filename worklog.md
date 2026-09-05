@@ -251,3 +251,19 @@ Stage Summary:
 - Scroll transitions: every section materializes via clip-wipe + gold hairline draw + continuous 3D settle; the 3D background itself dollies forward as you scroll
 - Hero credential cards compacted from ~55% to ~25-30% of portrait width
 - Privacy constraints intact: HaypBooks link only, no stack/repo; V.Studio software-hub copy unchanged
+---
+Task ID: 9
+Agent: Super Z (main agent)
+Task: User feedback "make it small a bit for the cards of SOFTWARE DEVELOPER / FULLSTACK BUILDER / ALWAYS SHIPPING, and the edges should be rounded"
+
+Work Log:
+- Hero.tsx — the 3 floating credential chips restyled:
+  - Shape: chamfer-tag (diagonal corner-cut clip-path) replaced with rounded-full — true pill-shaped rounded edges; box-shadow now renders fully (clip-path used to clip it)
+  - Size stepped down again: text-[10px] → text-[9px], px-3 py-1.5 → px-2.5 py-1, gold diamond bullet spacing mr-1.5 → mr-1
+  - Shadow tuned for rounded pill: 0_6px_18px_-12px navy 0.4 (soft, no longer squeezed by clip-path)
+  - Kept: white/95 + backdrop-blur chip body, gold diamond bullet, emerald accent words, slide-in delays (3.25/3.45/3.65s), positions, hidden md:block (mobile unaffected)
+- Verification: ESLint clean; dev 200; desktop + mobile screenshots with zero page errors (scripts/shot_cards.mjs); VLM review of desktop hero: chips confirmed small (~25-30% of portrait width), pill-rounded, readable, no face overlap / no cut-offs, "no significant visual issues; polished and professional"
+
+Stage Summary:
+- The three hero credential cards are now compact rounded pills — smaller than the Task 8 chamfered version and with fully rounded edges per user request
+- Animus/AC theme (gold diamonds, SEQ headings, sync bar, 3D dolly) unchanged elsewhere; privacy constraints intact (HaypBooks link only)

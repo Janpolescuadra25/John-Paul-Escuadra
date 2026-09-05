@@ -252,27 +252,27 @@ export default function Hero() {
             initial={{ opacity: 0, x: -26 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 3.25, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="chamfer-tag absolute -left-4 top-[22%] hidden bg-white/95 px-3 py-1.5 font-body text-[10px] font-semibold tracking-[0.2em] text-ink-soft shadow-[0_8px_22px_-14px_rgba(10,37,64,0.45)] backdrop-blur md:block lg:-left-10"
+            className="absolute -left-4 top-[22%] hidden rounded-full bg-white/95 px-2.5 py-1 font-body text-[9px] font-semibold tracking-[0.2em] text-ink-soft shadow-[0_6px_18px_-12px_rgba(10,37,64,0.4)] backdrop-blur md:block lg:-left-10"
           >
-            <span className="mr-1.5 inline-block h-1 w-1 rotate-45 bg-gold" />
+            <span className="mr-1 inline-block h-1 w-1 rotate-45 bg-gold" />
             SOFTWARE <span className="text-emerald-deep">DEVELOPER</span>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: 26 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 3.45, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="chamfer-tag absolute -right-3 top-[52%] hidden bg-white/95 px-3 py-1.5 font-body text-[10px] font-semibold tracking-[0.2em] text-ink-soft shadow-[0_8px_22px_-14px_rgba(10,37,64,0.45)] backdrop-blur md:block lg:-right-8"
+            className="absolute -right-3 top-[52%] hidden rounded-full bg-white/95 px-2.5 py-1 font-body text-[9px] font-semibold tracking-[0.2em] text-ink-soft shadow-[0_6px_18px_-12px_rgba(10,37,64,0.4)] backdrop-blur md:block lg:-right-8"
           >
-            <span className="mr-1.5 inline-block h-1 w-1 rotate-45 bg-gold" />
+            <span className="mr-1 inline-block h-1 w-1 rotate-45 bg-gold" />
             FULLSTACK <span className="text-emerald-deep">BUILDER</span>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: -26 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 3.65, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="chamfer-tag absolute -left-3 bottom-[16%] hidden bg-white/95 px-3 py-1.5 font-body text-[10px] font-semibold tracking-[0.2em] text-ink-soft shadow-[0_8px_22px_-14px_rgba(10,37,64,0.45)] backdrop-blur md:block lg:-left-8"
+            className="absolute -left-3 bottom-[16%] hidden rounded-full bg-white/95 px-2.5 py-1 font-body text-[9px] font-semibold tracking-[0.2em] text-ink-soft shadow-[0_6px_18px_-12px_rgba(10,37,64,0.4)] backdrop-blur md:block lg:-left-8"
           >
-            <span className="mr-1.5 inline-block h-1 w-1 rotate-45 bg-gold" />
+            <span className="mr-1 inline-block h-1 w-1 rotate-45 bg-gold" />
             ALWAYS <span className="text-emerald-deep">SHIPPING</span>
           </motion.div>
         </motion.div>
