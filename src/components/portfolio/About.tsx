@@ -108,26 +108,26 @@ export default function About() {
             </div>
 
             {/* Spec sheet — fixed label column, every value starts at the same x */}
-            <dl className="grid w-full min-w-0 grid-cols-[88px_1fr] items-baseline gap-x-4 gap-y-3 font-body sm:flex-1">
+            <dl className="grid w-full min-w-0 grid-cols-[86px_1fr] items-baseline gap-x-4 gap-y-2.5 font-body sm:flex-1">
               <div className="contents">
-                <dt className="text-[13px] font-semibold tracking-[0.24em] text-ink/55">ROLE</dt>
-                <dd className="text-[17px] font-semibold leading-snug text-ink">Fullstack Developer</dd>
+                <dt className="text-[11px] font-semibold tracking-[0.22em] text-ink/55">ROLE</dt>
+                <dd className="text-[15px] font-semibold leading-snug text-ink">Fullstack Developer</dd>
               </div>
               <div className="contents">
-                <dt className="text-[13px] font-semibold tracking-[0.24em] text-ink/55">HOUSE</dt>
-                <dd className="text-[17px] font-semibold leading-snug text-ink">HaypBooks · V.Studio</dd>
+                <dt className="text-[11px] font-semibold tracking-[0.22em] text-ink/55">HOUSE</dt>
+                <dd className="text-[15px] font-semibold leading-snug text-ink">HaypBooks · V.Studio</dd>
               </div>
               <div className="contents">
-                <dt className="text-[13px] font-semibold tracking-[0.24em] text-ink/55">FOCUS</dt>
-                <dd className="text-[17px] font-semibold leading-snug text-ink">Product engineering, end to end</dd>
+                <dt className="text-[11px] font-semibold tracking-[0.22em] text-ink/55">FOCUS</dt>
+                <dd className="text-[15px] font-semibold leading-snug text-ink">Product engineering, end to end</dd>
               </div>
               <div className="contents">
-                <dt className="text-[13px] font-semibold tracking-[0.24em] text-ink/55">CRAFT</dt>
-                <dd className="text-[17px] font-semibold leading-snug text-ink">Products · interfaces · personal games</dd>
+                <dt className="text-[11px] font-semibold tracking-[0.22em] text-ink/55">CRAFT</dt>
+                <dd className="text-[15px] font-semibold leading-snug text-ink">Products · interfaces · personal games</dd>
               </div>
               <div className="contents">
-                <dt className="text-[13px] font-semibold tracking-[0.24em] text-ink/55">CERTIFIED</dt>
-                <dd className="text-[17px] font-semibold leading-snug text-ink">Bookkeeper — NC III</dd>
+                <dt className="text-[11px] font-semibold tracking-[0.22em] text-ink/55">CERTIFIED</dt>
+                <dd className="text-[15px] font-semibold leading-snug text-ink">Bookkeeper — NC III</dd>
               </div>
             </dl>
           </div>

@@ -416,3 +416,20 @@ Verification:
 Stage Summary:
 - Dossier facts restored as an aligned spec sheet; story humbled to "I'm also a bookkeeper" + years-in-firm (numberless); NC III lives only in the CERTIFIED row
 - Privacy constraints intact (HaypBooks link only, no stack/repo, no Blender/video-editing)
+---
+Task ID: 19
+Agent: Super Z (main agent)
+Task: User feedback "reduce the size of the wordings for the ROLE/HOUSE/FOCUS/CRAFT/CERTIFIED sheet so it looks clean in the alignment"
+
+Work Log:
+- About.tsx spec sheet compacted: labels text-[13px] tracking-[0.24em] → text-[11px] tracking-[0.22em]; values text-[17px] → text-[15px]; row rhythm gap-y-3 → gap-y-2.5; label column 88px → 86px
+- Story paragraph and all other card elements unchanged
+
+Verification:
+- ESLint clean; dev 200; zero page errors at 1440/1100/390
+- DOM geometry: desktop value column now single x (448) and label column single x (346) — perfect alignment (previous 1px variance eliminated by the smaller glyphs); 5 rows; no overflow
+- VLM desktop+mobile: "small, clean, tightly aligned... tidier and more premium, not cramped... no wrapping, misalignment, or readability problems"
+
+Stage Summary:
+- Spec sheet is now compact 11px/15px with tighter rhythm — reads as a clean premium data column beside the portrait; all Task-18 wording decisions preserved
+- Privacy constraints intact (HaypBooks link only, no stack/repo, no Blender/video-editing)
