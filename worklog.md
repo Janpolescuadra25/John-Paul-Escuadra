@@ -309,3 +309,25 @@ Verification:
 Stage Summary:
 - Bookkeeping NC III credential now presented in three integrated places: dossier CERTIFIED row, narrative paragraph, marquee identity band — positioned as a complement to (not replacement of) the core software-developer identity
 - Privacy constraints otherwise intact (HaypBooks link only, no stack/repo, no Blender/video-editing)
+---
+Task ID: 14
+Agent: Super Z (main agent)
+Task: User feedback "should also include that years of experience in the accounting field.. what do you think?"
+
+Work Log:
+- Recommended including it (certificate = proof of passing; years = proof of practice; pairs with founder story: code + books). User's earlier self-description said 4 years — used 4, flagged to user it's easy to change.
+- About.tsx dossier card: new LEDGER row after CERTIFIED — "4 years — accounting field" (same dossier typography as ROLE/HOUSE/FOCUS/CRAFT/CERTIFIED/STATUS)
+- About.tsx narrative: sentence extended — "I passed the Bookkeeping NC III and spent four years working in the accounting field — so the numbers behind a business are as familiar to me as the code in front of it."
+- TESTING-INFRASTRUCTURE FINDING (important for future tasks): Playwright's locator.scrollIntoViewIfNeeded() (CDP-level scroll) does NOT deliver IntersectionObserver callbacks in this headless setup — framer-motion whileInView sections stayed clipped/invisible and screenshots looked blank even though DOM/scrollY were correct. REAL scrolls (window.scrollTo/scrollBy via page.evaluate) deliver IO callbacks correctly, so the site works fine for real users. All future screenshot scripts MUST scroll via evaluate(window.scrollTo), NOT locator.scrollIntoViewIfNeeded. Diagnosed via in-page IntersectionObserver instrumentation + pngjs pixel-variance truth checks (blank white ≈ std < 5; content ≈ std > 15).
+- Also: the long-running dev server had to be pkill'd + restarted after HMR staleness; new one started detached with (setsid npx next dev &) — verified persisting across commands.
+
+Verification:
+- ESLint clean (About.tsx); dev server 200; zero page errors desktop + mobile
+- Real-scroll captures: card opacity 1; pixel stddev 38/103 (content confirmed present, not blank)
+- VLM desktop: rows ROLE, HOUSE, FOCUS, CRAFT, CERTIFIED ('Bookkeeper — NC III'), LEDGER ('4 years — accounting field'), STATUS all readable; narrative sentence quoted back verbatim with NC III + four years; "no cramped rows, text overflow, or rendering problems"
+- VLM mobile: CERTIFIED + LEDGER rows visible, readable, clean adaptation to narrow screen
+
+Stage Summary:
+- Accounting-field experience now shown as "4 years" in the dossier LEDGER row and woven into the story paragraph — completing the cert + years + narrative arc of the bookkeeping credential
+- Marquee already carried "Certified Bookkeeper" from Task 13; hero/stats untouched (dev identity stays primary)
+- Privacy constraints otherwise intact (HaypBooks link only, no stack/repo, no Blender/video-editing)
