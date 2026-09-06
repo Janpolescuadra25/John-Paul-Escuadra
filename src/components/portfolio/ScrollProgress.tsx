@@ -2,6 +2,7 @@
 
 import { motion, useMotionValueEvent, useScroll, useSpring, useTransform } from "framer-motion";
 import { useState } from "react";
+import { INTRO_DONE_S } from "./intro-timing";
 
 const clamp01 = (v: number) => Math.min(1, Math.max(0, v));
 
@@ -40,7 +41,7 @@ export default function ScrollProgress() {
       aria-valuemax={100}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ delay: 2.6, duration: 0.7 }}
+      transition={{ delay: INTRO_DONE_S - 0.65, duration: 0.7 }}
       className="pointer-events-none fixed inset-x-0 top-0 z-[60] h-[7px]"
     >
       {/* continuous soft track — one unbroken hairline */}

@@ -350,3 +350,27 @@ Verification:
 Stage Summary:
 - The accounting experience now reads as ongoing current work instead of a frozen static number — "Working in an accounting firm — present" in the dossier + "ever since" in the story — so the portfolio never ages
 - Privacy constraints intact (HaypBooks link only, no stack/repo, no Blender/video-editing)
+---
+Task ID: 16
+Agent: Super Z (main agent)
+Task: User uploaded jp_vid.mp4 (1920x1080, 4.27s, man in navy suit turning to camera; content in 836x1080 center strip with black side bars) — "include it in the intro, crop the black bars"; then follow-up "remove the LEDGER Working in an accounting firm — present row"
+
+Work Log:
+- Video pipeline: ffmpeg cropdetect found content at x=542 w=836 → cropped (crop=836:1080:542:0) + lanczos upscale to 760x982 → public/videos/jp-intro.mp4 (H.264, CRF 23, faststart, 375KB, silent) + poster frame public/videos/jp-intro-poster.jpg
+- NEW src/components/portfolio/intro-timing.ts — shared constants: INTRO_HOLD_MS 4450, INTRO_SPLIT_MS 950, INTRO_DONE_S 5.4
+- IntroCurtain.tsx fully rewritten around the video: arched (rounded-t-full) white-bordered video frame echoing the hero portrait; "ANIMUS · SYNCHRONIZING" eyebrow with blinking caret; slim emerald→gold sync hairline that fills over the exact video runtime (4.27s linear); serif name rise, gold-diamond emerald rule, SOFTWARE DEVELOPER · FOUNDER strip kept; "TAP TO SKIP" hint at 2.2s; click/tap anywhere skips; curtain holds 4.45s then splits as theatre curtains (unchanged exit); scroll lock + reduced-motion skip preserved; muted/autoplay/playsInline for all browsers
+- Hero.tsx + ScrollProgress.tsx: all intro-tail delays re-based on INTRO_DONE_S (container stagger 5.4-0.8, portrait 4.7, chips 5.4/5.6/5.8, scroll hint 6.2, progress line 4.75) so nothing animates behind the veil
+- About.tsx: LEDGER row ("Working in an accounting firm — present") REMOVED; narrative "and I've been working in an accounting firm ever since" clause removed — story returns to "certified bookkeeper — I passed the Bookkeeping NC III — so the numbers behind a business are as familiar to me as the code in front of it"; CERTIFIED row + marquee "Certified Bookkeeper" kept
+
+Verification:
+- ESLint clean (5 files); dev server 200; zero page errors desktop + mobile
+- Video playback verified programmatically: desktop currentTime 1.46 / mobile 1.44, paused=false, readyState=4
+- DOM: curtain gone after intro, no "LEDGER"/"accounting firm" text anywhere, "Bookkeeper — NC III" kept, scroll unlocked after split; pixel-truth non-blank
+- Click-to-skip test: video present before click, gone + scroll unlocked 1.2s after center click
+- VLM desktop (early/late/after): video "clearly visible, well-cropped with no black bars" in arched frame, title centered, hero fully rendered after intro, "highly cinematic and premium"
+- VLM mobile: intro stack centered, nothing cut off on 390px, clean transition to hero, no layout problems
+
+Stage Summary:
+- Intro is now personal: the user's own video (black bars cropped) materializes in an arched Animus frame with a runtime-matched sync line, then the curtain splits to the hero — ~5.4s total, skippable
+- Accounting experience removed everywhere; only the NC III certification remains as a credential (no firm, no duration)
+- Privacy constraints intact (HaypBooks link only, no stack/repo, no Blender/video-editing)

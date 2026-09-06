@@ -4,10 +4,11 @@ import { motion, useMotionValue, useScroll, useSpring, useTransform } from "fram
 import Image from "next/image";
 import { type MouseEvent, useRef } from "react";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { INTRO_DONE_S } from "./intro-timing";
 
 const container = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.13, delayChildren: 2.45 } },
+  show: { transition: { staggerChildren: 0.13, delayChildren: INTRO_DONE_S - 0.8 } },
 };
 const item = {
   hidden: { y: 44, opacity: 0 },
@@ -211,7 +212,7 @@ export default function Hero() {
               opacity: 1,
               y: 0,
               filter: "blur(0px)",
-              transition: { delay: 2.55, duration: 1.05, ease: [0.22, 1, 0.36, 1] },
+              transition: { delay: INTRO_DONE_S - 0.7, duration: 1.05, ease: [0.22, 1, 0.36, 1] },
             }}
             className="animate-float-soft relative overflow-hidden rounded-t-full border-[6px] border-white bg-white lux-shadow"
           >
@@ -251,7 +252,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, x: -26 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 3.25, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ delay: INTRO_DONE_S, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="absolute -left-4 top-[22%] hidden rounded-full bg-white/95 px-2.5 py-1 font-body text-[9px] font-semibold tracking-[0.2em] text-ink-soft shadow-[0_6px_18px_-12px_rgba(10,37,64,0.4)] backdrop-blur md:block lg:-left-10"
           >
             <span className="mr-1 inline-block h-1 w-1 rotate-45 bg-gold" />
@@ -260,7 +261,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, x: 26 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 3.45, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ delay: INTRO_DONE_S + 0.2, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="absolute -right-3 top-[52%] hidden rounded-full bg-white/95 px-2.5 py-1 font-body text-[9px] font-semibold tracking-[0.2em] text-ink-soft shadow-[0_6px_18px_-12px_rgba(10,37,64,0.4)] backdrop-blur md:block lg:-right-8"
           >
             <span className="mr-1 inline-block h-1 w-1 rotate-45 bg-gold" />
@@ -269,7 +270,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, x: -26 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 3.65, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ delay: INTRO_DONE_S + 0.4, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="absolute -left-3 bottom-[16%] hidden rounded-full bg-white/95 px-2.5 py-1 font-body text-[9px] font-semibold tracking-[0.2em] text-ink-soft shadow-[0_6px_18px_-12px_rgba(10,37,64,0.4)] backdrop-blur md:block lg:-left-8"
           >
             <span className="mr-1 inline-block h-1 w-1 rotate-45 bg-gold" />
@@ -284,7 +285,7 @@ export default function Hero() {
         aria-label="Scroll to about section"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 4, duration: 0.8 }}
+        transition={{ delay: INTRO_DONE_S + 0.8, duration: 0.8 }}
         style={{ opacity: nameOpacity }}
         className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-3"
       >
