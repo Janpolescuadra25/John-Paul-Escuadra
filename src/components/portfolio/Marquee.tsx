@@ -12,6 +12,7 @@ const WORDS = [
   "Software Developer",
   "Fullstack Builder",
   "Founder",
+  "Certified Bookkeeper",
   "Product Maker",
   "Game Builder",
   "Problem Solver",

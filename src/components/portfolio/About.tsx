@@ -131,6 +131,12 @@ export default function About() {
                 </span>
               </p>
               <p>
+                <span className="font-semibold text-ink/55">CERTIFIED</span>{" "}
+                <span className="font-semibold text-ink">
+                  Bookkeeper — NC III
+                </span>
+              </p>
+              <p>
                 <span className="font-semibold text-ink/55">STATUS</span>{" "}
                 <span className="inline-flex items-center gap-2 font-semibold text-emerald-deep">
                   <span className="h-1.5 w-1.5 animate-pulse-soft rounded-full bg-emerald" />
@@ -144,9 +150,11 @@ export default function About() {
             Software developer, through and through. I build products the
             whole way — the architecture underneath, the interface on top,
             and every deploy in between. Two companies founded from zero, one
-            flagship suite live in production. The discipline is simple:
-            treat every screen like it matters, and every line like it
-            lasts.
+            flagship suite live in production. I&apos;m also a certified
+            bookkeeper — I passed the Bookkeeping NC III — so the numbers
+            behind a business are as familiar to me as the code in front of
+            it. The discipline is simple: treat every screen like it
+            matters, and every line like it lasts.
           </p>
         </motion.div>
 

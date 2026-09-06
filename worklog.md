@@ -288,3 +288,24 @@ Verification:
 Stage Summary:
 - Top progress is now exactly what the user asked: a straight, smooth, continuous loading line — soft track + emerald-to-gold gradient fill + single gold diamond tip; no words, no segments, no chopped pieces
 - Privacy constraints intact (HaypBooks link only, no stack/repo)
+---
+Task ID: 13
+Agent: Super Z (main agent)
+Task: User feedback "include also that I'm a bookkeeper that also passed the NC3 Bookkeeping" (identity update — explicit override of the earlier 'no accounting' preference, bookkeeping specifically now public)
+
+Work Log:
+- About.tsx dossier card: new row between CRAFT and STATUS — "CERTIFIED: Bookkeeper — NC III" (same typography pattern as ROLE/HOUSE/FOCUS/CRAFT)
+- About.tsx narrative: added sentence — "I'm also a certified bookkeeper — I passed the Bookkeeping NC III — so the numbers behind a business are as familiar to me as the code in front of it." (bridges dev identity + finance credibility)
+- Marquee.tsx: "Certified Bookkeeper" added to the identity ticker words (after "Founder")
+- Identity constraint updated: bookkeeping/NC III now INCLUDED by explicit user request; Blender / video editing / 4-years-accounting framing still excluded; HaypBooks link-only rule unchanged
+
+Verification:
+- ESLint clean (About, Marquee); dev server 200; zero page errors desktop + mobile
+- DOM checks via Playwright evaluate: certifiedRow / narrative / marqueeWord all true
+- VLM desktop marquee: "Certified Bookkeeper" clearly visible in ticker sequence
+- VLM desktop dossier: CERTIFIED row present, "follows the exact same typographic style... fits perfectly within the card's grid structure", no bugs
+- VLM desktop narrative: sentence quoted back verbatim, "reads very naturally... strong differentiator bridging technical development and business logic", no layout/rendering issues
+
+Stage Summary:
+- Bookkeeping NC III credential now presented in three integrated places: dossier CERTIFIED row, narrative paragraph, marquee identity band — positioned as a complement to (not replacement of) the core software-developer identity
+- Privacy constraints otherwise intact (HaypBooks link only, no stack/repo, no Blender/video-editing)
