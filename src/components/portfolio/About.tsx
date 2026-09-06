@@ -92,13 +92,13 @@ export default function About() {
             </div>
           </div>
 
-          <div className="mt-7 flex gap-6">
-            <div className="relative h-40 w-32 shrink-0 overflow-hidden rounded-t-full border border-ink/10 md:h-48 md:w-36">
+          <div className="mt-8 flex flex-col items-center gap-7 sm:flex-row sm:items-start">
+            <div className="relative h-44 w-36 shrink-0 overflow-hidden rounded-t-full border border-ink/10 md:h-52 md:w-40">
               <Image
                 src="/images/profile-card.jpg"
                 alt="John Paul Escuadra portrait"
                 fill
-                sizes="150px"
+                sizes="160px"
                 className="object-cover object-top"
               />
               <div
@@ -107,62 +107,24 @@ export default function About() {
               />
             </div>
 
-            <div className="min-w-0 space-y-2.5 font-body text-[17px] leading-relaxed text-ink-soft">
-              <p>
-                <span className="font-semibold text-ink/55">ROLE</span>{" "}
-                <span className="font-semibold text-ink">Fullstack Developer</span>
-              </p>
-              <p>
-                <span className="font-semibold text-ink/55">HOUSE</span>{" "}
-                <span className="font-semibold text-ink">
-                  HaypBooks · V.Studio
-                </span>
-              </p>
-              <p>
-                <span className="font-semibold text-ink/55">FOCUS</span>{" "}
-                <span className="font-semibold text-ink">
-                  Product engineering, end to end
-                </span>
-              </p>
-              <p>
-                <span className="font-semibold text-ink/55">CRAFT</span>{" "}
-                <span className="font-semibold text-ink">
-                  Products · interfaces · personal games
-                </span>
-              </p>
-              <p>
-                <span className="font-semibold text-ink/55">CERTIFIED</span>{" "}
-                <span className="font-semibold text-ink">
-                  Bookkeeper — NC III
-                </span>
-              </p>
-              <p>
-                <span className="font-semibold text-ink/55">STATUS</span>{" "}
-                <span className="inline-flex items-center gap-2 font-semibold text-emerald-deep">
-                  <span className="h-1.5 w-1.5 animate-pulse-soft rounded-full bg-emerald" />
-                  Building
-                </span>
-              </p>
-            </div>
+            <p className="min-w-0 font-body text-[17px] leading-relaxed text-ink-soft md:text-lg">
+              Software developer, through and through. I build products the
+              whole way — the architecture underneath, the interface on top,
+              and every deploy in between. Two companies founded from zero,
+              one flagship suite live in production. I&apos;m also a certified
+              bookkeeper — I passed the Bookkeeping NC III, with years of
+              experience working in an accounting firm — so the numbers
+              behind a business are as familiar to me as the code in front
+              of it. The discipline is simple: treat every screen like it
+              matters, and every line like it lasts.
+            </p>
           </div>
-
-          <p className="mt-8 border-t border-ink/10 pt-7 font-body text-[17px] leading-relaxed text-ink-soft md:text-lg">
-            Software developer, through and through. I build products the
-            whole way — the architecture underneath, the interface on top,
-            and every deploy in between. Two companies founded from zero, one
-            flagship suite live in production. I&apos;m also a certified
-            bookkeeper — I passed the Bookkeeping NC III — so the numbers
-            behind a business are as familiar to me as the code in front of
-            it. The
-            discipline is simple: treat every screen like it matters, and
-            every line like it lasts.
-          </p>
         </motion.div>
 
         {/* ============ STATS + BARS ============ */}
         <div className="flex flex-col gap-10">
           {/* Counter stats */}
-          <div className="grid grid-cols-2 gap-5 md:grid-cols-4">
+          <div className="grid grid-cols-2 gap-5 xl:grid-cols-4">
             {STATS.map((s, i) => (
               <motion.div
                 key={s.label}
@@ -170,10 +132,15 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="group chamfer border border-ink/5 bg-white p-5 transition-all duration-500 hover:-translate-y-1 hover:border-emerald/30 hover:lux-shadow"
+                className="group chamfer min-w-0 border border-ink/5 bg-white p-5 transition-all duration-500 hover:-translate-y-1 hover:border-emerald/30 hover:lux-shadow"
               >
-                <div className="font-display text-5xl font-bold text-ink transition-colors duration-500 group-hover:text-emerald-deep md:text-6xl">
-                  <Counter to={s.value} suffix={s.suffix} />
+                <div className="font-display text-4xl font-bold text-ink transition-colors duration-500 group-hover:text-emerald-deep md:text-5xl">
+                  <Counter to={s.value} />
+                  {s.suffix && (
+                    <span className="text-2xl text-emerald-deep md:text-3xl">
+                      {s.suffix}
+                    </span>
+                  )}
                 </div>
                 <div className="mt-2.5 font-body text-sm font-semibold leading-snug text-ink-soft">
                   {s.label}

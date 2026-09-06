@@ -374,3 +374,28 @@ Stage Summary:
 - Intro is now personal: the user's own video (black bars cropped) materializes in an arched Animus frame with a runtime-matched sync line, then the curtain splits to the hero — ~5.4s total, skippable
 - Accounting experience removed everywhere; only the NC III certification remains as a credential (no firm, no duration)
 - Privacy constraints intact (HaypBooks link only, no stack/repo, no Blender/video-editing)
+---
+Task ID: 17
+Agent: Super Z (main agent)
+Task: User feedback (with screenshot): include accounting-firm years of experience in the story paragraph; REMOVE the dossier data rows (ROLE/HOUSE/FOCUS/CRAFT/CERTIFIED/STATUS — alignment looked bad); fix the '100% Self-driven' stat card being cut off
+
+Work Log:
+- About.tsx profile card restructured:
+  - Deleted the entire dossier rows block (ROLE/HOUSE/FOCUS/CRAFT/CERTIFIED/STATUS incl. the pulsing STATUS row) — kills the misalignment complaint at the root
+  - Card is now: PROFILE header (name + FOUNDER badge + Nº JPE-001) → arched portrait BESIDE the story paragraph (flex-col/centered on mobile, sm:flex-row up) — photo bumped h-44 w-36 md:h-52 w-40
+  - Narrative updated: "...I passed the Bookkeeping NC III, with years of experience working in an accounting firm — so the numbers..." (numberless, per Task-15 lesson; NC III + firm experience now live only in the story)
+- About.tsx stats grid fixed (the '100%' blowout):
+  - Root cause: md:grid-cols-4 forced 4 narrow tracks in the ~600px right column; the 60px '100%' numeral's min-content width exceeded the track → track grew → 4th card broke past the container edge and got clipped
+  - Fix: grid-cols-2 xl:grid-cols-4 (2x2 below 1280px), numerals text-5xl/6xl → text-4xl/5xl, '%' suffix rendered as a smaller separate emerald span (text-2xl/3xl), min-w-0 on cells
+- Verification script scripts/shot_about_stats.mjs: DOM geometry (card right vs grid right) + pixel-truth at 1440/1100/820px
+
+Verification:
+- ESLint clean; dev 200; zero page errors at all three widths
+- Geometry: every stat card inside:true clipped:false at 1440/1100/820; rowsGone:true; narrative (NC III + years of experience in an accounting firm):true
+- VLM desktop+narrow: rows gone, photo+paragraph clean, '100%' card + label fully visible in both, bookkeeping sentence quoted back verbatim, no alignment issues
+- Mobile measured precisely: pageScrollWidth=390 (zero horizontal overflow), card 27→363 fully inside viewport, FOUNDER badge right=331 inside card and unclipped (VLM's 'cut off' flag disproven by geometry; bottom 'truncation' was normal viewport crop of the tall card)
+
+Stage Summary:
+- Profile card simplified to portrait + story (rows deleted per user), story now carries the accounting-firm experience (numberless 'years of experience')
+- 100% stat card fully visible at every width — 2x2 grid below xl, compact numerals with smaller % suffix
+- Privacy constraints intact (HaypBooks link only, no stack/repo, no Blender/video-editing)
