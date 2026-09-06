@@ -139,7 +139,7 @@ export default function About() {
               <p>
                 <span className="font-semibold text-ink/55">LEDGER</span>{" "}
                 <span className="font-semibold text-ink">
-                  4 years — accounting field
+                  Working in an accounting firm — present
                 </span>
               </p>
               <p>
@@ -157,9 +157,10 @@ export default function About() {
             whole way — the architecture underneath, the interface on top,
             and every deploy in between. Two companies founded from zero, one
             flagship suite live in production. I&apos;m also a certified
-            bookkeeper — I passed the Bookkeeping NC III and spent four
-            years working in the accounting field — so the numbers behind a
-            business are as familiar to me as the code in front of it. The
+            bookkeeper — I passed the Bookkeeping NC III and I&apos;ve
+            been working in an accounting firm ever since — so the numbers
+            behind a business are as familiar to me as the code in front of
+            it. The
             discipline is simple: treat every screen like it matters, and
             every line like it lasts.
           </p>

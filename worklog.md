@@ -331,3 +331,22 @@ Stage Summary:
 - Accounting-field experience now shown as "4 years" in the dossier LEDGER row and woven into the story paragraph — completing the cert + years + narrative arc of the bookkeeping credential
 - Marquee already carried "Certified Bookkeeper" from Task 13; hero/stats untouched (dev identity stays primary)
 - Privacy constraints otherwise intact (HaypBooks link only, no stack/repo, no Blender/video-editing)
+---
+Task ID: 15
+Agent: Super Z (main agent)
+Task: User feedback "should not say 4 years because it's still counting — I'm currently working in the accounting firm; what good wording includes it without a number?"
+
+Work Log:
+- Wording strategy: present-tense phrasing that implies accruing time without pinning a number
+- About.tsx LEDGER row: "4 years — accounting field" → "Working in an accounting firm — present" (borrows the résumé '2021–present' convention, so it reads as time still counting)
+- About.tsx narrative: "spent four years working in the accounting field" → "I've been working in an accounting firm ever since" ('ever since' = numberless duration that never goes stale)
+- Grep-swept src for "4 years|four years|FOUR YEARS" — About.tsx was the only occurrence (marquee/stats carry no year numbers)
+
+Verification:
+- ESLint clean; dev server 200; zero page errors
+- DOM truth checks: noFourYears=true, ledgerRow=true, narrative=true
+- Real-scroll screenshots (pixel-truth confirmed present); VLM: LEDGER row + "ever since" sentence quoted back verbatim, "avoids specific years", "reads naturally with no visible layout issues"
+
+Stage Summary:
+- The accounting experience now reads as ongoing current work instead of a frozen static number — "Working in an accounting firm — present" in the dossier + "ever since" in the story — so the portfolio never ages
+- Privacy constraints intact (HaypBooks link only, no stack/repo, no Blender/video-editing)
