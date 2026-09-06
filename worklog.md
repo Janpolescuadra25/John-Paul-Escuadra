@@ -399,3 +399,20 @@ Stage Summary:
 - Profile card simplified to portrait + story (rows deleted per user), story now carries the accounting-firm experience (numberless 'years of experience')
 - 100% stat card fully visible at every width — 2x2 grid below xl, compact numerals with smaller % suffix
 - Privacy constraints intact (HaypBooks link only, no stack/repo, no Blender/video-editing)
+---
+Task ID: 18
+Agent: Super Z (main agent)
+Task: User feedback — story paragraph: drop "I passed the Bookkeeping NC III" (feels bragging) but keep "I'm also a bookkeeper"; restore the dossier rows (ROLE/HOUSE/FOCUS/CRAFT/CERTIFIED) WITH good alignment
+
+Work Log:
+- About.tsx story paragraph: "I'm also a certified bookkeeper — I passed the Bookkeeping NC III, with years of experience..." → "I'm also a bookkeeper, with years of experience working in an accounting firm — so the numbers..." (humble: no exam mention; NC III fact stays in the rows only)
+- About.tsx dossier rows restored as a true SPEC SHEET: <dl> with grid-cols-[88px_1fr] + items-baseline + gap-y-3 — labels (13px tracked caps, ink/55) in a fixed-width column, values (17px semibold) all start at the identical x; values wrap within their own column only (old problem: inline label+value paragraphs wrapped raggedly). No STATUS row (user's list omitted it). Portrait now h-44 w-36 md:h-52 w-40 beside the sheet (stacks centered on mobile)
+
+Verification:
+- ESLint clean; dev 200; zero page errors at 1440/1100/390
+- DOM geometry: 5 rows; label→value gap identical for every row (104px); story has bookkeeper+firm-years but no "passed the Bookkeeping" phrase; no page overflow; card inside viewport (1px x-variances traced to the DepthSection 3D-settle transform's fractional projection — invisible, not layout misalignment)
+- VLM desktop+mobile: rows "neatly aligned... values start at the exact same left edge... uniform spacing"; paragraph wording confirmed humble; "no layout problems"
+
+Stage Summary:
+- Dossier facts restored as an aligned spec sheet; story humbled to "I'm also a bookkeeper" + years-in-firm (numberless); NC III lives only in the CERTIFIED row
+- Privacy constraints intact (HaypBooks link only, no stack/repo, no Blender/video-editing)

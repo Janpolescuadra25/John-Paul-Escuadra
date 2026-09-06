@@ -107,18 +107,41 @@ export default function About() {
               />
             </div>
 
-            <p className="min-w-0 font-body text-[17px] leading-relaxed text-ink-soft md:text-lg">
-              Software developer, through and through. I build products the
-              whole way — the architecture underneath, the interface on top,
-              and every deploy in between. Two companies founded from zero,
-              one flagship suite live in production. I&apos;m also a certified
-              bookkeeper — I passed the Bookkeeping NC III, with years of
-              experience working in an accounting firm — so the numbers
-              behind a business are as familiar to me as the code in front
-              of it. The discipline is simple: treat every screen like it
-              matters, and every line like it lasts.
-            </p>
+            {/* Spec sheet — fixed label column, every value starts at the same x */}
+            <dl className="grid w-full min-w-0 grid-cols-[88px_1fr] items-baseline gap-x-4 gap-y-3 font-body sm:flex-1">
+              <div className="contents">
+                <dt className="text-[13px] font-semibold tracking-[0.24em] text-ink/55">ROLE</dt>
+                <dd className="text-[17px] font-semibold leading-snug text-ink">Fullstack Developer</dd>
+              </div>
+              <div className="contents">
+                <dt className="text-[13px] font-semibold tracking-[0.24em] text-ink/55">HOUSE</dt>
+                <dd className="text-[17px] font-semibold leading-snug text-ink">HaypBooks · V.Studio</dd>
+              </div>
+              <div className="contents">
+                <dt className="text-[13px] font-semibold tracking-[0.24em] text-ink/55">FOCUS</dt>
+                <dd className="text-[17px] font-semibold leading-snug text-ink">Product engineering, end to end</dd>
+              </div>
+              <div className="contents">
+                <dt className="text-[13px] font-semibold tracking-[0.24em] text-ink/55">CRAFT</dt>
+                <dd className="text-[17px] font-semibold leading-snug text-ink">Products · interfaces · personal games</dd>
+              </div>
+              <div className="contents">
+                <dt className="text-[13px] font-semibold tracking-[0.24em] text-ink/55">CERTIFIED</dt>
+                <dd className="text-[17px] font-semibold leading-snug text-ink">Bookkeeper — NC III</dd>
+              </div>
+            </dl>
           </div>
+
+          <p className="mt-8 border-t border-ink/10 pt-7 font-body text-[17px] leading-relaxed text-ink-soft md:text-lg">
+            Software developer, through and through. I build products the
+            whole way — the architecture underneath, the interface on top,
+            and every deploy in between. Two companies founded from zero,
+            one flagship suite live in production. I&apos;m also a
+            bookkeeper, with years of experience working in an accounting
+            firm — so the numbers behind a business are as familiar to me
+            as the code in front of it. The discipline is simple: treat
+            every screen like it matters, and every line like it lasts.
+          </p>
         </motion.div>
 
         {/* ============ STATS + BARS ============ */}
