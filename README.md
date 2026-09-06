@@ -28,7 +28,7 @@ This repository contains a Next.js 16 App Router single-body site for the portfo
 - Read package.json for the available scripts.
 - Dev: "next dev -p 3000 2>&1 | tee dev.log"
 - Build: "next build && cp -r .next/static .next/standalone/.next/ && cp -r public .next/standalone/"
-- Start: "NODE_ENV=production b​un .next/standalone/server.js 2>&1 | tee server.log"
+- Start script is defined in package.json for the production entrypoint.
 
 ## Decisions log
 - Split ruling: Frontend_JP = byte-faithful monolith; Backend_JP = minimal health shell; no database.

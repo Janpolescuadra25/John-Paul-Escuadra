@@ -6,7 +6,7 @@ Status as of commit 8dd1282 · 2026-09-06
 
 Ground rules
 - No force-push ever.
-- Secrets never committed to any repo.
+- Sensitive material never committed to any repo.
 - Backend services bind 127.0.0.1; public exposure only via nginx 80/443.
 - Reference folder is the READ-ONLY baseline (copy, never modify).
 - Documentation is English-only and contains verified facts only.
@@ -45,7 +45,7 @@ Phase 2 — Repository split (Frontend_JP + Backend_JP)
 Phase 3 — DNS (Porkbun)
 - Objective: point johnpaulescuadra.dev (apex + www) at the VPS.
 - Outputs: A record for apex → VPS IPv4; matching record for www. (The IPv4 lives in private ops notes — NOT in this public file.)
-- Requirements: JP applies the changes in the Porkbun console (~2 minutes); verification via dig/nslookup.
+- Requirements: JP applies the changes in the DNS console (~2 minutes); verification via dig/nslookup.
 - Dependencies: a server able to answer HTTP on port 80 for verification (DNS may be pre-staged, but completion requires a listening server).
 - Completion criteria: apex and www resolve to the VPS IPv4; port 80 reachable through the domain.
 
