@@ -2,7 +2,8 @@
 
 This file tracks the deployment roadmap for the portfolio repository and preserves verified facts only.
 
-Status as of commit 8dd1282 · 2026-09-06
+Status as of 2026-09-06 - documentation refresh. The commit chain below is
+authoritative; the live tip hash lives in git log, not in this file.
 
 Ground rules
 - No force-push ever.
@@ -13,9 +14,20 @@ Ground rules
 - Pre-existing production processes on the VPS must never be touched.
 
 Verified current state
-- Git tip 8dd1282 on main, synced with origin/main, clean tree, 3 commits total (c7f081b → 9cb3f14 → 8dd1282), remote origin https://github.com/Janpolescuadra25/John-Paul-Escuadra.git (public).
-- Stack: Next.js 16 App Router monolith, TypeScript, Tailwind, output: "standalone" in next.config.ts, npm-managed; node v22.18.0, npm 10.9.3.
+- Git: main, synced with origin/main, clean tree. Commit chain through
+5dde0f0 (c7f081b -> 9cb3f14 -> 8dd1282 -> 6cfb827 -> 5dde0f0) plus the
+documentation commit that last updated this line; the live tip hash and
+total commit count are authoritative in git log, because any committed
+status line is one commit stale the moment it lands. Remote origin
+https://github.com/Janpolescuadra25/John-Paul-Escuadra.git (public).
+- Stack: Next.js 16 App Router monolith, TypeScript, Tailwind,
+output: "standalone" in next.config.ts; package-lock.json and bun.lock are
+both present; npm is used for install and build scripts and the production
+start script runs the standalone server via bun (see package.json
+scripts.start); node v22.18.0, npm 10.9.3. No packageManager or engines
+field is declared.
 - Build script: "next build && cp -r .next/static .next/standalone/.next/ && cp -r public .next/standalone/"
+- Start script: "NODE_ENV=production bun .next/standalone/server.js 2>&1 | tee server.log" - bun is required for the current production entrypoint.
 - Routes: src/app/api/route.ts returns "Hello world" and has zero UI consumers; src/app/layout.tsx and src/app/page.tsx exist.
 - Page sections in render order: Hero, Marquee, About, Ventures, Cube3D, Arsenal, Playground, Contact.
 - Components: About, Arsenal, Contact, Cube3D, CursorGlow, DepthFieldBackground, Hero, IntroCurtain, Marquee, Playground, ScrollProgress, SectionHeading, Ventures.
@@ -26,9 +38,14 @@ Verified current state
 - Build-ready: all configuration files are present.
 
 Completed work record
-- Phase 0 — Audit: COMPLETED. Architecture ruling recorded: Frontend_JP = byte-faithful full Next.js monolith; Backend_JP = minimal health-check shell, NO database.
-- Phase 1 — GitHub backup: COMPLETED. Checkpoint commit 9cb3f14 + cleanup commit 8dd1282 pushed; tip synced with origin/main; clean tree.
-- Accepted risk: .env + db/custom.db are retrievable in history from c7f081b/9cb3f14; low sensitivity, purge requires force-push (prohibited) → documented and accepted.
+- Phase 0 - Audit: COMPLETED. Record pruned 2026-09-06 with HYDRA audit
+evidence (state verified at tips 8dd1282 and 5dde0f0). Standing split
+ruling: Frontend_JP = byte-faithful full Next.js monolith; Backend_JP =
+minimal health-check shell, NO database.
+- Phase 1 - GitHub backup: COMPLETED. Record pruned 2026-09-06 with HYDRA
+audit evidence. Accepted risk stands: .env and db/custom.db are retrievable
+in history from c7f081b/9cb3f14; low sensitivity; purge requires
+force-push, which is prohibited.
 
 Pending phases
 

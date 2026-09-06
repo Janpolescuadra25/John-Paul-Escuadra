@@ -10,7 +10,8 @@ This repository contains a Next.js 16 App Router single-body site for the portfo
 - framer-motion
 - Prisma 6 (dormant)
 - SQLite (dormant)
-- npm
+- npm (install and build scripts; package-lock.json present)
+- bun (production start script; bun.lock present)
 - Node v22.18.0
 
 ## Architecture notes
@@ -28,11 +29,13 @@ This repository contains a Next.js 16 App Router single-body site for the portfo
 - Read package.json for the available scripts.
 - Dev: "next dev -p 3000 2>&1 | tee dev.log"
 - Build: "next build && cp -r .next/static .next/standalone/.next/ && cp -r public .next/standalone/"
-- Start script is defined in package.json for the production entrypoint.
+- Start: "NODE_ENV=production bun .next/standalone/server.js 2>&1 | tee server.log"
 
 ## Decisions log
 - Split ruling: Frontend_JP = byte-faithful monolith; Backend_JP = minimal health shell; no database.
-- npm was chosen because package-lock.json is present and no alternate package manager is active.
+- Both package-lock.json and bun.lock are present; npm is used for install
+and build, and the production start script runs the standalone server via
+bun. package.json declares no packageManager or engines field.
 - The repository is public; history exposure is accepted and force-push is prohibited.
 - Documentation contains verified facts only.
 
