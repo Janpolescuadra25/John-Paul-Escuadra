@@ -267,3 +267,24 @@ Work Log:
 Stage Summary:
 - The three hero credential cards are now compact rounded pills — smaller than the Task 8 chamfered version and with fully rounded edges per user request
 - Animus/AC theme (gold diamonds, SEQ headings, sync bar, 3D dolly) unchanged elsewhere; privacy constraints intact (HaypBooks link only)
+---
+Task ID: 12
+Agent: Super Z (main agent)
+Task: User feedback "make a straight line the loading progress in the top, not chop chop line" (the shard read as line-diamond-line = broken pieces)
+
+Work Log:
+- ScrollProgress.tsx rewritten — the wordless "memory shard" (diamond + two flanking hairlines = 3 separate pieces) replaced with ONE STRAIGHT CONTINUOUS LINE:
+  - Full-width soft track: single unbroken hairline (3px rounded, ink/7%) spanning edge-to-edge — no repeating-gradient dashes anywhere
+  - Continuous fill: smooth emerald-deep -> emerald -> gold gradient (3px), origin-left scaleX driven by the spring-smoothed scroll — travels edge-to-edge with the journey
+  - One small gold diamond (5px, soft glow) rides the leading edge — the only ornament, and it never breaks the line
+  - Fade-in at 2.6s after the curtain; a11y kept silently (role=progressbar, aria-valuenow, integer-only state updates); pointer-events-none
+- scripts/shot_sync.mjs updated: outputs renamed line-*.png, deviceScaleFactor 2 added, plus a 36px-tight close-up strip (line-closeup-desktop.png) for continuity inspection
+
+Verification:
+- ESLint clean; dev server 200; zero page errors on desktop + mobile across all 3 scroll states
+- VLM desktop (3 states + close-up): "single, straight, horizontal, completely continuous line. No dashes, segments, or broken pieces"; 0% -> ~50-60% -> full progression confirmed; close-up "one smooth unbroken line with a distinct small gold diamond at the leading edge"; "clean and elegant"; no gaps/jitter/clipping
+- VLM mobile (2 states): straight + continuous, clear half -> full difference, crisp and visible, no rendering bugs
+
+Stage Summary:
+- Top progress is now exactly what the user asked: a straight, smooth, continuous loading line — soft track + emerald-to-gold gradient fill + single gold diamond tip; no words, no segments, no chopped pieces
+- Privacy constraints intact (HaypBooks link only, no stack/repo)
