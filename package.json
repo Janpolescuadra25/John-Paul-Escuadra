@@ -1,0 +1,10 @@
+{
+  "name": "backend-jp",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Minimal health-check service for the JP portfolio split (Phase 2).",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
