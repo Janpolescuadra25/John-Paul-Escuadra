@@ -3,11 +3,11 @@
 Minimal health-check service for the JP portfolio deployment (Phase 2 of the
 repository split defined in the parent repository's Road_Map.md).
 
-Status: implemented locally on 2026-09-13. This README intentionally does not
-mark the section DONE; a DONE marking is granted only after HYDRA-verified
-inspection, and Phase 2 as a whole remains IN PROGRESS (Frontend_JP
-browser/console/parity verification and a JP-authorized GitHub push are
-still pending).
+Status: implemented locally on 2026-09-13 and HYDRA-verified on
+2026-09-13 (T73 certification + T74-AUDIT code review): the Backend_JP
+local implementation is DONE. Phase 2 as a whole remains IN PROGRESS
+(Frontend_JP browser/console/parity verification and a JP-authorized
+GitHub push are still pending).
 
 ## Purpose
 
