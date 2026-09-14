@@ -31,8 +31,14 @@ The build script adapts the parent's POSIX `cp` static asset copy to a Node.js `
 2. `package-lock.json`: added for reproducible `npm` installs (the parent is bun-focused; `bun.lock` is preserved unchanged).
 3. `README.md`: this file is new in this repository.
 4. `src/app/global-error.tsx`: added in this repository; not present in the parent commit listed above.
-5. All other tracked files are byte-faithful to the parent commit listed above, with LF line endings enforced repository-wide.
+5. All other tracked files are byte-faithful to the parent commit listed above within the application-subset scope; LF content is observed in the 86 tracked text files as committed blobs and is not enforced by repository policy (no .gitattributes exists; both repos inherit system-level core.autocrlf=true as checkout policy).
 
 ## Status
 
-Local initial commit only. GitHub push and the Backend_JP split are pending (JP_Playbook Phase 2).
+Local initial commit only. GitHub push is pending (JP_Playbook Phase 2; the Backend_JP split was completed and HYDRA-verified on 2026-09-13).
+
+Scope correction (audit evidence dated 2026-09-11): Frontend_JP is an application-subset working copy of the parent split-source commit, not a full-tree copy.
+Tracked file comparison at split-source parent commit 83e9d4c: 259 files in the parent baseline; 91 files tracked in Frontend_JP; 170 files present in the parent baseline at commit 83e9d4c are absent from Frontend_JP (including .zscripts/*, Caddyfile, Road_Map.md, examples/websocket/*, scripts/*, tests); 2 files are child-only (package-lock.json, src/app/global-error.tsx).
+Line-ending correction: LF content is observed in the 86 tracked text files as committed blobs (git index i/lf); the 5 tracked non-text assets (i/-text) are excluded from line-ending observations; LF is not an enforcement mechanism here (no .gitattributes exists; both repos inherit system-level core.autocrlf=true as checkout policy).
+Correction note (2026-09-13): deviation item 5 above was rewritten to state the scoped line-ending truth directly; the historical wording ("with LF line endings enforced repository-wide") is retired.
+Supersession: the "byte-faithful" wording in deviation item 5 applies only within the application-subset scope described above; the tracked file comparison in this section is authoritative.
