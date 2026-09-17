@@ -40,3 +40,19 @@ by appending new entries.
 - Repository facts after migration: remote
   Janpolescuadra25/John-Paul-Escuadra hosts a single branch (main);
   95 tracked files.
+
+## DOC-01 — Canonical Documentation Migration (COMPLETED)
+
+- Status: COMPLETED (2026-09-17)
+- Summary: Created the root README.md, the project HISTORY.md, and the
+  canonical docs/Road_Map.md as the single source of truth for project
+  phase status. The legacy Reference\Road_Map.md was retired (deleted)
+  only after the documentation commit was pushed and remotely verified,
+  protected by an on-disk recovery file and a rollback clause that was
+  never needed.
+- Post-DOC-01 baseline pin:
+  main @ f74e43ec8bc9d40669dc1b9b3fa76ea12d6dacd9
+- Verification: the Hydra post-execution adjudication passed all
+  acceptance criteria, and the follow-up audit (2026-09-17) confirmed
+  DOC-01 closure: legacy file deletion, Reference\ integrity, and
+  recovery-file cleanup.

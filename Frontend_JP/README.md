@@ -33,8 +33,8 @@ The build script adapts the parent's POSIX cp static asset copy to a Node.js fs.
 
 ## Repository status
 
-- Published on GitHub (public): https://github.com/Janpolescuadra25/Frontend_JP
-- Remote origin: https://github.com/Janpolescuadra25/Frontend_JP.git (pushes restricted to this remote; force-pushes prohibited)
+- Published on GitHub (public):  (Frontend_JP/ directory of the mono-repo)
+- Remote origin:  (mono-repo remote; pushes restricted to this remote; force-pushes prohibited)
 - Initial commit: 908902ab92307df2e4aee91f3390cf2060a1c30e
 - Phase 2 (repository split): COMPLETE - Hydra-certified (BLOCK 5 GO)
 - Owned by Phase 5 (final audit), carried forward per the Road_Map alignment audit: live-site rendering check, console-error check, and animation-parity check (the live-site animation check already belonged to Phase 5)

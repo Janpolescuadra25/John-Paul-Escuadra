@@ -1,13 +1,13 @@
 # Backend_JP
 
-Minimal health-check service for the JP portfolio deployment (Phase 2 of the repository split defined in the parent repository's Road_Map.md).
+Minimal health-check service for the JP portfolio deployment (Backend_JP/ directory of the John-Paul-Escuadra mono-repo).
 
 ## Status
 
 - Implemented locally on 2026-09-13 and certified by T73 certification + T74-AUDIT code review.
 - Live verification: GET /health returned HTTP 200 (pre-push check, 2026-09-15).
-- Published on GitHub (public): https://github.com/Janpolescuadra25/Backend_JP
-- Remote origin: https://github.com/Janpolescuadra25/Backend_JP.git (pushes restricted to this remote; force-pushes prohibited)
+- Published on GitHub (public):  (Backend_JP/ directory of the mono-repo)
+- Remote origin:  (mono-repo remote; pushes restricted to this remote; force-pushes prohibited)
 - Initial commit: 0fa6e6d5d6ea49340b66733b7025088f2ce43314
 - Phase 2 (repository split): COMPLETE - Hydra-certified (BLOCK 5 GO)
 

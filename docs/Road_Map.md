@@ -12,12 +12,6 @@ Hydra-audited prompt process.
 - Reversed by the T-01 mono-repo migration. Historical record: see
   HISTORY.md. No active or planned work under this phase.
 
-## T-01 — Mono-Repo Migration
-
-- Status: COMPLETED
-- Baseline pin: main @ fecab5af6f5e9702d02ca763b3e2ed19e5348166
-- Full record: see HISTORY.md.
-
 ## Phase 3 — DNS / Porkbun
 
 - Status: NOT STARTED
