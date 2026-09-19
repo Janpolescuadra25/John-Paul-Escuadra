@@ -19,6 +19,7 @@ REMAINING: server-side SSH fix, full VPS state report re-run
 - Server-side failure signatures: "ROOT LOGIN REFUSED" (19:06) then "Connection
   closed by authenticating user root" (19:13) - both point to SERVER-side
   policy/keyfile state, not the laptop.
+- 2026-09-19: BatchMode ssh probe rejected at the auth gate before any remote inspection - "Permission denied (publickey)"; host offered publickey only (no password fallback), consistent with SERVER-side policy/keyfile state; probe ran over SSH (wrong venue) - corrective rule: Hetzner VNC console only until auth succeeds.
 - Known constraint: Hetzner VNC console corrupts Shift-symbols (typed underscore
   arrives as hyphen). All remediation commands are designed underscore-free.
   Never hand-type authorized_keys or sshd_config paths on that console.

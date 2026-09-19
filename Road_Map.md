@@ -29,3 +29,4 @@
 
 ## LOG
 - 2026-09-19: Mantra ran the VPS read-only state report. V0.1 passed (target string echoed). V0.2 (BatchMode ssh echo CONNECTED) failed: Permission denied (publickey), exit 255. Correct fail-fast STOP; no VPS changes. Hydra post-audit: execution 100% compliant; repo HEAD 15aff4e6af7d2b0c6cfe6069b8b336e36ca04935 unchanged.
+- 2026-09-19: Track A probes (Hydra-certified) were mis-routed over SSH from the laptop instead of the mandated Hetzner VNC console; PROBE 1 stopped fail-fast at the auth gate - "Permission denied (publickey)"; no remote inspection occurred, no VPS changes. Server confirmed publickey-only (no password fallback). Venue rule enforced: all server commands before the SSH fix run at the Hetzner VNC console only. Track A remains open.
