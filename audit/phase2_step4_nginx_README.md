@@ -23,3 +23,15 @@ with Let's Encrypt SSL encryption.
 ## Verification
 - Nginx syntax test: passed (`nginx -t`).
 - SSL certificate: issued and active via Certbot.
+
+## Post-Deployment Priority Routing Resolution (VPS-REG-46)
+- Date: 2026-09-20
+- Root Cause Identified: An existing deploy-user process occupied port 3000, and Nginx evaluated virtual hosts alphabetically, causing default fallback to intercept inbound traffic.
+- Actions Taken:
+  1. Terminated stale process occupying port 3000 and confirmed jp-frontend (3000) and jp-backend (3001) are active under PM2.
+  2. Enforced virtual host priority by creating `/etc/nginx/sites-enabled/001-johnpaulescuadra.com` pointing to `/etc/nginx/sites-available/johnpaulescuadra.com`.
+  3. Validated syntax with `nginx -t` and reloaded Nginx with zero downtime.
+- Live Verification:
+  - Local loopback: `curl -s http://127.0.0.1:3000` returned `<title>John Paul Escuadra — Fullstack Developer & Founder</title>`.
+  - External domain: `curl -sI https://johnpaulescuadra.com` returned HTTP 200 OK.
+  - User verification: Confirmed portfolio renders properly in browser.

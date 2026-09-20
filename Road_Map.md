@@ -1,13 +1,13 @@
 # ROADMAP: VPS Deployment & Multi-Repo Management Pipeline
 
-## PHASE 2: Fix VPS Access & First Successful Deployment (IN PROGRESS (2026-09-20))
+## PHASE 2: Fix VPS Access & First Successful Deployment (COMPLETED (2026-09-20: repository cloned, build verified, PM2 active, Nginx reverse proxy prioritized, SSL active, live smoke test passed))
 - Objective: Resolve SSH issues and deploy the first repository to the VPS
 - Requirements:
   - Fix publickey authentication error
   - Successfully pull the main branch to the VPS
   - Reload pm2 to apply updates
 - Dependencies: Phase 1 completed
-- Current status: IN PROGRESS (2026-09-20: repository cloned, build verified, PM2 active, Nginx reverse proxy & SSL configured; live smoke test & sign-off pending)
+- Current status: COMPLETED (2026-09-20: repository cloned, build verified, PM2 active, Nginx reverse proxy prioritized, SSL active, live smoke test passed)
 - Completion criteria: VPS reports live repo HEAD matches baseline
 
 ## PHASE 3: Multi-Repo Registry Setup (PENDING)
@@ -26,3 +26,4 @@
 - 2026-09-20: Mantra executed VPS-REG-43. Bun and server .env configured. Frontend dependencies installed, Prisma client generated, and full-stack standalone smoke tests passed on vortex.
 - 2026-09-20: Mantra executed VPS-REG-44. PM2 processes jp-backend (3001) and jp-frontend (3000) online on vortex with systemd auto-boot. Loopback endpoints verified.
 - 2026-09-20: Mantra executed VPS-REG-45. Nginx virtual host for johnpaulescuadra.com and SSL configured. Archived completed Phase 1 from active roadmap.
+- 2026-09-20: Mantra executed VPS-REG-46 (Nginx priority fix) and completed VPS-REG-49 (Phase 2 sign-off). Live public HTTP smoke test passed (HTTP 200, valid SSL). Phase 2 fully completed and signed off.
