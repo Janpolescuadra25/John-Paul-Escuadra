@@ -1,15 +1,5 @@
 # ROADMAP: VPS Deployment & Multi-Repo Management Pipeline
 
-## PHASE 1: VPS Initial Audit & Connection Validation (COMPLETED (2026-09-20))
-- Objective: Establish SSH connectivity to the Hetzner VPS and collect initial state data
-- Requirements:
-  - Verify SSH key authentication works
-  - Collect VPS system info, pm2 state, and git repository status
-  - Validate live repo HEAD matches local certified baseline
-- Dependencies: Valid SSH key placed in ~/.ssh/id_ed25519_hetzner
-- Completion criteria: VPS state report generated with no errors
-- Current status: COMPLETED (2026-09-20: SSH publickey authentication resolved and the initial V1-V4 read-only inventory was completed successfully over SSH with zero errors; Ubuntu 26.04.1 LTS, Node v22.23.2, npm 10.9.8, git 2.53.0, Nginx active, PM2 clean slate, and no deployed git repos in /root. Phase 1 fully complete.)
-
 ## PHASE 2: Fix VPS Access & First Successful Deployment (IN PROGRESS (2026-09-20))
 - Objective: Resolve SSH issues and deploy the first repository to the VPS
 - Requirements:
@@ -17,7 +7,7 @@
   - Successfully pull the main branch to the VPS
   - Reload pm2 to apply updates
 - Dependencies: Phase 1 completed
-- Current status: IN PROGRESS (2026-09-20: repository cloned, dependencies installed, build verified, PM2 active; Nginx reverse proxy pending)
+- Current status: IN PROGRESS (2026-09-20: repository cloned, build verified, PM2 active, Nginx reverse proxy & SSL configured; live smoke test & sign-off pending)
 - Completion criteria: VPS reports live repo HEAD matches baseline
 
 ## PHASE 3: Multi-Repo Registry Setup (PENDING)
@@ -35,3 +25,4 @@
 - 2026-09-20: Mantra executed VPS-REG-42. Local baseline pushed to GitHub origin/main. Cloned repository to vortex at /var/www/jp_escuadra. Server HEAD verified matching baseline 97b8048a1b6e48e72e51fd857e34e5366ab25147.
 - 2026-09-20: Mantra executed VPS-REG-43. Bun and server .env configured. Frontend dependencies installed, Prisma client generated, and full-stack standalone smoke tests passed on vortex.
 - 2026-09-20: Mantra executed VPS-REG-44. PM2 processes jp-backend (3001) and jp-frontend (3000) online on vortex with systemd auto-boot. Loopback endpoints verified.
+- 2026-09-20: Mantra executed VPS-REG-45. Nginx virtual host for johnpaulescuadra.com and SSL configured. Archived completed Phase 1 from active roadmap.
