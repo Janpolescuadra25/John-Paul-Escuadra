@@ -17,7 +17,7 @@
   - Successfully pull the main branch to the VPS
   - Reload pm2 to apply updates
 - Dependencies: Phase 1 completed
-- Current status: IN PROGRESS (2026-09-20: repository cloned to /var/www/jp_escuadra, verified matching baseline)
+- Current status: IN PROGRESS (2026-09-20: repository cloned, dependencies installed, build verified, PM2 active; Nginx reverse proxy pending)
 - Completion criteria: VPS reports live repo HEAD matches baseline
 
 ## PHASE 3: Multi-Repo Registry Setup (PENDING)
@@ -34,3 +34,4 @@
 - 2026-09-20: Mantra executed VPS-REG-41 successfully over SSH. Full V1-V4 state report collected. SSH publickey authentication resolved, all read-only commands completed with zero errors. Baseline server facts established (Ubuntu 26.04.1 LTS, Node v22.23.2, npm 10.9.8, git 2.53.0, Nginx active, PM2 clean slate). Phase 1 fully complete.
 - 2026-09-20: Mantra executed VPS-REG-42. Local baseline pushed to GitHub origin/main. Cloned repository to vortex at /var/www/jp_escuadra. Server HEAD verified matching baseline 97b8048a1b6e48e72e51fd857e34e5366ab25147.
 - 2026-09-20: Mantra executed VPS-REG-43. Bun and server .env configured. Frontend dependencies installed, Prisma client generated, and full-stack standalone smoke tests passed on vortex.
+- 2026-09-20: Mantra executed VPS-REG-44. PM2 processes jp-backend (3001) and jp-frontend (3000) online on vortex with systemd auto-boot. Loopback endpoints verified.

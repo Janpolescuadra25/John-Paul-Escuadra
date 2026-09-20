@@ -12,10 +12,11 @@ set up PM2 process supervision, and configure Nginx reverse proxy.
 ## Implementation Steps
 - [x] Step 1: Synchronize GitHub main & clone repository to /var/www/jp_escuadra (VPS-REG-42)
 - [x] Step 2: Install dependencies & verify project build on VPS (VPS-REG-43)
-- [ ] Step 3: Configure PM2 process management & system auto-boot
+- [x] Step 3: Configure PM2 process management & system auto-boot (VPS-REG-44)
 - [ ] Step 4: Configure Nginx reverse proxy & firewall verification
 - [ ] Step 5: Live HTTP smoke test & Phase 2 completion sign-off
 
 ## Execution Log
 - 2026-09-20 (VPS-REG-42): Pushed baseline 97b8048a1b6e48e72e51fd857e34e5366ab25147 to GitHub main. Cloned repository to vortex at /var/www/jp_escuadra. Remote HEAD parity verified.
 - 2026-09-20 (VPS-REG-43): Verified Bun on vortex, created server .env, installed Frontend dependencies, generated Prisma client, built standalone Next.js package, and smoke-tested both Backend and Frontend runtimes.
+- 2026-09-20 (VPS-REG-44): Configured PM2 processes jp-backend (port 3001) and jp-frontend (port 3000) on vortex. Configured systemd auto-boot. Loopback endpoints verified.
