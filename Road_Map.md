@@ -5,7 +5,7 @@
 ---
 
 ## PHASE 3: Multi-Repo Registry Setup
-Status: ACTIVE (Step 3 complete; Steps 4-6 pending)
+Status: ACTIVE (Steps 0-4 complete; Steps 5-6 pending)
 Target Server: vortex (2.28.120.85)
 Target Repository: https://github.com/Janpolescuadra25/Vortex.Studios.git
 Server Path: /var/www/vortex_studios
@@ -25,7 +25,7 @@ Upstream Ports: 3002 (frontend), 3003 (backend if applicable)
 - [x] Step 1: Clone repository to /var/www/vortex_studios and verify the johnpaulescuadra.com deployment remains untouched (VPS-REG-51)
 - [x] Step 2: Install dependencies and verify the production build on VPS (VPS-REG-52)
 - [x] Step 3: Configure and launch PM2 processes on ports 3002/3003 (VPS-REG-53)
-- [ ] Step 4: Configure Nginx virtual host with priority symlink 002-vortexsdo.com (VPS-REG-54)
+- [x] Step 4: Configure Nginx virtual host with priority symlink 002-vortexsdo.com (VPS-REG-54)
 - [ ] Step 5: SSL certificate configuration & verification (VPS-REG-55)
 - [ ] Step 6: Live smoke test & registry documentation sign-off (VPS-REG-56)
 
@@ -51,3 +51,4 @@ Upstream Ports: 3002 (frontend), 3003 (backend if applicable)
 - 2026-09-20: Mantra executed VPS-REG-50. Archived Phase 2, initialized audit/phase3_multi_repo_README.md, and prepared Phase 3 active focus.
 - 2026-09-20: Mantra executed VPS-REG-52. Installed dependencies and verified the production build for Vortex Studios on vortex. Portfolio integrity confirmed (HTTP 200).
 - 2026-09-21: Mantra executed VPS-REG-53. Launched vortex-frontend:3002 and vortex-backend:3003 under PM2. Portfolio directory hash confirmed identical pre/post-deployment (3037f813c43f5fec600030267a3e361a). Live portfolio verified HTTP 200.
+- 2026-09-21: Mantra executed VPS-REG-54. Configured Nginx virtual host 002-vortexsdo.com routing to ports 3002 and 3003. Verified Nginx syntax, reloaded service, confirmed portfolio directory untouched, and verified live portfolio HTTP 200.
