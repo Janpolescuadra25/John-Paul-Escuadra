@@ -1,13 +1,15 @@
 # Repository Roadmap: John-Paul-Escuadra
 
-## CURRENT ACTIVE FOCUS: Phase 4 (Next Planned Work)
-- **Status**: PLANNING / PENDING REQUIREMENTS
-- **Context**: Phases 1, 2, and 3 are 100% completed and operational.
-- **Candidate Priorities**:
-  1. Automated CI/CD deployment pipelines (GitHub Actions) with zero-touch portfolio guardrails.
-  2. Health monitoring, automated uptime checks, and service alerting.
-  3. Database integration for portfolio and Vortex backend services.
-  4. Automated backup routines for VPS web directories (`/var/www/jp_escuadra` and `/var/www/vortex_studios`).
+## CURRENT ACTIVE FOCUS: Phase 4: CI/CD Automation & Operational Hardening (ACTIVE)
+- **Status**: ACTIVE (Step 0 in progress; Steps 1-5 pending)
+- **Objective**: Automate production deployments to Hetzner VPS via GitHub Actions with strict zero-touch portfolio guardrails, health checks, uptime monitoring, and automated backups.
+- **Phased Steps**:
+  - [x] Step 0: Phase 4 initialization, audit overview README, and CI/CD workflow scaffolding (VPS-REG-58)
+  - [ ] Step 1: GitHub repository secrets specification & dry-run workflow validation (VPS-REG-59)
+  - [ ] Step 2: Live automated deployment execution to VPS with zero-touch snapshot assertion (VPS-REG-60)
+  - [ ] Step 3: PM2 & Nginx automated uptime monitoring & alerting integration (VPS-REG-61)
+  - [ ] Step 4: Automated daily backup routines for VPS web directories (VPS-REG-62)
+  - [ ] Step 5: Phase 4 comprehensive smoke testing & completion sign-off (VPS-REG-63)
 
 ---
 
@@ -40,6 +42,7 @@
 - 2026-09-20: VPS-REG-52 executed (Vortex dependencies installed and build verified).
 - 2026-09-21: VPS-REG-53 executed (PM2 processes launched on ports 3002/3003).
 - 2026-09-21: VPS-REG-54 executed (Nginx virtual host configured with 002-vortexsdo.com priority symlink).
-- 2026-09-21: VPS-REG-55 executed (Let\'s Encrypt SSL certificates configured via Certbot).
+- 2026-09-21: VPS-REG-55 executed (Let's Encrypt SSL certificates configured via Certbot).
 - 2026-09-22: VPS-REG-56 executed (Comprehensive smoke tests passed, policy.md created, Phase 3 sign-off completed).
 - 2026-09-22: VPS-REG-57 executed (Road_Map.md streamlined; Phase 3 archived; Phase 4 focus initialized).
+- 2026-09-22: VPS-REG-58 executed (Phase 4 formalized in Road_Map.md; audit/phase4_cicd_README.md created; CI/CD workflow scaffolded).

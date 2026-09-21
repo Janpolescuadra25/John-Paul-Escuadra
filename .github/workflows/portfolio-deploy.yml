@@ -1,0 +1,114 @@
+name: Deploy Portfolio to VPS
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'Frontend_JP/**'
+      - 'Backend_JP/**'
+      - '.github/workflows/portfolio-deploy.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: production-deploy
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: |
+            Frontend_JP/package-lock.json
+            Backend_JP/package-lock.json
+
+      - name: Install Frontend Dependencies
+        working-directory: ./Frontend_JP
+        run: npm ci
+
+      - name: Build Frontend (Standalone Output)
+        working-directory: ./Frontend_JP
+        run: npm run build
+
+      - name: Setup SSH Key
+        if: env.HETZNER_SSH_KEY != ''
+        env:
+          HETZNER_SSH_KEY: ${{ secrets.HETZNER_SSH_KEY }}
+          HETZNER_HOST: ${{ secrets.HETZNER_HOST }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$HETZNER_SSH_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H "$HETZNER_HOST" >> ~/.ssh/known_hosts
+
+      - name: Execute Zero-Touch Pre-Deployment Snapshot on VPS
+        if: env.HETZNER_SSH_KEY != ''
+        env:
+          HETZNER_SSH_KEY: ${{ secrets.HETZNER_SSH_KEY }}
+          HETZNER_HOST: ${{ secrets.HETZNER_HOST }}
+          HETZNER_USER: ${{ secrets.HETZNER_USER }}
+        run: |
+          ssh -i ~/.ssh/id_ed25519 "${HETZNER_USER}@${HETZNER_HOST}" 'bash -lc "
+            set -e
+            echo \"=== PRE-DEPLOY VORTEX ZERO-TOUCH CHECK ===\"
+            ls -laR /var/www/vortex_studios | md5sum | cut -d\" \" -f1 > /tmp/vortex_pre_deploy.md5
+            echo \"Vortex snapshot captured.\"
+          "'
+
+      - name: Deploy Standalone Frontend Artifacts to VPS
+        if: env.HETZNER_SSH_KEY != ''
+        env:
+          HETZNER_SSH_KEY: ${{ secrets.HETZNER_SSH_KEY }}
+          HETZNER_HOST: ${{ secrets.HETZNER_HOST }}
+          HETZNER_USER: ${{ secrets.HETZNER_USER }}
+        run: |
+          rsync -avz --delete \
+            -e "ssh -i ~/.ssh/id_ed25519" \
+            ./Frontend_JP/.next/standalone/ \
+            "${HETZNER_USER}@${HETZNER_HOST}:/var/www/jp_escuadra/Frontend_JP/.next/standalone/"
+          rsync -avz \
+            -e "ssh -i ~/.ssh/id_ed25519" \
+            ./Frontend_JP/.next/static/ \
+            "${HETZNER_USER}@${HETZNER_HOST}:/var/www/jp_escuadra/Frontend_JP/.next/static/"
+
+      - name: Reload PM2 Processes & Verify Zero-Touch Integrity
+        if: env.HETZNER_SSH_KEY != ''
+        env:
+          HETZNER_SSH_KEY: ${{ secrets.HETZNER_SSH_KEY }}
+          HETZNER_HOST: ${{ secrets.HETZNER_HOST }}
+          HETZNER_USER: ${{ secrets.HETZNER_USER }}
+        run: |
+          ssh -i ~/.ssh/id_ed25519 "${HETZNER_USER}@${HETZNER_HOST}" 'bash -lc "
+            set -e
+            pm2 reload jp-frontend --update-env
+            pm2 reload jp-backend --update-env
+            sleep 3
+
+            echo \"=== POST-DEPLOY VORTEX ZERO-TOUCH ASSERTION ===\"
+            POST_VORTEX=\$(ls -laR /var/www/vortex_studios | md5sum | cut -d\" \" -f1)
+            PRE_VORTEX=\$(cat /tmp/vortex_pre_deploy.md5)
+            if [ \"\$PRE_VORTEX\" != \"\$POST_VORTEX\" ]; then
+              echo \"CRITICAL VIOLATION: Vortex directory was modified during portfolio deployment!\" >&2
+              exit 1
+            fi
+            echo \"ZERO-TOUCH CONFIRMED: Vortex remains 100% untouched.\"
+
+            echo \"=== LIVE PORTFOLIO HEALTH CHECK ===\"
+            STATUS=\$(curl -s -o /dev/null -w \"%{http_code}\" --max-time 10 https://johnpaulescuadra.com)
+            echo \"HTTP Status: \$STATUS\"
+            if [ \"\$STATUS\" != \"200\" ]; then
+              echo \"Deployment health check failed with status: \$STATUS\" >&2
+              exit 1
+            fi
+            echo \"DEPLOYMENT_SUCCESS: https://johnpaulescuadra.com is live with HTTP 200 OK.\"
+          "'
