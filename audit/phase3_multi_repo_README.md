@@ -20,7 +20,7 @@ Deploy the Vortex.Studios repository to the Hetzner VPS, implement strict domain
 - [x] Step 3: Configure PM2 process management for vortex-frontend (3002) and vortex-backend (3003) with systemd auto-boot (VPS-REG-53)
 - [x] Step 4: Configure dedicated Nginx server block for vortexsdo.com & enforce priority (VPS-REG-54)
 - [x] Step 5: SSL installation via Certbot & live smoke test verification (VPS-REG-55)
-- [ ] Step 6: Update policy.md VPS registry & Phase 3 completion sign-off (VPS-REG-56)
+- [x] Step 6: Update policy.md VPS registry & Phase 3 completion sign-off (VPS-REG-56)
 
 ## Execution Log
 - 2026-09-20 (VPS-REG-50): Phase 3 audit README initialized. Phase 2 archived in Road_Map.md. Strict domain isolation requirements documented.
@@ -29,3 +29,4 @@ Deploy the Vortex.Studios repository to the Hetzner VPS, implement strict domain
 - 2026-09-21 (VPS-REG-53): Launched PM2 processes for Vortex Studios on ports 3002 and 3003. Portfolio directory hash confirmed identical pre/post-deployment. Both services returned HTTP 200 on local smoke tests.
 - 2026-09-21 (VPS-REG-54): Configured isolated Nginx server block /etc/nginx/sites-available/vortexsdo.com with priority symlink /etc/nginx/sites-enabled/002-vortexsdo.com routing to ports 3002 (frontend) and 3003 (backend). Validated syntax, reloaded Nginx, verified portfolio integrity (100% untouched), and confirmed live portfolio (HTTP 200).
 - 2026-09-21 (VPS-REG-55): Issued SSL certificates for vortexsdo.com and www.vortexsdo.com via Certbot with automatic HTTPS redirection. Portfolio directory hash confirmed identical pre/post-deployment (3037f813c43f5fec600030267a3e361a). Both domains verified returning HTTP 200 over HTTPS.
+- 2026-09-22 (VPS-REG-56): Executed comprehensive VPS smoke tests across both domains, PM2 process pool, and Nginx priority symlinks. Verified 100% portfolio integrity. Established policy.md multi-repo registry table and created audit/phase3_step6_signoff_README.md. Phase 3 marked COMPLETED.
