@@ -34,7 +34,7 @@ jobs:
 
       - name: Install Frontend Dependencies
         working-directory: ./Frontend_JP
-        run: npm ci
+        run: npm install
 
       - name: Build Frontend (Standalone Output)
         working-directory: ./Frontend_JP
