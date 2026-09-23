@@ -1,11 +1,18 @@
 # Repository Roadmap: John-Paul-Escuadra
 
-## CURRENT ACTIVE FOCUS: Phase 5: Post-Deployment Optimization & Expansion (NEXT)
-- **Status**: READY TO INITIATE (Phase 4 completed and archived)
-- **Objective**: Continue platform hardening, operational optimization, and expansion beyond the completed Phase 4 CI/CD and backup automation cycle.
+## CURRENT ACTIVE FOCUS: Phase 5: Post-Deployment Optimization & Expansion (ACTIVE)
+- **Status**: ACTIVE (Step 0 complete; Steps 1–7 pending)
+- **Objective**: Platform hardening, edge optimization, PM2 log rotation, CI/CD PR validation, health alerting, offsite backup replication, and certificate monitoring.
+- **Reference Policy**: `policy.md` (Zero-Touch Multi-Repo Registry)
 - **Phased Steps**:
-  - [ ] Phase 5 initialization and backlog review
-  - [ ] Additional resilience, observability, and deployment workflow improvements
+  - [x] Step 0: Phase 5 initialization, backlog expansion, and audit README scaffolding (VPS-REG-64)
+  - [ ] Step 1: Nginx security hardening, caching, compression & rate limiting (VPS-REG-65)
+  - [ ] Step 2: PM2 logrotate configuration and automated log retention (VPS-REG-66)
+  - [ ] Step 3: CI/CD pull request automated linting & test validation workflow (VPS-REG-67)
+  - [ ] Step 4: Automated health check alerting integration for uptime monitor (VPS-REG-68)
+  - [ ] Step 5: Backup offsite replication implementation (VPS-REG-69)
+  - [ ] Step 6: SSL certificate auto-renewal monitoring & alerting (VPS-REG-70)
+  - [ ] Step 7: Phase 5 comprehensive smoke testing & completion sign-off (VPS-REG-71)
 
 ---
 
@@ -54,3 +61,4 @@
 - 2026-09-23: VPS-REG-61 executed (PM2 & Nginx uptime monitor installed via cron; script validated live; audit/phase4_step3_uptime_monitoring_README.md created).
 - 2026-09-23: VPS-REG-62 executed (Daily backup routine installed via cron; archive integrity and zero-touch checks passed; audit/phase4_step4_backups_README.md created).
 - 2026-09-24: VPS-REG-63 executed (Phase 4 comprehensive smoke testing passed 6/6; audit/phase4_step5_signoff_README.md created; Phase 4 signed off and archived).
+- 2026-09-24: VPS-REG-64 executed (Phase 5 initialized with atomic 8-step backlog; audit/phase5_optimization_README.md scaffolded; Road_Map.md updated).
